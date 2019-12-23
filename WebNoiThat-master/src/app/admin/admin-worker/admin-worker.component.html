@@ -1,0 +1,94 @@
+<app-adsidebar></app-adsidebar>
+<app-adnavbar></app-adnavbar>
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">Quản Lý Nhân Viên</h2>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <a routerLink="/admin/adworker/add" style="color: aliceblue;" class="btn btn-primary btn-rounded">Thêm Nhân Viên</a>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <mat-form-field>
+                    <input matInput  (keyup)="applyFilter($event.target.value)" placeholder="Tìm kiếm">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Mã </th>
+                    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Họ và tên</th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="address">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Địa chỉ </th>
+                    <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="phoneNumber">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> SĐT </th>
+                    <td mat-cell *matCellDef="let element"> {{element.phoneNumber}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="provider">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Cung cấp </th>
+                    <td mat-cell *matCellDef="let element"> {{element.provider}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="imageUrl">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> img </th>
+                    <td mat-cell *matCellDef="let element"> {{element.imageUrl}} </td>
+                </ng-container>
+                <ng-container matColumnDef="emailVerified">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> SĐT </th>
+                    <td mat-cell *matCellDef="let element"> {{element.emailVerified}} </td>
+                </ng-container>
+                <ng-container matColumnDef="password">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> SĐT </th>
+                    <td mat-cell *matCellDef="let element"> {{element.password}} </td>
+                </ng-container>
+                <ng-container matColumnDef="instatus">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> SĐT </th>
+                    <td mat-cell *matCellDef="let element"> {{element.instatus}} </td>
+                </ng-container>
+                <ng-container matColumnDef="providerId">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> SĐT </th>
+                    <td mat-cell *matCellDef="let element"> {{element.providerId}} </td>
+                </ng-container>
+                <ng-container matColumnDef="createdDate">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> SĐT </th>
+                    <td mat-cell *matCellDef="let element"> {{element.createdDate}} </td>
+                </ng-container>
+                <ng-container matColumnDef="updatedDate">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> SĐT </th>
+                    <td mat-cell *matCellDef="let element"> {{element.updatedDate}} </td>
+                </ng-container>
+
+                <ng-container matColumnDef="choose">
+                    <th mat-header-cell *matHeaderCellDef > Lựa chọn </th>
+                    <td mat-cell *matCellDef="let element">
+                        <button (click)="detail(element.id)" style="height: 28px; width: 27px;padding: initial; margin-right: 5px;" class="btn btn-success"  routerLink="/admin/adworker/detail"><i class="fa fa-info"></i></button>
+                        <button (click)="edit(element.id)" style="height: 28px; width: 27px;padding: initial; margin-right: 5px;" class="btn btn-primary" routerLink="/admin/adworker/edit"><i class="fa fa-edit"></i></button>
+                        <button (click)="delete(element.id)" style="height: 28px; width: 27px;padding: initial; margin-right: 5px;" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+</div>

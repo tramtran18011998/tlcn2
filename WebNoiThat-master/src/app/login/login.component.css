@@ -1,0 +1,136 @@
+.header-content {
+    padding: 5px 10px 5px 0px;
+}
+
+.header-logo a {
+    font-size: 40px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.header-logo a img {
+    width: 50px;
+    height: 50px;
+}
+
+.search-header {
+    border-radius: 25px 0 0 25px;
+}
+
+.btn-search-header {
+    border-radius: 0 25px 25px 0;
+}
+
+.navbar {
+    padding: 0;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    width: 100%;
+}
+
+.navbar li {
+    float: left;
+}
+
+.navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.navbar .nav-right {
+    float: right;
+}
+
+/* * {
+    font-family: Arial, Helvetica, sans-serif;
+} */
+
+
+/* dangnhap*/
+
+.content-wrapper {
+    padding-top: 50px;
+}
+
+.col-lg-6.login-form {
+    padding: 23px;
+    background: url('https://images.unsplash.com/photo-1534408679207-69b9615e55a7?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&s=cfbabd80cd2d5cae495a2a732d473562')
+}
+
+.col-lg-6.login-form h2 {
+    margin-bottom: 30px;
+    padding: 30px;
+    background: transparent;
+}
+
+.col-lg-6 {
+    padding: 0;
+}
+
+button.btn {
+    width: 100%;
+    border-radius: 25px;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+input#exampleInputEmail1 {
+    border-radius: 25px;
+}
+
+input#exampleInputPassword1 {
+    border-radius: 25px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+
+
+.card {
+    width: 350px;
+}
+
+
+.social-login {
+    padding-top: 40px;
+    padding-bottom: 50px;
+    text-align: center;
+    font-size: 0;
+    color: white;
+}
+.social-login  a {
+    font-size: 14px;
+    display: inline-block;
+    width: 40%;
+    color: #fff;
+    padding: 9px 12px;
+    line-height: 1;
+    margin: 0 10px;
+    border-radius: 999em;
+}
+.login-facebook {
+    background:#4267B2;
+}
+.login-google {
+    background: #EA4335;
+}
+
+
+

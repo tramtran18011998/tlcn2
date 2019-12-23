@@ -1,0 +1,114 @@
+<app-adsidebar></app-adsidebar>
+<app-adnavbar></app-adnavbar>
+<div class="card" style="margin: 16px 0;">
+    <div class="card-body">
+        <h3 class="card-title">Thêm Phụ kiện</h3>
+        <form [formGroup]="addForm" (ngSubmit)="onSubmitCreate(addForm)">
+            <div class="form-row">
+                <div class="col-md-6 col-sm-12 form-group">
+                    <label for="ten-phu-kien">Tên Phụ kiện :</label>
+                    <input type="text" class="form-control" name="name" required
+                        [ngClass]="{'is-invalid':addForm.get('name').touched && addForm.get('name').invalid }"
+                        formControlName="name" id="name" >
+                    
+                    <div *ngIf="addForm.get('name').touched && addForm.get('name').invalid" class="invalid-feedback">
+                        <div *ngIf="addForm.controls.name.errors.required">Tên không được để trống
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-md-6 col-sm-12 form-group">
+                    <label for="ten-phu-kien">Giá thành: </label>
+                    <input type="number" min="10000" step="1000" class="form-control" name="price" required
+                        [ngClass]="{'is-invalid':addForm.get('price').touched && addForm.get('price').invalid }"
+                        formControlName="price" id="price">
+                    <div *ngIf="addForm.get('price').touched && addForm.get('price').invalid" class="invalid-feedback">
+                        <div *ngIf="addForm.controls.price.errors.required"> Nhập giá</div>
+                        <div *ngIf="addForm.controls.price.errors.minlength">Giá thấp nhất 10000vnd</div>
+            
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-6 col-sm-12 form-group">
+                    <label for="">Màu sắc :</label>
+                <input type="text" class="form-control" name="color" required            
+                formControlName="color" id="color" rows="3">
+                </div>
+                <div class="col-md-6 col-sm-12 form-group">
+                    <label for="">Giá khuyến mãi :</label>
+                <input type="number" step="1000" class="form-control" name="discountPrice" required            
+                formControlName="discountPrice" id="discountPrice" rows="3">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-6 col-sm-12 form-group">
+                    <label for="">Mô tả :</label>
+                <textarea  type="text" class="form-control" name="description" required            
+                formControlName="description" id="description" rows="3"></textarea>
+                </div>
+                <div class="col-md-6 col-sm-12 form-group">
+                    <label for="">Chất liệu :</label>
+                <input type="text" class="form-control" name="material" required            
+                formControlName="material" id="material" rows="3">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-6 col-sm-12 form-group">
+                    <label for="">Số lượng :</label>
+                <input type="number" class="form-control" name="quantity" required            
+                formControlName="quantity" id="quantity" rows="3">
+                </div>
+                <div class="col-md-6 col-sm-12 form-group">
+                    <label for="">Kích thước :</label>
+                <input type="text" class="form-control" name="size" required            
+                formControlName="size" id="size" rows="3">
+                
+                </div>
+            </div>
+
+            <div class="form-row">
+                
+                <div class="col-md-6 col-sm-12 form-group">
+                    <label for="">Loại phụ kiện :</label>
+                    <select style="width: 210px;" class="form-control" name="detailType" formControlName="detailType" 
+                    #mySelectCate (change)='onOptionsSelectedCate(mySelectCate.value)' id="detailType">
+                        <option *ngFor="let detailType of detailTypes " [value]="detailType.id">
+                            {{detailType.name}}
+                        </option>
+                    </select>
+                
+                </div>
+                <div class="col-md-6 col-sm-12 form-group">
+                    <label for="">Nhà cung cấp :</label>
+            
+                    <select style="width: 210px;" class="form-control" name="supplier" formControlName="supplier"
+                    #mySelectSup (change)='onOptionsSelectedSup(mySelectSup.value)' id="supplier">
+                        <option *ngFor="let supplier of suppliers " [value]="supplier.id">
+                            {{supplier.name}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="form-group col-md-6 col-sm-12">
+
+                    <input type='file' (change)="onSelectFile($event)" multiple>
+                    
+                </div>
+            </div>
+            
+            <a routerLink="/admin/addetail" class="btn btn-primary btn-rounded" style="color: white;"> Về Trang
+                Quản Lý Phụ kiện</a>
+            <input type="submit" class="btn btn-primary btn-rounded" style="margin-left: 5px;" id="btn-submit"
+                value="Lưu" />
+        </form>
+    </div>
+</div>

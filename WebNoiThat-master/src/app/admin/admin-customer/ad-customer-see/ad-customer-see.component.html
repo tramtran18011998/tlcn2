@@ -1,0 +1,87 @@
+<app-adsidebar></app-adsidebar>
+<app-adnavbar></app-adnavbar>
+<div class="card">
+    <div class="card-body">
+        <h3 class="card-title">Thông tin khách hàng: {{customer.name}}</h3>
+        <p class="card-description">
+            Thông tin chi tiết
+        </p>
+        <div class="row" style="margin-bottom: 16px;">
+            <div class="col-3" style="text-align: right; padding-right: 16px;">
+                <div *ngIf="imgState;else showEl">
+                    <div *ngIf="provider=='local';else showImg">
+                        <img src="http://localhost:8080/customerimg/{{customer.imageUrl}}" style="border-radius: 50%;" width="250px" height="250px" />
+                    </div>
+                    
+                    <ng-template let-file pTemplate="file" #showImg><img src="{{customer.imageUrl}}" style="border-radius: 50%;" width="250px" height="250px" /></ng-template>
+                </div>                       
+                <ng-template et-file pTemplate="file" #showEl><img src="../../../../assets/image/avatar.png" style="border-radius: 50%;" width="250px" height="250px" /></ng-template>
+
+                
+                
+                
+            </div>
+            <div class="col-9">
+                <table class="table">
+                    <tr>
+                        <td>Họ tên:</td>
+                        <td >{{customer.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td >{{customer.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>Điện thoại:</td>
+                        <td>{{customer.phonenumber}}</td>
+                    </tr>
+                    
+                    <tr>
+                        <td>Địa chỉ:</td>
+                        <td>{{customer.address}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Cung cấp từ:</td>
+                        <td>{{customer.provider}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Mật khẩu:</td>
+                        <td>{{customer.password}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Trạng thái:</td>
+                        <div *ngIf="instatus==1;else show"><td>Hoạt động</td></div>                       
+                        <ng-template #show><td>Đã khóa</td></ng-template>
+                    </tr>
+
+                    <tr>
+                        <td>Tạo ngày:</td>
+                        <td>{{customer.createdDate}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Cập nhật ngày:</td>
+                        <td>{{customer.lastModifiedDate}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Giảm giá thành viên:</td>
+                        <td>{{customer2.discount}}</td>
+                    </tr>
+
+                    <tr>
+                        <td>Loại khách hàng:</td>
+                        <td>{{customerType.name}}</td>
+                    </tr>
+                  
+                </table>
+            </div>
+        </div>
+        <div class="row justify-content-center">           
+            <a routerLink="/admin/adcustomer" class="btn btn-success btn-rounded" style="margin-left: 16px;color: white;">Về trang quản lí khách hàng</a>
+        </div>
+    </div>
+</div>
