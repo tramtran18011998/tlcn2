@@ -138,12 +138,12 @@ export class AdProductAddComponent implements OnInit {
 
     this.supplierService.getById(this.idSub).subscribe(data =>{
       this.supplier = data;
-      this.productA.supplier = this.supplier;
+      //this.productA.supplier = this.supplier;
 
       this.categoryService.getById(this.idCate).subscribe(data => {
-        this.productA.category = data;
+        //this.productA.category = data;
 
-        this.productService.createNew(this.productA).subscribe(data => {
+        this.productService.createNew(this.idCate,this.idSub,this.productA).subscribe(data => {
           console.log("pro:",data);
           this.product = data;
           console.log(this.product);

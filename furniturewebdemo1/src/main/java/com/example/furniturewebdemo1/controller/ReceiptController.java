@@ -30,11 +30,11 @@ public class ReceiptController {
         return ResponseEntity.ok().body(receipt);
     }
 
-    @PostMapping("/receipt")
-    public ResponseEntity<Receipt> createReceipt(@Valid @RequestBody Receipt receipt){
-        receiptService.save(receipt);
-        return new ResponseEntity<>(receipt, HttpStatus.CREATED);
-    }
+//    @PostMapping("/receipt")
+//    public ResponseEntity<Receipt> createReceipt(@Valid @RequestBody Receipt receipt){
+//        receiptService.save(receipt);
+//        return new ResponseEntity<>(receipt, HttpStatus.CREATED);
+//    }
 
     @PutMapping("/receipt/{id}")
     public ResponseEntity<Receipt> updateReceipt(@PathVariable(value = "id") long id, @Valid @RequestBody Receipt receipt) throws ResourceNotFoundException {
@@ -47,7 +47,7 @@ public class ReceiptController {
         currentReceipt.setStatePaid(receipt.isStatePaid());
         currentReceipt.setTotal(receipt.getTotal());
         currentReceipt.setEmployee(receipt.getEmployee());
-        currentReceipt.setInvoiceDetail(receipt.getInvoiceDetail());
+        //currentReceipt.setInvoiceDetail(receipt.getInvoiceDetail());
         currentReceipt.setInvoiceProduct(receipt.getInvoiceProduct());
 
         receiptService.save(currentReceipt);

@@ -29,11 +29,11 @@ public class InvoiceProductController {
         return ResponseEntity.ok().body(invoiceProduct);
     }
 
-    @PostMapping("/invoiceproduct")
-    public ResponseEntity<InvoiceProduct> createInvoiceProduct(@Valid @RequestBody InvoiceProduct invoiceProduct){
-        invoiceProductService.save(invoiceProduct);
-        return new ResponseEntity<>(invoiceProduct, HttpStatus.CREATED);
-    }
+//    @PostMapping("/invoiceproduct")
+//    public ResponseEntity<InvoiceProduct> createInvoiceProduct(@Valid @RequestBody InvoiceProduct invoiceProduct){
+//        invoiceProductService.save(invoiceProduct);
+//        return new ResponseEntity<>(invoiceProduct, HttpStatus.CREATED);
+//    }
 
     @PutMapping("/invoiceproduct/{id}")
     public ResponseEntity<InvoiceProduct> updateInvoiceProduct(@PathVariable(value = "id") long id, @Valid @RequestBody InvoiceProduct invoiceProduct) throws ResourceNotFoundException {

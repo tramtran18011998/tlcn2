@@ -19,7 +19,6 @@
     <ul>
         <li><a routerLink="/">Trang chủ</a></li>
         <li><a routerLink="/product">Sản phẩm</a></li>
-        <li><a routerLink="/accessory">Phụ kiện</a></li>
         <li><a routerLink="/about">Giới thiệu</a></li>
         <li><a routerLink="/contact">Liên hệ</a></li>
         <li class="nav-right">
@@ -29,15 +28,14 @@
             <ng-template  #showbtnDN><a routerLink="/profile/{{user.id}}"><img src="assets/image/login.png">{{user.name}}</a></ng-template>
             
         </li>
-        <!-- <div *ngIf="provider=='local';else showImg">
-                        <img src="http://localhost:8080/customerimg/{{customer.imageUrl}}" style="border-radius: 50%;" width="250px" height="250px" />
-                    </div>
-                    
-                    <ng-template let-file pTemplate="file" #showImg><img src="{{customer.imageUrl}}" style="border-radius: 50%;" width="250px" height="250px" /></ng-template> -->
-
+        
 
         <li class="nav-right">
-            <a routerLink="/cart"><img src="assets/image/shopping-cart.png"> Giỏ hàng</a>
+            <div *ngIf="!quantitycart;else showCart">
+                <a routerLink="/cart"><img src="assets/image/shopping-cart.png"> Giỏ hàng</a>
+            </div>
+            <ng-template  #showCart><a routerLink="/cart"><img src="assets/image/shopping-cart.png">  {{   quantitycart}}</a></ng-template>
+            
         </li>
     </ul>
 </div>

@@ -84,8 +84,8 @@ export class ProductService {
   }
 
   
-  createNew(ob: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}`, ob, this.options).pipe(
+  createNew(idtype: number,idsub: number,ob: any): Observable<any> {
+    return this.http.post(`${this.baseUrl}/${idtype}/${idsub}`, ob, this.options).pipe(
       tap(()=> {
         this._refresh.next();
       })

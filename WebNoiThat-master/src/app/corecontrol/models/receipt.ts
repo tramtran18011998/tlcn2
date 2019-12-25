@@ -1,5 +1,4 @@
 import { InvoiceProduct } from './invoiceproduct';
-import { InvoiceDetail } from './invoicedetail';
 
 export  class Receipt {
     id: number;
@@ -10,7 +9,6 @@ export  class Receipt {
     statePaid: boolean;
     total: number;
     employee_id: number;
-    invoiceDetail: InvoiceDetail;
     invoiceProduct: InvoiceProduct;
 
     createdDate: Date;

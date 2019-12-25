@@ -1,11 +1,15 @@
 package com.example.furniturewebdemo1.controller;
 
 import com.example.furniturewebdemo1.exception.ResourceNotFoundException;
+import com.example.furniturewebdemo1.model.Category;
 import com.example.furniturewebdemo1.model.Product;
 import com.example.furniturewebdemo1.model.ProductImage;
+import com.example.furniturewebdemo1.model.Supplier;
 import com.example.furniturewebdemo1.repository.ProductImageRepositpry;
 import com.example.furniturewebdemo1.repository.ProductRepository;
+import com.example.furniturewebdemo1.service.CategoryService;
 import com.example.furniturewebdemo1.service.ProductService;
+import com.example.furniturewebdemo1.service.SupplierService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +41,12 @@ public class ProductController {
     @Autowired
     private ProductRepository productRepository;
 
+    @Autowired
+    private SupplierService supplierService;
+
+    @Autowired
+    private CategoryService categoryService;
+
 
     @Autowired
     private ProductImageRepositpry productImageRepositpry;
@@ -55,9 +65,13 @@ public class ProductController {
         return ResponseEntity.ok().body(product);
     }
 
-    @PostMapping("/product")
-    public  ResponseEntity<Product> createProduct(@Valid @RequestBody Product product){
+    @PostMapping("/product/{idtype}/{idsup}")
+    public  ResponseEntity<Product> createProduct(@PathVariable(value = "idtype") long idtype,@PathVariable(value = "idsup") long idsup,@Valid @RequestBody Product product) throws ResourceNotFoundException {
 
+        Supplier supplier = supplierService.findSupplierById(idsup).orElseThrow(()-> new ResourceNotFoundException("Detail not found"));
+        Category category = categoryService.findCategoryById(idtype).orElseThrow(()-> new ResourceNotFoundException("Detail not found"));
+        product.setSupplier(supplier);
+        product.setCategory(category);
         //double a= product.getPrice();
         if(product.getDiscountPrice()==0){
             product.setDiscountPrice(product.getPrice());
@@ -65,6 +79,7 @@ public class ProductController {
         productService.save(product);
         return new ResponseEntity<>(product, HttpStatus.CREATED);
     }
+
 
     @PutMapping("/product/{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable(value = "id") long id, @Valid @RequestBody Product product) throws ResourceNotFoundException {

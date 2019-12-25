@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ProductComponent } from './product/product.component';
-import { AccessoryComponent } from './accessory/accessory.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
@@ -13,10 +12,7 @@ import { AdminProductComponent } from './admin/admin-product/admin-product.compo
 import { AdProductSeeComponent } from './admin/admin-product/ad-product-see/ad-product-see.component';
 import { AdProductEditComponent } from './admin/admin-product/ad-product-edit/ad-product-edit.component';
 import { AdProductAddComponent } from './admin/admin-product/ad-product-add/ad-product-add.component';
-import { AdminAccessoriesComponent } from './admin/admin-accessories/admin-accessories.component';
-import { AdAccessoriesSeeComponent } from './admin/admin-accessories/ad-accessories-see/ad-accessories-see.component';
-import { AdAccessoriesEditComponent } from './admin/admin-accessories/ad-accessories-edit/ad-accessories-edit.component';
-import { AdAccessoriesAddComponent } from './admin/admin-accessories/ad-accessories-add/ad-accessories-add.component';
+
 import { AdminCustomerComponent } from './admin/admin-customer/admin-customer.component';
 import { AdCustomerSeeComponent } from './admin/admin-customer/ad-customer-see/ad-customer-see.component';
 import { AdCustomerEditComponent } from './admin/admin-customer/ad-customer-edit/ad-customer-edit.component';
@@ -37,10 +33,10 @@ import { AdminReceiptComponent } from './admin/admin-receipt/admin-receipt.compo
 import { AdReceiptSeeComponent } from './admin/admin-receipt/ad-receipt-see/ad-receipt-see.component';
 
 
+
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'product', component: ProductComponent},
-  {path: 'accessory', component: AccessoryComponent},
   {path: 'about', component: AboutComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'login', component: LoginComponent},
@@ -61,10 +57,6 @@ const routes: Routes = [
       { path: 'adcategory/edit/:id', component: AdCategoryEditComponent },
       { path: 'adcategory/add', component: AdCategoryAddComponent },
 
-      { path: 'addetail', component: AdminAccessoriesComponent },
-      { path: 'addetail/detail/:id', component: AdAccessoriesSeeComponent },
-      { path: 'addetail/edit/:id', component: AdAccessoriesEditComponent },
-      { path: 'addetail/add', component: AdAccessoriesAddComponent },
 
       { path: 'adcustomer', component: AdminCustomerComponent },
       { path: 'adcustomer/detail/:id', component: AdCustomerSeeComponent },

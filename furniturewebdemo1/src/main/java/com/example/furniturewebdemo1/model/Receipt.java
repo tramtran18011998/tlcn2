@@ -49,8 +49,5 @@ public class Receipt extends DateAudit {
     @JoinColumn(name = "invoiceproduct_id")
     private InvoiceProduct invoiceProduct;
 
-    @ManyToOne
-    @JoinColumn(name = "invoicedetail_id")
-    private InvoiceDetail invoiceDetail;
 
 }

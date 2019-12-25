@@ -1,20 +1,19 @@
 package com.example.furniturewebdemo1.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Collection;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "customer")
-@JsonIgnoreProperties({"customer","invoiceDetails","invoiceProducts"})
-public class Customer {
+@JsonIgnoreProperties({"customer","invoiceProducts","carts"})
+public class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
@@ -37,10 +36,9 @@ public class Customer {
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private Set<InvoiceProduct> invoiceProducts;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    private Set<InvoiceDetail> invoiceDetails;
 
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("customer")
+    @JsonIgnoreProperties(value = "customer" , allowSetters = true)
     private Set<Cart> carts;
+
 }

@@ -24,7 +24,7 @@ public class InvoiceProduct extends DateAudit {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private User customer;
+    private Customer customer;
 
     @ManyToOne
     @JoinColumn(name = "employee_id")

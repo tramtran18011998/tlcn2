@@ -38,7 +38,4 @@ public class Supplier {
     @JsonIgnoreProperties("supplier")
     private Collection<Product> products;
 
-    @OneToMany(mappedBy = "supplier", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("supplier")
-    private Collection<Detail> details;
 }

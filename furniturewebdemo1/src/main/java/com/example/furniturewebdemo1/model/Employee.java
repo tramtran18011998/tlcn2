@@ -16,7 +16,7 @@ import java.util.Set;
 @Setter
 @NoArgsConstructor
 @Table(name = "employee")
-@JsonIgnoreProperties({"invoiceDetails", "employee", "invoiceProducts", "receipts","employees"})
+@JsonIgnoreProperties({ "employee", "invoiceProducts", "receipts","employees"})
 public class Employee{
 
     @Id
@@ -49,8 +49,6 @@ public class Employee{
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private Set<InvoiceProduct> invoiceProducts;
 
-    @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
-    private Set<InvoiceDetail> invoiceDetails;
 
     @OneToMany(mappedBy = "employee", cascade = CascadeType.ALL)
     private Set<Receipt> receipts;

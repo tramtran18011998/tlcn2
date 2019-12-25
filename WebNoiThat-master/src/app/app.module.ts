@@ -11,7 +11,6 @@ import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProductComponent } from './product/product.component';
-import { AccessoryComponent } from './accessory/accessory.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
@@ -24,10 +23,7 @@ import { AdnavbarComponent } from './admin/adnavbar/adnavbar.component';
 import { AdProductSeeComponent } from './admin/admin-product/ad-product-see/ad-product-see.component';
 import { AdProductEditComponent } from './admin/admin-product/ad-product-edit/ad-product-edit.component';
 import { AdProductAddComponent } from './admin/admin-product/ad-product-add/ad-product-add.component';
-import { AdminAccessoriesComponent } from './admin/admin-accessories/admin-accessories.component';
-import { AdAccessoriesAddComponent } from './admin/admin-accessories/ad-accessories-add/ad-accessories-add.component';
-import { AdAccessoriesEditComponent } from './admin/admin-accessories/ad-accessories-edit/ad-accessories-edit.component';
-import { AdAccessoriesSeeComponent } from './admin/admin-accessories/ad-accessories-see/ad-accessories-see.component';
+
 import { AdminCustomerComponent } from './admin/admin-customer/admin-customer.component';
 import { AdCustomerAddComponent } from './admin/admin-customer/ad-customer-add/ad-customer-add.component';
 import { AdCustomerSeeComponent } from './admin/admin-customer/ad-customer-see/ad-customer-see.component';
@@ -59,6 +55,7 @@ import { AdReceiptSeeComponent } from './admin/admin-receipt/ad-receipt-see/ad-r
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,7 +63,6 @@ import { AdReceiptSeeComponent } from './admin/admin-receipt/ad-receipt-see/ad-r
     HeaderComponent,
     FooterComponent,
     ProductComponent,
-    AccessoryComponent,
     AboutComponent,
     ContactComponent,
     LoginComponent,
@@ -79,10 +75,6 @@ import { AdReceiptSeeComponent } from './admin/admin-receipt/ad-receipt-see/ad-r
     AdProductSeeComponent,
     AdProductEditComponent,
     AdProductAddComponent,
-    AdminAccessoriesComponent,
-    AdAccessoriesAddComponent,
-    AdAccessoriesEditComponent,
-    AdAccessoriesSeeComponent,
     AdminCustomerComponent,
     AdCustomerAddComponent,
     AdCustomerSeeComponent,
