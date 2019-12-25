@@ -1,1 +1,105 @@
-<p>ad-receipt-edit works!</p>
+<app-adsidebar></app-adsidebar>
+<app-adnavbar></app-adnavbar>
+<div class="card" style="margin: 16px 0;">
+    <div class="card-body">
+        <h3 class="card-title">Cập nhật trạng thái</h3>
+        <form class="forms-sample"  (ngSubmit)="onSubmit()">
+            <!-- <div class="form-row">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitches">
+                    <label class="custom-control-label" for="customSwitches">Đang giao</label>
+                  </div>
+            </div>
+
+            <div class="form-row">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitches">
+                    <label class="custom-control-label" for="customSwitches">Đã giao</label>
+                  </div>
+            </div>
+
+            <div class="form-row">
+                <div class="custom-control custom-switch">
+                    <input type="checkbox" class="custom-control-input" id="customSwitches">
+                    <label class="custom-control-label" for="customSwitches">Đã thanh toán</label>
+                  </div>
+            </div> -->
+            <!-- <div class="form-group">
+                <p style="float: left; margin-right: 40px;">Đang giao</p>
+                <form [formGroup]="stateDeliveringForm">
+                    <input type="radio" name="stateDelivering" value="True" formControlName="stateDelivering"
+                        id="stateDelivering" />True 
+                    <input style="margin-left: 70px;" type="radio" name="stateDelivering" value="False" checked
+                        formControlName="stateDelivering" id="stateDelivering" />False <br>
+                </form>
+            </div>
+
+            <div class="form-group">
+                <p style="float: left; margin-right: 40px;">Đã giao</p>
+                <form [formGroup]="stateDeliveredForm">
+                    <input type="radio" name="stateDelivered" value="True" formControlName="stateDelivered"
+                        id="stateDelivered" />True 
+                    <input style="margin-left: 70px;" type="radio" name="stateDelivered" value="False" checked
+                        formControlName="stateDelivered" id="stateDelivered" />False <br>
+                </form>
+            </div>
+
+            <div class="form-group">
+                <p style="float: left; margin-right: 40px;">Đã thanh toán</p>
+                <form [formGroup]="statePaidForm">
+                    <input type="radio" name="statePaid" value="True" formControlName="statePaid"
+                        id="statePaid" />True 
+                    <input style="margin-left: 70px;" type="radio" name="statePaid" value="False" checked
+                        formControlName="statePaid" id="statePaid" />False <br>
+                </form>
+            </div> -->
+            <div class="row">
+                <div class="col-4" style="margin: 20px auto;padding-left: 10%;">
+                    <div class="form_row">
+                        <label>Đang giao :</label>
+                        <form>
+                            <input type="radio" name="stateDelivering" data-ng-value="true" [(ngModel)]="receipt.stateDelivering">
+                            True<br>
+                            <input type="radio" name="stateDelivering" data-ng-value="false" [(ngModel)]="receipt.stateDelivering">
+                            False<br>
+                
+                        </form>
+                    </div>
+                </div>
+                <div class="col-4" style="margin: 20px auto;padding-left: 10%;">
+                    <div class="form_row">
+                        <label>Đã giao :</label>
+                        <form>
+                            <input type="radio" name="stateDelivered" data-ng-value="true" [(ngModel)]="receipt.stateDelivered">
+                            True<br>
+                            <input type="radio" name="stateDelivered" data-ng-value="false" [(ngModel)]="receipt.stateDelivered">
+                            False<br>
+        
+                        </form>
+                    </div>
+                </div>
+                <div class="col-4" style="margin: 20px auto;padding-left: 10%;">
+                    <div class="form_row">
+                        <label>Đã thanh toán :</label>
+                        <form>
+                            <input type="radio" name="statePaid" data-ng-value="true" [(ngModel)]="receipt.statePaid">
+                            True<br>
+                            <input type="radio" name="statePaid" data-ng-value="false" [(ngModel)]="receipt.statePaid">
+                            False<br>
+        
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+
+            
+
+            
+            
+            <a routerLink="/admin/adreceipt" class="btn btn-primary btn-rounded" style="color: white;"> Về Trang
+                Quản Lý</a>
+            <input type="submit" class="btn btn-success btn-rounded" style="margin-left: 5px;"  value="Lưu" />
+        </form>
+    </div>
+</div>

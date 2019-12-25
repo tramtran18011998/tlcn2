@@ -41,7 +41,7 @@ export class AdReceiptSeeComponent implements OnInit {
 
       this.receiptService.getInvoiceDetailById(this.invoiceproduct.id).subscribe(data2 =>{
 
-        this.invoiceprodetails = data;
+        this.invoiceprodetails = data2;
         console.log(this.invoiceprodetails);
         this.dataSource = new MatTableDataSource(this.invoiceprodetails);
       })
