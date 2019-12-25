@@ -40,15 +40,30 @@ public class ReceiptController {
     public ResponseEntity<Receipt> updateReceipt(@PathVariable(value = "id") long id, @Valid @RequestBody Receipt receipt) throws ResourceNotFoundException {
         Receipt currentReceipt= receiptService.findReceiptById(id).orElseThrow(()-> new ResourceNotFoundException("Receipt not found"));
 
-        currentReceipt.setAmount(receipt.getAmount());
-        currentReceipt.setDiscount(receipt.getDiscount());
-        currentReceipt.setStateDelivering(receipt.isStateDelivering());
-        currentReceipt.setStateDelivered(receipt.isStateDelivered());
-        currentReceipt.setStatePaid(receipt.isStatePaid());
-        currentReceipt.setTotal(receipt.getTotal());
-        currentReceipt.setEmployee(receipt.getEmployee());
-        //currentReceipt.setInvoiceDetail(receipt.getInvoiceDetail());
-        currentReceipt.setInvoiceProduct(receipt.getInvoiceProduct());
+        if(receipt.getAmount()!=0){
+            currentReceipt.setAmount(receipt.getAmount());
+        }
+        if(receipt.getDiscount()!=0){
+            currentReceipt.setDiscount(receipt.getDiscount());
+        }
+        if(receipt.isStateDelivering()!= false){
+            currentReceipt.setStateDelivering(receipt.isStateDelivering());
+        }
+        if(receipt.isStateDelivered()!= false){
+            currentReceipt.setStateDelivered(receipt.isStateDelivered());
+        }
+        if(receipt.isStatePaid()!=false){
+            currentReceipt.setStatePaid(receipt.isStatePaid());
+        }
+        if(receipt.getTotal()!= 0){
+            currentReceipt.setTotal(receipt.getTotal());
+        }
+        if(receipt.getEmployee()!=null){
+            currentReceipt.setEmployee(receipt.getEmployee());
+        }
+        if(receipt.getInvoiceProduct()!=null){
+            currentReceipt.setInvoiceProduct(receipt.getInvoiceProduct());
+        }
 
         receiptService.save(currentReceipt);
         return ResponseEntity.ok(currentReceipt);

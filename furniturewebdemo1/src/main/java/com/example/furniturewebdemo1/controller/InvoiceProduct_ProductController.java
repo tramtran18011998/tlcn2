@@ -2,6 +2,8 @@ package com.example.furniturewebdemo1.controller;
 
 import com.example.furniturewebdemo1.exception.ResourceNotFoundException;
 import com.example.furniturewebdemo1.model.Invoiceproduct_Product;
+import com.example.furniturewebdemo1.repository.CustomerRepository;
+import com.example.furniturewebdemo1.repository.EmployeeRepository;
 import com.example.furniturewebdemo1.repository.InvoiceProduct_ProductRepository;
 import com.example.furniturewebdemo1.service.InvoiceProduct_ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,12 @@ public class InvoiceProduct_ProductController {
     @Autowired
     private InvoiceProduct_ProductRepository invoiceProduct_productRepository;
 
+    @Autowired
+    private CustomerRepository customerRepository;
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
     @GetMapping("/invoiceproduct-product")
     public List<Invoiceproduct_Product> getAllInvoiceproduct_Product(){
         return invoiceProduct_productService.findAllInvoiceproduct_Product();
@@ -29,6 +37,23 @@ public class InvoiceProduct_ProductController {
     public ResponseEntity<Invoiceproduct_Product> getInvoiceproduct_ProductById(@PathVariable(value = "id") long id) throws ResourceNotFoundException {
         Invoiceproduct_Product invoiceproduct_product=invoiceProduct_productService.findInvoiceproduct_ProductById(id).orElseThrow(()-> new ResourceNotFoundException("Invoiceproduct_Product not found"));
         return ResponseEntity.ok().body(invoiceproduct_product);
+    }
+
+    @GetMapping("/invoiceproduct-product/list/{id}")
+    public List<Invoiceproduct_Product> getListById(@PathVariable(value = "id") long id) throws ResourceNotFoundException {
+        List<Invoiceproduct_Product> list = invoiceProduct_productRepository.getListById(id);
+
+        return list;
+    }
+    @GetMapping("/invoiceproduct-product/cus/{id}")
+    public String getCusNameByUserId(@PathVariable(value = "id") long id) throws ResourceNotFoundException {
+        String name = customerRepository.getNameByUserId(id);
+        return name;
+    }
+    @GetMapping("/invoiceproduct-product/emp/{id}")
+    public String getEmpNameByUserId(@PathVariable(value = "id") long id) throws ResourceNotFoundException {
+        String name = employeeRepository.getNameByUserId(id);
+        return name;
     }
 
 //    @PostMapping("/invoiceproduct-product")

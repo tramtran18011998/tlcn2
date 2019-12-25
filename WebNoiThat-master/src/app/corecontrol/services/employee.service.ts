@@ -63,6 +63,14 @@ export class EmployeeService {
     );
   }
 
+  createNewAdmin(ob: FormData): Observable<Object> {
+    return this.http.post(`${this.baseUrl+"/admin"}`, ob, this.optionsImg).pipe(
+      tap(()=> {
+        this._refresh.next();
+      })
+    );
+  }
+
   update(id: number, value: any): Observable<Object> {
     return this.http.put(`${this.baseUrl}/${id}`, value, this.options).pipe(
       tap(()=> {

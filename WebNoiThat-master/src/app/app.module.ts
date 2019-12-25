@@ -54,6 +54,9 @@ import { AdminReceiptComponent } from './admin/admin-receipt/admin-receipt.compo
 import { AdReceiptSeeComponent } from './admin/admin-receipt/ad-receipt-see/ad-receipt-see.component';
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 import { AdProfileEditComponent } from './admin/admin-profile/ad-profile-edit/ad-profile-edit.component';
+import { AdAdminAccComponent } from './admin/admin-profile/ad-admin-acc/ad-admin-acc.component';
+import { AdProfileAddComponent } from './admin/admin-profile/ad-profile-add/ad-profile-add.component';
+import { AdReceiptEditComponent } from './admin/admin-receipt/ad-receipt-edit/ad-receipt-edit.component';
 
 
 
@@ -97,6 +100,9 @@ import { AdProfileEditComponent } from './admin/admin-profile/ad-profile-edit/ad
     AdReceiptSeeComponent,
     AdminProfileComponent,
     AdProfileEditComponent,
+    AdAdminAccComponent,
+    AdProfileAddComponent,
+    AdReceiptEditComponent,
    
     
   ],

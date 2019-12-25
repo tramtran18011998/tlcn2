@@ -1,6 +1,9 @@
+import { InvoiceProduct } from './invoiceproduct';
+import { Product } from './product';
+
 export  class InvoiceProduct_Product {
-    product_id: number;
-    invoiceproduct_id: number;
+    product: Product;
+    invoiceProduct: InvoiceProduct;
     quantity: number;
     price: number;
     totalprice: number;

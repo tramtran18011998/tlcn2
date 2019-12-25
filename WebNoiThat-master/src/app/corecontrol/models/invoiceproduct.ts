@@ -1,9 +1,12 @@
+import { Customer } from './customer';
+import { Employee } from './employee';
+
 export  class InvoiceProduct {
     id: number;
     total: number;
-    employee_id: number;
+    employee: Employee;
     
-    customer_id: number;
+    customer: Customer;
 
     createdDate: Date;
     updatedDate: Date;

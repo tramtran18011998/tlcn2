@@ -68,7 +68,11 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <a routerLink="/admin/adminprofile/edit/{{employeeUser.id}}" class="btn btn-primary btn-rounded">Sửa thông tin </a>
+            <a routerLink="/admin/adminprofile/edit/{{employeeUser.id}}" style="color: white;" class="btn btn-primary btn-rounded">Sửa thông tin </a>
+            <div *ngIf="adminstate">
+                <a routerLink="/admin/adminprofilea" style="margin-left: 20px;color: white;" class="btn btn-success btn-rounded">Thêm Admin </a>
+            </div>
+            
             
         </div>
     </div>
