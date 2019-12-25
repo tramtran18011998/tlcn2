@@ -8,13 +8,13 @@
         </div>
         <div class="btn-group">
             <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                
                     <img src="../../../assets/image/menu.png" width="24px" height="24px">
-                      Tài khoản
+                      {{user.name}}
                     </button>
             <div class="dropdown-menu dropdown-menu-right">
-                <button class="dropdown-item" type="button">Action</button>
-                <button class="dropdown-item" type="button">Đổi mật khẩu</button>
-                <button class="dropdown-item" type="button">Thoát</button>
+                <button routerLink="/admin/adminprofile/{{user.id}}" class="dropdown-item" type="button">Action</button>
+                <button (click)="logout()" class="dropdown-item" type="button">Thoát</button>
             </div>
         </div>
 

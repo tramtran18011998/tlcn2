@@ -52,6 +52,8 @@ import { AdCategoryAddComponent } from './admin/admin-category/ad-category-add/a
 import { AdCategoryEditComponent } from './admin/admin-category/ad-category-edit/ad-category-edit.component';
 import { AdminReceiptComponent } from './admin/admin-receipt/admin-receipt.component';
 import { AdReceiptSeeComponent } from './admin/admin-receipt/ad-receipt-see/ad-receipt-see.component';
+import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
+import { AdProfileEditComponent } from './admin/admin-profile/ad-profile-edit/ad-profile-edit.component';
 
 
 
@@ -93,6 +95,8 @@ import { AdReceiptSeeComponent } from './admin/admin-receipt/ad-receipt-see/ad-r
     AdCategoryEditComponent,
     AdminReceiptComponent,
     AdReceiptSeeComponent,
+    AdminProfileComponent,
+    AdProfileEditComponent,
    
     
   ],

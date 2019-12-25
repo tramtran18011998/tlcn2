@@ -31,6 +31,8 @@ import { AdCategoryEditComponent } from './admin/admin-category/ad-category-edit
 import { AdCategoryAddComponent } from './admin/admin-category/ad-category-add/ad-category-add.component';
 import { AdminReceiptComponent } from './admin/admin-receipt/admin-receipt.component';
 import { AdReceiptSeeComponent } from './admin/admin-receipt/ad-receipt-see/ad-receipt-see.component';
+import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
+import { AdProfileEditComponent } from './admin/admin-profile/ad-profile-edit/ad-profile-edit.component';
 
 
 
@@ -75,6 +77,9 @@ const routes: Routes = [
 
       { path: 'adreceipt', component: AdminReceiptComponent },
       { path: 'adsupplier/detail/:id', component: AdReceiptSeeComponent },
+      
+      { path: 'adminprofile/:id', component: AdminProfileComponent },
+      { path: 'adminprofile/edit/:id', component: AdProfileEditComponent },
 
     ]
   },

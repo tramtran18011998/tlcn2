@@ -1,0 +1,103 @@
+<app-adsidebar></app-adsidebar>
+<app-adnavbar></app-adnavbar>
+<div class="card" style="margin: 16px 0;">
+    <div class="card-body">
+        <h3 class="card-title">Cập nhật thông tin cá nhân</h3>
+        
+        
+        <form class="forms-sample"  (ngSubmit)="onSubmit()">
+            <div class="row">
+
+                <div class="col-md-6 col-sm-12 form-group" style="text-align: center; padding-right: 16px;margin: 20px auto;">
+                    <img src="http://localhost:8080/employeeimg/{{employeeUser.imageUrl}}" style="border-radius: 50%;" width="250px"
+                        height="250px" />
+                    
+                </div>
+                <div class="col-md-6 col-sm-12 form-group" style="text-align: left; padding-right: 16px;margin: auto;">
+                   
+                        <div class="file btn btn-lg btn-primary" style="position: relative;overflow: hidden;">Upload
+							<input style="position: absolute; font-size: 50px;opacity: 0;right: 0; top: 0;" type="file" name="file" (change)="selectImage($event)"/>
+                        </div>
+                       
+                    
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 col-sm-12 form-group">
+                    <label for="ten-phu-kien">Tên Nhân Viên (bắt buộc)</label>
+                    <input type="text" class="form-control" required [(ngModel)]="employeeUser.name" name="name" >
+                    <small class="text-danger" id="validate-ten-nv"></small>
+
+
+                </div>
+                <div class="col-md-6 col-sm-12 form-group">
+                    <label for="ten-phu-kien">Email (bắt buộc)</label>
+                    <input type="text" class="form-control" [(ngModel)]="employeeUser.email" name="email" >
+                    <small class="text-danger" id="validate-email-nv"></small>
+
+
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 col-sm-12 form-group">
+                    <label for="ten-phu-kien">Số điện thoại</label>
+                    <input type="text" class="form-control" [(ngModel)]="employeeUser.phoneNumber" name="phoneNumber">
+                    <small class="text-danger" ></small>
+
+                </div>
+                <div class="col-md-6 col-sm-12 form-group">
+                    <label for="ten-phu-kien">Địa chỉ</label>
+                    <input type="text" class="form-control" [(ngModel)]="employeeUser.address" name="address" >
+                </div>
+                
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 col-sm-12 form-group">
+                    <label for="ten-phu-kien">Mật khẩu</label>
+                    <input type="text" class="form-control" [(ngModel)]="employeeUser.password" name="password" >
+                </div>
+                <div class="col-md-6 col-sm-12 form-group">
+                    <label for="ten-phu-kien">Trạng thái</label>
+                    <div *ngIf="instatus==1;else show"> <input readonly type="text" class="form-control"  value="Hoạt động"></div>                       
+                        <ng-template #show><td><input readonly type="text" class="form-control"  value="Đã khóa"></td></ng-template>                  
+                    <small class="text-danger"></small>
+                </div>
+                
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-6 col-sm-12 form-group">
+                    <label for="ten-phu-kien">Ngày tạo</label>
+                    <input readonly type="text" class="form-control" [(ngModel)]="employeeUser.createdDate" name="createdDate"  >
+                </div>
+                <div class="col-md-6 col-sm-12 form-group">
+                    <label for="ten-phu-kien">Ngày cập nhật</label>
+                    <input readonly type="text" class="form-control" [(ngModel)]="employeeUser.lastModifiedDate" name="lastModifiedDate">
+                </div>
+                
+            </div>
+            <div *ngIf= "adminstate">
+                <div class="form-row">
+                    <div class="col-md-6 col-sm-12 form-group">
+                        <label for="ten-phu-kien">Lương</label>
+                        <input type="text" class="form-control" [(ngModel)]="employee.salary" name="salary" >
+                    </div>
+                    <div class="col-md-6 col-sm-12 form-group">
+                        <label for="ten-phu-kien">Tiền thưởng</label>
+                        <input type="text" class="form-control"  [(ngModel)]="employee.bonus" name="bonus" >
+                    </div>
+                </div>
+    
+                <div class="form-row">
+                    <div class="col-md-6 col-sm-12 form-group">
+                        <label for="ten-phu-kien">Chức vụ</label>
+                        <input type="text" class="form-control" [(ngModel)]="employee.position" name="position" >
+                    </div>
+                    
+                </div>
+            </div>
+                                  
+            <input type="submit" class="btn btn-success btn-rounded" style="margin-left: 5px;" value="Lưu" />
+        </form>
+    </div>
+</div>
