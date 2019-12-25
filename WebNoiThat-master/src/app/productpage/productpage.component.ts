@@ -107,7 +107,7 @@ export class ProductpageComponent implements OnInit {
               //var x = this.quantitycart.toString();
               localStorage.setItem('quantitycart', this.quantitycart.toString());
               
-              location.reload();
+              //location.reload();
             })
           })
           

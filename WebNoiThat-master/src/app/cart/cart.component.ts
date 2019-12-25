@@ -46,6 +46,8 @@ export class CartComponent implements OnInit {
         this.cartService.getListCartByCustomer(this.currentCustomer.id).subscribe(data2 => {
           this.carts = data2;
           console.log(this.carts);
+          this.subtotal =0;
+          this.total =0;
           for(let i=0; i< this.carts.length; i++){
             console.log(this.carts[i].totalprice);
             this.subtotal+= this.carts[i].totalprice;
@@ -75,13 +77,16 @@ export class CartComponent implements OnInit {
   delete(id: number){
     this.cartService.delete(id).subscribe(data => {
       console.log(data);
-      this.getList();
+      //this.getList();
       this.cartService.countQuantity(this.currentCustomer.id).subscribe(x => {
         this.quantitycart = x;
         console.log(this.quantitycart);
         //var x = this.quantitycart.toString();
         localStorage.setItem('quantitycart', this.quantitycart.toString());
+        
       })
+      this.getList();
+      
     })
   }
 
@@ -115,8 +120,6 @@ export class CartComponent implements OnInit {
   }
 
   submitInvoice(){
-
-    
 
     this.cartService.createInvoice(this.idCus, this.idEmp).subscribe(data => {
       console.log(data);
