@@ -106,18 +106,7 @@
                                                 </div>
                                             </div>
 
-                                            <!-- <div class="form-group">
-                                                <input type="password" class="form-control" placeholder="Mật khẩu" id="password"
-                                                    name="password" [ngClass]="{'is-invalid':formSignup.get('password').touched && formSignup.get('password').invalid}" formControlName="password" required 
-                                                    />
-                                                <div *ngIf="formSignup.get('password').touched && formSignup.get('password').invalid" class="invalid-feedback">
-                                                    <div *ngIf="formSignup.controls.password.errors.required">Mật khẩu không được để trống</div>
-                                                    <div *ngIf="formSignup.controls.password.errors.minlength">Mật khẩu tối thiếu 6 kí
-                                                        tự</div>
-                                                    <div *ngIf="formSignup.controls.password.errors.pattern">Các kí tự: [a-z], [A-Z],
-                                                            [0-9], - . _ được cho phép</div>
-                                                </div>
-                                            </div> -->
+                                            
                                             <div class="form-group">
                                                 <input type="password" class="form-control" name="password"
                                                     id="password" formControlName="password"  placeholder="Mật khẩu"
@@ -135,16 +124,7 @@
                                                 </div>
                                             </div>
 
-                                            <!-- <div class="form-group">
-                                                <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" id="password2"
-                                                    name="password2" [ngClass]="{'is-invalid':formSignup.get('password2').touched && formSignup.get('password2').invalid}" formControlName="password2" required  />
-                                                <div *ngIf="formSignup.get('password2').touched && formSignup.get('password2').invalid" class="invalid-feedback">
-                                                    <div *ngIf="formSignup.controls.password2.errors.required">Password is required</div>
-                                                    <div *ngIf="formSignup.controls.password2.errors.NoPassswordMatch">Mật khẩu không
-                                                        chính
-                                                        xác</div>
-                                                </div>
-                                            </div> -->
+                                            
 
                                             <div class="form-group">
                 
@@ -170,11 +150,11 @@
                                             </div>
 
                                             <div class="social-login clearfix">
-                                                <a class="login-facebook">
+                                                <a class="login-facebook" href="http://localhost:8080/oauth2/authorize/facebook?redirect_uri=http://localhost:4000/oauth2/redirect">
                                                     <i class="fa fa-facebook" aria-hidden="true"></i>
                                                     Facebook
                                                 </a>
-                                                <a class="login-google">
+                                                <a class="login-google" href="http://localhost:8080/oauth2/authorize/google?redirect_uri=http://localhost:4000/oauth2/redirect">
                                                     <i class="fa fa-google-plus" aria-hidden="true"></i>
                                                     Google
                                                 </a>

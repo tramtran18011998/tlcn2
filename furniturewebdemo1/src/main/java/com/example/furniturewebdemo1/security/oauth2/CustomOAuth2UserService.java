@@ -101,20 +101,22 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         user.setLastModifiedDate(new Date());
         user.setRoles(Collections.singleton(userRole));
 
-        Customer customer = new Customer();
-        CustomerType customerType= null;
-        try {
-            customerType = customerTypeService.findCustomerTypeById(1).orElseThrow(()-> new ResourceNotFoundException("Employee not found"));
-        } catch (ResourceNotFoundException e) {
-            e.printStackTrace();
-        }
-        customer.setCustomerType(customerType);
+        User result = userRepository.save(user);
 
-        customer.setUser(user);
-        customer.setCustomerType(customerType);
-        customerService.save(customer);
+//        Customer customer = new Customer();
+//        CustomerType customerType= null;
+//        try {
+//            customerType = customerTypeService.findCustomerTypeById(1).orElseThrow(()-> new ResourceNotFoundException("Employee not found"));
+//        } catch (ResourceNotFoundException e) {
+//            e.printStackTrace();
+//        }
+//        customer.setCustomerType(customerType);
+//
+//        customer.setUser(user);
+//        customer.setCustomerType(customerType);
+//        customerService.save(customer);
         //user.setCreatedDate();
-        return userRepository.save(user);
+        return result;
     }
 
     private User updateExistingUser(User existingUser, OAuth2UserInfo oAuth2UserInfo) {

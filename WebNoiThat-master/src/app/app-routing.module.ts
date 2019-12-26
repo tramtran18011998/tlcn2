@@ -36,6 +36,7 @@ import { AdProfileEditComponent } from './admin/admin-profile/ad-profile-edit/ad
 import { AdAdminAccComponent } from './admin/admin-profile/ad-admin-acc/ad-admin-acc.component';
 import { AdProfileAddComponent } from './admin/admin-profile/ad-profile-add/ad-profile-add.component';
 import { AdReceiptEditComponent } from './admin/admin-receipt/ad-receipt-edit/ad-receipt-edit.component';
+import { OAuth2RedirectHandlerComponent } from './corecontrol/auth/oauth2-redirect-handler/oauth2-redirect-handler.component';
 
 
 
@@ -46,7 +47,8 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'login', component: LoginComponent},
   {path: 'cart', component: CartComponent},
-  {path: 'productdetail/:id', component: ProductpageComponent},
+  {path: 'oauth2/redirect', component: OAuth2RedirectHandlerComponent},
+  {path: 'productdetail/:id', component: OAuth2RedirectHandlerComponent},
   {path: 'profile/:id', component: ProfileComponent},
 
   //{path: 'admin', component: AdminComponent},
