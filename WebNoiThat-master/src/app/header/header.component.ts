@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../corecontrol/models/user';
+import { TokenStorageService } from '../corecontrol/auth/token-storage.service';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ export class HeaderComponent implements OnInit {
   //user: User = JSON.parse(localStorage.getItem('currentuser'));
   user: User = new User();
   //currentName: string= this.user.name;
-  constructor() { }
+  constructor(private token: TokenStorageService) { }
 
   ngOnInit() {
     //localStorage.setItem('inLogin', 'false');
@@ -37,6 +38,8 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('quantitycart');
     localStorage.setItem('inLogin','false');
     location.replace('');
+    this.token.signOut();
+
   }
 
   ngDoCheck(){

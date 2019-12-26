@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../corecontrol/models/user';
 import { LoginRequest } from '../corecontrol/payloads/login-request';
-import { TokenStorageService } from '../corecontrol/services/token-storage.service';
 import { UserService } from '../corecontrol/services/user.service';
 import { AuthResponse } from '../corecontrol/payloads/auth-response';
 import { stringify } from 'querystring';
@@ -10,6 +9,7 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 import { Customvalidators } from '../corecontrol/validators/customvalidators';
 import { SignupRequest } from '../corecontrol/payloads/signup-request';
 import Swal from 'sweetalert2'
+import { TokenStorageService } from '../corecontrol/auth/token-storage.service';
 
 
 @Component({
@@ -46,9 +46,15 @@ export class LoginComponent implements OnInit {
     console.log(this.form.email);
 
     this.userService.login(this.loginRequest).subscribe(
-      (data) => {
+      data => {
+        this.tokenStorage.saveToken(data);
+        this.tokenStorage.saveUsername(this.loginRequest.email);
+
+        console.log(this.tokenStorage.getToken);
+        console.log(this.tokenStorage.getUsername);
+
         console.log(data);
-        localStorage.setItem('token', JSON.stringify(data));
+        localStorage.setItem('token', JSON.stringify(this.tokenStorage.getToken));
 
         this.inLogin = true;
         localStorage.setItem('inLogin', JSON.stringify(this.inLogin));
@@ -63,6 +69,8 @@ export class LoginComponent implements OnInit {
           //check user role: ROLE_USER and navigate to Home page
           this.userService.check(this.loginRequest.email).subscribe(
             (data) => {
+              this.tokenStorage.saveAuthorities(data);
+              console.log(this.tokenStorage.getAuthorities);
               if (data == 'ROLE_USER') {
                 console.log("ktra dc customer");
                 this.gotoList();
@@ -97,7 +105,7 @@ export class LoginComponent implements OnInit {
   }
   gotoList() {
     //location.reload();
-    location.replace('');
+    //location.replace('');
     this.router.navigate(['']);
   }
 

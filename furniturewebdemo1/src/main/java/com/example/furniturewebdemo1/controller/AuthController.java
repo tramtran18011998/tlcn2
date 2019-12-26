@@ -61,6 +61,34 @@ public class AuthController {
     @Autowired
     private TokenProvider tokenProvider;
 
+//    @PostMapping("/login")
+//    public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) throws ResourceNotFoundException {
+//
+//        Authentication authentication = authenticationManager.authenticate(
+//                new UsernamePasswordAuthenticationToken(
+//                        loginRequest.getEmail(),
+//                        loginRequest.getPassword()
+//                )
+//        );
+//
+//        //Store Authentication object in SecurityContext
+//        SecurityContextHolder.getContext().setAuthentication(authentication);
+//
+////        tokenProvider.createToken(authentication);
+//        String token = tokenProvider.createToken(authentication);
+//        logger.info("Token: "+token);
+//
+//        String role = userRepository.findByRoleUser(loginRequest.getEmail());
+//        logger.info("role: "+role);
+//        User user = findUser(loginRequest.getEmail());
+//        //logger.info("user: "+user);
+//        AuthResponse authResponse = new AuthResponse(token,"Bearer",user);
+// //       return ResponseEntity.ok(new AuthResponse(token));
+//        return ResponseEntity.ok(authResponse);
+// //       return ResponseEntity.ok(userRepository.findByEmail(loginRequest.getEmail()));
+//        //return token;
+//    }
+
     @PostMapping("/login")
     public String authenticateUser(@Valid @RequestBody LoginRequest loginRequest) throws ResourceNotFoundException {
 
@@ -71,6 +99,7 @@ public class AuthController {
                 )
         );
 
+        //Store Authentication object in SecurityContext
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
 //        tokenProvider.createToken(authentication);
