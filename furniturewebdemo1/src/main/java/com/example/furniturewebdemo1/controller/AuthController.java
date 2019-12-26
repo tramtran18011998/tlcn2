@@ -139,7 +139,20 @@ public class AuthController {
         //Optional<CustomerType> customerType = customerTypeService.findCustomerTypeById(1);
         CustomerType customerType= customerTypeService.findCustomerTypeById(1).orElseThrow(()-> new ResourceNotFoundException("Employee not found"));
         customer.setUser(user);
+
         customer.setCustomerType(customerType);
+        if(customerType.getName()=="Normal"){
+            customer.setDiscount(0);
+        }
+        if(customerType.getName()=="Silver"){
+            customer.setDiscount(5);
+        }
+        if(customerType.getName()=="Gold"){
+            customer.setDiscount(10);
+        }
+        if(customerType.getName()=="Platinum"){
+            customer.setDiscount(15);
+        }
         customerService.save(customer);
 
 

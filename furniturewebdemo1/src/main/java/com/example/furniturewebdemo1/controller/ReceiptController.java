@@ -46,15 +46,10 @@ public class ReceiptController {
         if(receipt.getDiscount()!=0){
             currentReceipt.setDiscount(receipt.getDiscount());
         }
-        if(receipt.isStateDelivering()!= false){
-            currentReceipt.setStateDelivering(receipt.isStateDelivering());
-        }
-        if(receipt.isStateDelivered()!= false){
-            currentReceipt.setStateDelivered(receipt.isStateDelivered());
-        }
-        if(receipt.isStatePaid()!=false){
-            currentReceipt.setStatePaid(receipt.isStatePaid());
-        }
+        currentReceipt.setStateDelivering(receipt.isStateDelivering());
+        currentReceipt.setStateDelivered(receipt.isStateDelivered());
+        currentReceipt.setStatePaid(receipt.isStatePaid());
+
         if(receipt.getTotal()!= 0){
             currentReceipt.setTotal(receipt.getTotal());
         }

@@ -32,133 +32,34 @@
     <div class="new-product">
         <h2>SẢN PHẨM MỚI</h2>
         <div class="row">
-            <div class="col-md-3 col-sm-6 col-12">
-                <a href="#">
+            <div class="col-md-3 col-sm-6 col-12" *ngFor="let newProduct of newProducts; let i = index">
+                <a routerLink="/productdetail/{{newProduct.id}}">
                     <div class="product-img">
-                        <img src="assets/image/product.jpg">
+                        <img src="http://localhost:8080/api/productimage/{{imgname[i]}}">
                     </div>
                     <div class="product-info">
-                        <p>Bàn làm việc</p>
+                        <p>{{newProduct.name}}</p>
                     </div>
                 </a>
             </div>
-            <div class="col-md-3 col-sm-6 col-12">
-                <a href="#">
-                    <div class="product-img">
-                        <img src="assets/image/product.jpg">
-                    </div>
-                    <div class="product-info">
-                        <p>Bàn làm việc</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6 col-12">
-                <a href="#">
-                    <div class="product-img">
-                        <img src="assets/image/product.jpg">
-                    </div>
-                    <div class="product-info">
-                        <p>Bàn làm việc</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6 col-12">
-                <a href="#">
-                    <div class="product-img">
-                        <img src="assets/image/product.jpg">
-                    </div>
-                    <div class="product-info">
-                        <p>Bàn làm việc</p>
-                    </div>
-                </a>
-            </div>
+            
         </div>
-        <div class="row">
-            <div class="col-md-3 col-sm-6 col-12">
-                <a href="#">
-                    <div class="product-img">
-                        <img src="assets/image/product.jpg">
-                    </div>
-                    <div class="product-info">
-                        <p>Bàn làm việc</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6 col-12">
-                <a href="#">
-                    <div class="product-img">
-                        <img src="assets/image/product2.jpg">
-                    </div>
-                    <div class="product-info">
-                        <p>Bàn làm việc</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6 col-12">
-                <a href="#">
-                    <div class="product-img">
-                        <img src="assets/image/product2.jpg">
-                    </div>
-                    <div class="product-info">
-                        <p>Bàn làm việc</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6 col-12">
-                <a href="#">
-                    <div class="product-img">
-                        <img src="assets/image/product2.jpg">
-                    </div>
-                    <div class="product-info">
-                        <p>Bàn làm việc</p>
-                    </div>
-                </a>
-            </div>
-        </div>
+        
     </div>
     <div class="hot-product">
         <h2>SẢN PHẨM BÁN CHẠY</h2>
         <div class="row">
-            <div class="col-md-3 col-sm-6 col-12">
-                <a href="#">
+            <div class="col-md-3 col-sm-6 col-12" *ngFor="let bestProduct of bestProducts; let i = index">
+                <a routerLink="/productdetail/{{bestProduct.id}}">
                     <div class="product-img">
-                        <img src="assets/image/product.jpg">
+                        <img src="http://localhost:8080/api/productimage/{{imgname2[i]}}">
                     </div>
                     <div class="product-info">
-                        <p>Bàn làm việc</p>
+                        <p>{{bestProduct.name}}</p>
                     </div>
                 </a>
             </div>
-            <div class="col-md-3 col-sm-6 col-12">
-                <a href="#">
-                    <div class="product-img">
-                        <img src="assets/image/product2.jpg">
-                    </div>
-                    <div class="product-info">
-                        <p>Bàn làm việc</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6 col-12">
-                <a href="#">
-                    <div class="product-img">
-                        <img src="assets/image/product2.jpg">
-                    </div>
-                    <div class="product-info">
-                        <p>Bàn làm việc</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 col-sm-6 col-12">
-                <a href="#">
-                    <div class="product-img">
-                        <img src="assets/image/product2.jpg">
-                    </div>
-                    <div class="product-info">
-                        <p>Bàn làm việc</p>
-                    </div>
-                </a>
-            </div>
+            
         </div>
     </div>
 

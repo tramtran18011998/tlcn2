@@ -65,6 +65,26 @@ public class ProductController {
         return ResponseEntity.ok().body(product);
     }
 
+    @GetMapping("/productcate/{id}")
+    public List<Product> findByCategory(@PathVariable(value = "id") long id) throws ResourceNotFoundException {
+
+        return productRepository.findByCategoryId(id);
+    }
+
+    @GetMapping("/products/search/{name}")
+    public List<Product> findByName(@PathVariable(value = "name") String name) throws ResourceNotFoundException {
+        return productService.findByName(name);
+    }
+    @GetMapping("/products/bestseller")
+    public List<Product> bestseller() {
+        return productRepository.bestseller();
+    }
+
+    @GetMapping("/products/newproduct")
+    public List<Product> newproduct() {
+        return productRepository.newproduct();
+    }
+
     @PostMapping("/product/{idtype}/{idsup}")
     public  ResponseEntity<Product> createProduct(@PathVariable(value = "idtype") long idtype,@PathVariable(value = "idsup") long idsup,@Valid @RequestBody Product product) throws ResourceNotFoundException {
 

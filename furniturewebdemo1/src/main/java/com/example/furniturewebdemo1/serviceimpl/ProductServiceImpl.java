@@ -106,4 +106,14 @@ public class ProductServiceImpl implements ProductService {
         return page;
     }
 
+    @Override
+    public List<Product> findByName(String name) {
+        return productRepository.findByNameLike("%"+name+"%");
+    }
+
+    @Override
+    public List<Product> findByCategory(long id) {
+        return productRepository.findByCategory(id);
+    }
+
 }

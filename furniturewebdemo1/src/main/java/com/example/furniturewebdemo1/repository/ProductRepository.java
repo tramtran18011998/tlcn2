@@ -31,4 +31,17 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
     @Query(value = "SELECT * FROM product\n" +
             "ORDER BY discount_price asc",nativeQuery = true)
     List<Product> sortpriceasc();
+
+    List<Product> findByNameLike(String s);
+
+    @Query(value = "select p.*,sum(ip.quantity) as tslb from product p inner join invoiceproduct_product ip on p.product_id = ip.product_id group by 1 order by tslb desc limit 0,4",nativeQuery = true)
+    List<Product> bestseller();
+
+    @Query(value = "SELECT * FROM product p ORDER BY p.product_id desc limit 8",nativeQuery = true)
+    List<Product> newproduct();
+
+    List<Product> findByCategory(long id);
+
+    @Query(value = "select *from product p where p.category_id=:category_id",nativeQuery = true)
+    List<Product> findByCategoryId(@Param("category_id") long category_id);
 }

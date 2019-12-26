@@ -22,5 +22,7 @@ public interface ProductService {
     Page<Product> findAllByPriceDesc(Pageable pageable, int pageNum);
     Page<Product> findAll(Pageable pageable, int pageNum);
 
+    List<Product> findByName(String name);
+    List<Product> findByCategory(long id);
 
 }

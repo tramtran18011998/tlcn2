@@ -10,6 +10,7 @@ import { ProductImage } from '../corecontrol/models/productimage';
 
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-product',
@@ -29,6 +30,8 @@ export class ProductComponent implements OnInit {
     {id: '2',name: 'Giá thấp'},
     {id: '3',name: 'Giá cao'}
   ];
+
+  searchF: FormGroup;
 
   categoryTypes: CategoryType[]= [];
   categories: Observable<Category[]>;
@@ -51,7 +54,7 @@ export class ProductComponent implements OnInit {
   productImg: ProductImage= new ProductImage();
 
 
-  constructor(private productService: ProductService,private categoryTypeService: CategoryTypeService, private categoryService:CategoryService,private router: Router) { }
+  constructor(private productService: ProductService,private categoryTypeService: CategoryTypeService, private categoryService:CategoryService,private router: Router,private formBuilder: FormBuilder) { }
 
   ngOnInit() {
 
@@ -63,6 +66,9 @@ export class ProductComponent implements OnInit {
     this.getList();
     this.getProductList();
     //this.geta();
+    this.searchF = this.formBuilder.group({
+        name: new FormControl('')
+      });
   }
   getList(){
 
@@ -73,31 +79,7 @@ export class ProductComponent implements OnInit {
   }
 
   geta(){
-    // this.productService.getListPage(0).subscribe(data => {
-    //   this.ps = data.content;
-    //   for(let i=0; i<this.ps.length; i++){
-    //     this.productService.getProductImgByProductId(this.ps[i].id).subscribe(data => {
-    //       this.pis = data;
-    //       console.log(data);
-    //       //console.log(this.pis.length-1);
-    //       this.arr.push(this.pis[0]);
-    //       console.log(this.arr);
-    //     })
-    //   }
-    // })
-
-    // this.productService.getList().subscribe(data => {
-    //   this.products = data.content;
-    //   for(let i=0; i<this.ps.length; i++){
-    //     this.productService.getProductImgByProductId(this.ps[i].id).subscribe(data => {
-    //       this.productImages = data;
-    //       console.log(data);
-    //       //console.log(this.pis.length-1);
-    //       this.arr.push(this.pis[0]);
-    //       console.log(this.arr);
-    //     })
-    //   }
-    // })
+    
     this.productService.getList().subscribe(data => {
       this.products = data;
       //console.log(data.content);
@@ -148,20 +130,9 @@ export class ProductComponent implements OnInit {
             //console.log('bb:', b);
             this.productImg = data1;
             console.log(this.productImg.name);          
-            this.imgname.push(this.productImg.name)  ;         
-            //console.log(this.imgname[i]);
+            this.imgname.push(this.productImg.name)  ;        
           })                    
         }
-        // for(let i =0 ; i<b.length; i++){
-        //   this.productService.getProductImgByProductIdLimit(b[i]).subscribe(data => {
-        //     console.log('tt1:', this.products[i].id);
-        //     console.log('bb:', b[i]);
-        //     this.productImg = data;
-        //     console.log(this.productImg.name);          
-        //     this.imgname.push(this.productImg.name)           
-        //     //console.log(this.imgname[i]);
-        //   })  
-        // }
         
         console.log(this.imgname);
       })
@@ -269,7 +240,34 @@ export class ProductComponent implements OnInit {
   }
 
   getCateByType(id: number){
-    this.categories=this.categoryService.getByType(id);   
+    this.categoryService.getByType(id).subscribe(data => {
+      console.log(data);
+      this.categories = data;
+    });   
+  }
+
+  getListByCate(id: number){
+    this.productService.getListByCate(id).subscribe(data =>{
+      this.products = data;
+        
+        this.imgname = [];
+  
+        var b =[];
+        var a: number;
+        for(let i=0; i<this.products.length; i++){
+          console.log('ttt:', this.products[i].id);
+          b.push(this.products[i].id);
+          a= this.products[i].id;
+          //console.log('a=',b);
+          this.productService.getProductImgByProductIdLimit(a).subscribe(data1 => {
+            console.log('tt1:', this.products[i].id);
+            //console.log('bb:', b);
+            this.productImg = data1;
+            console.log(this.productImg.name);          
+            this.imgname.push(this.productImg.name)  ;        
+          })                    
+        }
+    })
   }
 
   getImg(id: number){
@@ -279,7 +277,7 @@ export class ProductComponent implements OnInit {
     })
     
   }
-  loadProductByType(id: number){
+  loadCategoryByType(id: number){
     this.productService.getByType(id).subscribe(data =>{
       console.log(data);
     })
@@ -295,6 +293,19 @@ export class ProductComponent implements OnInit {
   detail(id: number){    
     this.router.navigate(['/productdetail',id]);
     console.log(id);
+  }
+
+  onSubmitSearch(search: FormGroup){
+    var name = this.searchF.controls['name'].value;
+    if(name !=""){
+      this.productService.getListSearch(name).subscribe(data => {
+        this.products = data;
+      })
+    }
+    else{
+      this.getProductList();
+    }
+    
   }
 
 }

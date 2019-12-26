@@ -20,6 +20,12 @@ export class ProductService {
   private urlPageAsc = 'http://localhost:8080/api/products/pageasc';
   private urlPageDesc = 'http://localhost:8080/api/products/pagedesc';
   private urlPage = 'http://localhost:8080/api/products/page';
+  private urlSearch = 'http://localhost:8080/api/products/search';
+  private urlBestSeller = 'http://localhost:8080/api/products/bestseller';
+  private urlNewPro = 'http://localhost:8080/api/products/newproduct';
+  private urlCate = 'http://localhost:8080/api/productcate';
+
+
 
 
 
@@ -52,6 +58,9 @@ export class ProductService {
     return this.http.get(`${this.baseUrl}`, this.options);
   }
   
+  getListByCate(id: number): Observable<any>{
+    return this.http.get(`${this.urlCate}/${id}`, this.options);
+  }
 
   getListPageAsc(pagenum: number): Observable<any>{
     return this.http.get(`${this.urlPageAsc}/${pagenum}`, this.options);
@@ -65,6 +74,17 @@ export class ProductService {
     return this.http.get(`${this.urlPage}/${pagenum}`, this.options);
   }
 
+  getListSearch(name: string): Observable<any>{
+    return this.http.get(`${this.urlSearch}/${name}`, this.options);
+  }
+
+  getListBestSeller(): Observable<any>{
+    return this.http.get(`${this.urlBestSeller}`, this.options);
+  }
+
+  getListNewPro(): Observable<any>{
+    return this.http.get(`${this.urlNewPro}`, this.options);
+  }
 
 
   getById(id: number): Observable<any> {
