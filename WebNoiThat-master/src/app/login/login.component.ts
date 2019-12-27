@@ -118,7 +118,7 @@ export class LoginComponent implements OnInit {
       this.formSignup.controls['name'].value,
       this.formSignup.controls['email'].value,
       this.formSignup.controls['password'].value);
-    console.log(this.form.email);
+    console.log(this.signupRequest);
 
     this.userService.signup(this.signupRequest).subscribe(
       (data) => {

@@ -1,4 +1,4 @@
-<app-header></app-header>
+<!-- <app-header></app-header>
 <div class="container">
     <div class="row content-wrapper">
         <div class="col-lg-12">
@@ -26,7 +26,7 @@
                             <div class="card-body pb-4">
                                 <div class="tab-content" id="pills-tabContent">
 
-                                    <!-- login -->
+                                    
                                     <div class="tab-pane fade show active" id="pills-login" role="tabpanel"
                                         aria-labelledby="pills-login-tab">
                                         <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
@@ -51,17 +51,12 @@
                                                 </div>
                                             </div>
 
-                                            <!-- <div class="custom-control custom-checkbox">
-                                                <input class="custom-control-input" id="customCheck1" checked=""
-                                                    type="checkbox">
-                                                <label class="custom-control-label" for="customCheck1">Check me
-                                                    out</label>
-                                            </div> -->
+                                            
 
                                             <div class="text-center pt-4">
                                                 <button type="submit" class="btn btn-primary">Login</button>
                                             </div>
-                                            <!-- <div class="social-login clearfix">
+                                            <div class="social-login clearfix">
                                                 <a class="login-facebook">
                                                     <i class="fa fa-facebook" aria-hidden="true"></i>
                                                     Facebook
@@ -70,7 +65,7 @@
                                                     <i class="fa fa-google-plus" aria-hidden="true"></i>
                                                     Google
                                                 </a>
-                                            </div> -->
+                                            
                                             <div class="text-center pt-2">
                                                 <a class="btn btn-link text-primary" href="#">Forgot Your Password?</a>
                                             </div>
@@ -78,7 +73,7 @@
                                     </div>
 
 
-                                    <!-- register -->
+                                   
                                     <div class="tab-pane fade" id="pills-register" role="tabpanel"
                                         aria-labelledby="pills-register-tab">
                                         <form [formGroup]="formSignup" (ngSubmit)="onSubmitSignup(formSignup)">
@@ -149,12 +144,203 @@
                                                 <button type="submit" class="btn btn-primary">Register</button>
                                             </div>
 
-                                            <!-- <div class="social-login clearfix">
+                                             <div class="social-login clearfix">
                                                 <a class="login-facebook" href="http://localhost:8080/oauth2/authorize/facebook?redirect_uri=http://localhost:4200/oauth2/redirect">
                                                     <i class="fa fa-facebook" aria-hidden="true"></i>
                                                     Facebook
                                                 </a>
                                                 <a class="login-google" href="http://localhost:8080/oauth2/authorize/google?redirect_uri=http://localhost:4200/oauth2/redirect">
+                                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                                    Google
+                                                </a>
+                                            </div> 
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <img src="assets/image/login-img.jpg" width="100%">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> -->
+<app-header></app-header>
+<div class="container">
+    <div class="row content-wrapper">
+        <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-6 login-form">
+
+                    <div class="container mt-5 pt-5">
+                        <div class="card mx-auto border-0">
+                            <div class="card-header border-bottom-0 bg-transparent">
+                                <ul class="nav nav-tabs justify-content-center pt-4" id="pills-tab" role="tablist">
+                                    <li class="nav-item">
+                                        <a class="nav-link active text-primary" id="pills-login-tab" data-toggle="pill"
+                                            href="#pills-login" role="tab" aria-controls="pills-login"
+                                            aria-selected="true">Login</a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link text-primary" id="pills-register-tab" data-toggle="pill"
+                                            href="#pills-register" role="tab" aria-controls="pills-register"
+                                            aria-selected="false">Register</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="card-body pb-4">
+                                <div class="tab-content" id="pills-tabContent">
+
+                                    <!-- login -->
+                                    <div class="tab-pane fade show active" id="pills-login" role="tabpanel"
+                                        aria-labelledby="pills-login-tab">
+                                        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
+                                            novalidate>
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" name="email"
+                                                    aria-describedby="emailHelp" placeholder="Email"
+                                                    [(ngModel)]="form.email" #email="ngModel" required autofocus>
+                                                <div *ngIf="f.submitted && email.invalid">
+                                                    <div *ngIf="email.errors.required">Email is required</div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <input type="password" class="form-control" placeholder="Mật khẩu"
+                                                    name="password" [(ngModel)]="form.password" #password="ngModel"
+                                                    required minlength="6" />
+                                                <div *ngIf="f.submitted && password.invalid">
+                                                    <div *ngIf="password.errors.required">Password is required</div>
+                                                    <div *ngIf="password.errors.minlength">Password must be at least 6
+                                                        characters</div>
+                                                </div>
+                                            </div>
+
+                                            
+
+                                            <div class="text-center pt-4">
+                                                <button type="submit" class="btn btn-primary">Login</button>
+                                            </div>
+                                            <!-- <div class="social-login clearfix">
+                                                <a class="login-facebook">
+                                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                    Facebook
+                                                </a>
+                                                <a class="login-google">
+                                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
+                                                    Google
+                                                </a>
+                                            </div> -->
+                                            <div class="text-center pt-2">
+                                                <a class="btn btn-link text-primary" href="#">Forgot Your Password?</a>
+                                            </div>
+                                        </form>
+                                    </div>
+
+
+                                    <!-- register -->
+                                    <div class="tab-pane fade" id="pills-register" role="tabpanel"
+                                        aria-labelledby="pills-register-tab">
+                                        <form [formGroup]="formSignup" (ngSubmit)="onSubmitSignup(formSignup)">
+                                        
+                                            
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="name"
+                                                     placeholder="Họ tên" id="name"
+                                                    [ngClass]="{'is-invalid':formSignup.get('name').touched && formSignup.get('name').invalid}" formControlName="name" autofocus>
+                                                <div *ngIf="formSignup.get('name').touched && formSignup.get('name').invalid" class="invalid-feedback">
+                                                    <div *ngIf="formSignup.controls.name.errors.required">Tên không được để trống</div>
+                                                </div>
+                                            </div>
+                                   
+                                            
+
+                                            
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" name="email" id="email"
+                                                    placeholder="Email"
+                                                    [ngClass]="{'is-invalid':formSignup.get('email').touched && formSignup.get('email').invalid}" formControlName="email" required >
+                                                <div *ngIf="formSignup.get('email').touched && formSignup.get('email').invalid" class="invalid-feedback">
+                                                    <div *ngIf="formSignup.controls.email.errors.required">Email không được để trống</div>
+                                                    <div *ngIf="formSignup.controls.email.errors.email">Email không hợp lệ</div>
+                                                </div>
+                                            </div>
+
+                                            <!-- <div class="form-group">
+                                                <input type="password" class="form-control" placeholder="Mật khẩu" id="password"
+                                                    name="password" [ngClass]="{'is-invalid':formSignup.get('password').touched && formSignup.get('password').invalid}" formControlName="password" required 
+                                                    />
+                                                <div *ngIf="formSignup.get('password').touched && formSignup.get('password').invalid" class="invalid-feedback">
+                                                    <div *ngIf="formSignup.controls.password.errors.required">Mật khẩu không được để trống</div>
+                                                    <div *ngIf="formSignup.controls.password.errors.minlength">Mật khẩu tối thiếu 6 kí
+                                                        tự</div>
+                                                    <div *ngIf="formSignup.controls.password.errors.pattern">Các kí tự: [a-z], [A-Z],
+                                                            [0-9], - . _ được cho phép</div>
+                                                </div>
+                                            </div> -->
+                                            <div class="form-group">
+                                                <input type="password" class="form-control" name="password"
+                                                    id="password" formControlName="password"  placeholder="Mật khẩu"
+                                                    [ngClass]="{'is-invalid':formSignup.get('password').touched && formSignup.get('password').invalid }"
+                                                    required />
+                                                <div *ngIf="formSignup.get('password').touched && formSignup.get('password').invalid"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="formSignup.controls.password.errors.required">Mật khẩu không được để
+                                                        trống</div>
+                                                    <div *ngIf="formSignup.controls.password.errors.minlength">Mật khẩu tối thiếu 6 kí
+                                                        tự
+                                                    </div>
+                                                    <div *ngIf="formSignup.controls.password.errors.pattern">Các kí tự: [a-z], [A-Z],
+                                                        [0-9], - . _ được cho phép</div>
+                                                </div>
+                                            </div>
+
+                                            <!-- <div class="form-group">
+                                                <input type="password" class="form-control" placeholder="Nhập lại mật khẩu" id="password2"
+                                                    name="password2" [ngClass]="{'is-invalid':formSignup.get('password2').touched && formSignup.get('password2').invalid}" formControlName="password2" required  />
+                                                <div *ngIf="formSignup.get('password2').touched && formSignup.get('password2').invalid" class="invalid-feedback">
+                                                    <div *ngIf="formSignup.controls.password2.errors.required">Password is required</div>
+                                                    <div *ngIf="formSignup.controls.password2.errors.NoPassswordMatch">Mật khẩu không
+                                                        chính
+                                                        xác</div>
+                                                </div>
+                                            </div> -->
+
+                                            <div class="form-group">
+                
+                                                <input type="password" id="password2" name="password2" class="form-control"
+                                                    formControlName="password2" placeholder="Nhập lại Mật khẩu"
+                                                    [ngClass]="{'is-invalid':formSignup.get('password2').touched && formSignup.get('password2').invalid}"
+                                                    required>
+                                
+                                                <div *ngIf="formSignup.get('password2').touched && formSignup.get('password2').invalid"
+                                                    class="invalid-feedback">
+                                                    <div *ngIf="formSignup.controls.password2.errors.required">Cần nhập lại mật
+                                                        khẩu
+                                                    </div>
+                                                    <div *ngIf="formSignup.controls.password2.errors.NoPassswordMatch">Mật khẩu không
+                                                        chính
+                                                        xác</div>
+                                
+                                                </div>
+                                
+                                            </div>
+                                            <div class="text-center pt-2 pb-1">
+                                                <button type="submit" class="btn btn-primary">Register</button>
+                                            </div>
+
+                                            <!-- <div class="social-login clearfix">
+                                                <a class="login-facebook">
+                                                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                                                    Facebook
+                                                </a>
+                                                <a class="login-google">
                                                     <i class="fa fa-google-plus" aria-hidden="true"></i>
                                                     Google
                                                 </a>

@@ -22,7 +22,7 @@ export class UserService {
   private headers= new HttpHeaders({
     'Content-Type': 'application/json',
     //'x-access-token':localStorage.getItem('token'),
-    'Authorization': 'Bearer ' + localStorage.getItem('token')
+    //'Authorization': 'Bearer ' + localStorage.getItem('token')
   })
 
   // private headers2= new HttpHeaders({
@@ -48,7 +48,7 @@ export class UserService {
     return this.http.get(`${this.baseUrl+"/userfind"}/${email}`, this.options);
   }
   signup(credentials: SignupRequest){
-    return this.http.post(`${this.baseUrl}`+"/signup",{credentials,headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}});
+    return this.http.post(`${this.baseUrl}`+"/signup",credentials);
   }
 
   getUserme(): Observable<any> {

@@ -135,7 +135,7 @@ public class AuthController {
 
 
     @PostMapping("/signup")
-    public ResponseEntity<ApiResponse> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) throws ResourceNotFoundException {
+    public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) throws ResourceNotFoundException {
         if(userRepository.existsByEmail(signUpRequest.getEmail())) {
             throw new BadRequestException("Email address already in use.");
         }
@@ -143,6 +143,8 @@ public class AuthController {
         // Creating user's account
         User user = new User();
 
+        logger.info(signUpRequest.getEmail());
+        logger.info(signUpRequest.getPassword());
 
         user.setName(signUpRequest.getName());
         user.setEmail(signUpRequest.getEmail());
@@ -184,13 +186,14 @@ public class AuthController {
         customerService.save(customer);
 
 
-        URI location = ServletUriComponentsBuilder
-                .fromCurrentContextPath().path("/user/me")
-                .buildAndExpand(result.getId()).toUri();
-
-        return ResponseEntity.created(location)
-                .body(new ApiResponse(true, "User registered successfully@"));
+//        URI location = ServletUriComponentsBuilder
+//                .fromCurrentContextPath().path("/user/me")
+//                .buildAndExpand(result.getId()).toUri();
+//
+//        return ResponseEntity.created(location)
+//                .body(new ApiResponse(true, "User registered successfully@"));
         //return result;
+        return ResponseEntity.ok(new ApiResponse(true));
     }
 
 }
