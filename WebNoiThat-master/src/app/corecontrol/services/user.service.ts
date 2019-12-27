@@ -15,21 +15,28 @@ export class UserService {
 
   private baseUrl = 'http://localhost:8080/api';
   private baseUrlcheck = 'http://localhost:8080/api/loginCheck';
+  private urlme = 'http://localhost:8080/user/me';
   rolename: string;
 
   private _refresh = new Subject<void>();
   private headers= new HttpHeaders({
     'Content-Type': 'application/json',
     //'x-access-token':localStorage.getItem('token'),
-    //'Authorization': 'Bearer' + localStorage.getItem('token')
+    'Authorization': 'Bearer ' + localStorage.getItem('token')
   })
+
+  // private headers2= new HttpHeaders({
+  //   'Content-Type': 'application/json',
+  //   'Authorization': 'Bearer' + localStorage.getItem('token')
+  // })
   private options = { headers: this.headers };
+  //private options2 = { headers: this.headers2 };
   
 
   constructor(private http: HttpClient) { }
 
   login( credentials: LoginRequest){    
-    return this.http.post(`${this.baseUrl}`+"/login",credentials,{ responseType: 'text' });
+    return this.http.post(`${this.baseUrl}`+"/login",credentials,{ responseType: 'text', headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')} });
   }
 
   check(email: string): Observable<any> {
@@ -41,7 +48,19 @@ export class UserService {
     return this.http.get(`${this.baseUrl+"/userfind"}/${email}`, this.options);
   }
   signup(credentials: SignupRequest){
-    return this.http.post(`${this.baseUrl}`+"/signup",credentials);
+    return this.http.post(`${this.baseUrl}`+"/signup",{credentials,headers: {'Authorization': 'Bearer ' + localStorage.getItem('token')}});
   }
 
+  getUserme(): Observable<any> {
+    const headers = new HttpHeaders({
+      //'Content-Type': 'application/json',
+    })
+
+    if (localStorage.getItem('token')) {
+      headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'))
+    }
+    console.log(localStorage.getItem('token'));
+    console.log(headers);
+    return this.http.get(`${this.urlme}`, { headers: headers });
+  }
 }

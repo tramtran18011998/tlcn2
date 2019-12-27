@@ -48,7 +48,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'cart', component: CartComponent},
   {path: 'oauth2/redirect', component: OAuth2RedirectHandlerComponent},
-  {path: 'productdetail/:id', component: OAuth2RedirectHandlerComponent},
+  {path: 'productdetail/:id', component: ProductpageComponent},
   {path: 'profile/:id', component: ProfileComponent},
 
   //{path: 'admin', component: AdminComponent},
