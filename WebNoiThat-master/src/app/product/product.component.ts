@@ -87,6 +87,8 @@ export class ProductComponent implements OnInit {
      this.productService.getListPage(0).subscribe( data => {
         this.products2 = [...data.content];
         if(data)
+        this.products =[];
+        this.imgname =[];
           for(let i=this.products2[0].id; i<this.products2.length + this.products2[0].id; i++){
                this.productService.getProductImgByProductIdLimit(i).subscribe( data1 => {
               if(i === data1.product.id)
@@ -102,6 +104,8 @@ export class ProductComponent implements OnInit {
       this.productService.getListPageAsc(0).subscribe( data => {
         this.products2 = [...data.content];
         if(data)
+        this.products =[];
+        this.imgname =[];
           for(let i=this.products2[0].id; i<this.products2.length + this.products2[0].id; i++){
                this.productService.getProductImgByProductIdLimit(i).subscribe( data1 => {
               if(i === data1.product.id)
@@ -117,6 +121,8 @@ export class ProductComponent implements OnInit {
       this.productService.getListPageDesc(0).subscribe( data => {
         this.products2 = [...data.content];
         if(data)
+        this.products =[];
+        this.imgname =[];
           for(let i=this.products2[0].id; i<this.products2.length + this.products2[0].id; i++){
                this.productService.getProductImgByProductIdLimit(i).subscribe( data1 => {
               if(i === data1.product.id)
@@ -139,6 +145,8 @@ export class ProductComponent implements OnInit {
       this.productService.getListPage(event.pageIndex).subscribe( data => {
         this.products2 = [...data.content];
         if(data)
+        this.products =[];
+        this.imgname =[];
           for(let i=this.products2[0].id; i<this.products2.length + this.products2[0].id; i++){
                this.productService.getProductImgByProductIdLimit(i).subscribe( data1 => {
               if(i === data1.product.id)
@@ -154,6 +162,8 @@ export class ProductComponent implements OnInit {
       this.productService.getListPageAsc(event.pageIndex).subscribe( data => {
         this.products2 = [...data.content];
         if(data)
+        this.products =[];
+        this.imgname =[];
           for(let i=this.products2[0].id; i<this.products2.length + this.products2[0].id; i++){
                this.productService.getProductImgByProductIdLimit(i).subscribe( data1 => {
               if(i === data1.product.id)
@@ -167,20 +177,18 @@ export class ProductComponent implements OnInit {
       });
     }else{
       this.productService.getListPageDesc(event.pageIndex).subscribe(data4 => {
-        this.products = data4.content;
-        console.log(event.pageIndex);
-        this.pageIn = event.pageIndex;
-        console.log(this.pageIn);  
-       
-        for(let i=0; i<this.products.length; i++){
-          console.log('ttt:', this.products[i].id);
-          this.productService.getProductImgByProductIdLimit(this.products[i].id).subscribe(data5 => {           
-            this.productImg = data5;
-            console.log(this.productImg.name);
-              
-            console.log(this.imgname.length);           
-          })          
-        }
+        this.products2 = [...data4.content];
+        if(data4)
+        this.products =[];
+        this.imgname =[];
+          for(let i=this.products2[0].id; i<this.products2.length + this.products2[0].id; i++){
+               this.productService.getProductImgByProductIdLimit(i).subscribe( data1 => {
+              if(i === data1.product.id)
+              {
+                this.products.push(data1.product);
+                this.imgname.push(data1.name);   }
+            })                    
+          }
         
       });
     }
