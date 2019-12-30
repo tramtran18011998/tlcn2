@@ -28,9 +28,9 @@ export class OAuth2RedirectHandlerComponent implements OnInit {
         //location.replace('');
         this.router.navigate['/login'];
         if(localStorage.getItem('token')){
-          // this.userService.getUserme().subscribe(data => {
-          //   console.log(data);
-          // })
+          this.userService.getUserme().subscribe(data => {
+            console.log(data);
+          })
           location.replace('');
         }
   });

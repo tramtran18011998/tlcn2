@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   productImages: ProductImage[]=[];
   imgname=[];
   imgname2=[];
-  //currentUser: User = new User();
+  currentUser: User = new User();
 
   productImg: ProductImage= new ProductImage();
 
@@ -27,6 +27,12 @@ export class HomeComponent implements OnInit {
     
 
     //this.getCurrentUser();
+    this.userService.getUserme().subscribe(data => {
+      console.log(data);
+      this.currentUser = data;
+      localStorage.setItem('currentuser', JSON.stringify(this.currentUser));
+      console.log(this.currentUser);
+    })
 
     this.productService.getListBestSeller().subscribe(data =>{
       this.bestProducts = data;

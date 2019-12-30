@@ -134,8 +134,8 @@ public class AuthController {
     }
 
 
-    @PostMapping("/signup")
-    public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) throws ResourceNotFoundException {
+    @PostMapping("/signupA")
+    public ResponseEntity<?> registerUserA(@Valid @RequestBody SignUpRequest signUpRequest) throws ResourceNotFoundException {
         if(userRepository.existsByEmail(signUpRequest.getEmail())) {
             throw new BadRequestException("Email address already in use.");
         }
@@ -194,6 +194,67 @@ public class AuthController {
 //                .body(new ApiResponse(true, "User registered successfully@"));
         //return result;
         return ResponseEntity.ok(new ApiResponse(true));
+    }
+
+    @PostMapping("/signup")
+    public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) throws ResourceNotFoundException {
+        if(userRepository.existsByEmail(signUpRequest.getEmail())) {
+            throw new BadRequestException("Email address already in use.");
+        }
+
+        // Creating user's account
+        User user = new User();
+
+        logger.info(signUpRequest.getEmail());
+        logger.info(signUpRequest.getPassword());
+
+        user.setName(signUpRequest.getName());
+        user.setEmail(signUpRequest.getEmail());
+        user.setPassword(signUpRequest.getPassword());
+        user.setProvider(AuthProvider.local);
+
+        user.setCreatedDate(new Date());
+        long a=1;
+        user.setInstatus(a);
+
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
+                .orElseThrow(() -> new AppException("User Role not set."));
+
+        user.setRoles(Collections.singleton(userRole));
+        logger.info("role2: "+Collections.singleton(userRole));
+
+        User result = userService.save(user);
+
+        Customer customer = new Customer();
+        //Optional<CustomerType> customerType = customerTypeService.findCustomerTypeById(1);
+        CustomerType customerType= customerTypeService.findCustomerTypeById(1).orElseThrow(()-> new ResourceNotFoundException("Employee not found"));
+        customer.setUser(user);
+
+        customer.setCustomerType(customerType);
+        if(customerType.getName()=="Normal"){
+            customer.setDiscount(0);
+        }
+        if(customerType.getName()=="Silver"){
+            customer.setDiscount(5);
+        }
+        if(customerType.getName()=="Gold"){
+            customer.setDiscount(10);
+        }
+        if(customerType.getName()=="Platinum"){
+            customer.setDiscount(15);
+        }
+        customerService.save(customer);
+
+
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentContextPath().path("/user/me")
+                .buildAndExpand(result.getId()).toUri();
+
+        return ResponseEntity.created(location)
+                .body(new ApiResponse(true, "User registered successfully@"));
+
     }
 
 }

@@ -11,6 +11,7 @@ import { ProductImage } from '../corecontrol/models/productimage';
 import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-product',
@@ -37,6 +38,7 @@ export class ProductComponent implements OnInit {
   categories: Observable<Category[]>;
   catename: Array<Category>[];
   products: Product[]=[];
+  products2: Product[]=[];
 
   ps: Product[]=[];
   productImages: ProductImage[]=[];
@@ -78,97 +80,53 @@ export class ProductComponent implements OnInit {
     });
   }
 
-  geta(){
-    
-    this.productService.getList().subscribe(data => {
-      this.products = data;
-      //console.log(data.content);
- 
-      this.imgname = [];
-
-      var b =[];
-      var a: number;
-      for(let i=0; i<this.products.length; i++){
-        console.log('ttt:', this.products[i].id);
-        b.push(this.products[i].id);
-        a= this.products[i].id;
-        console.log('a=',a);
-        this.productService.getProductImgByProductIdLimit(a).subscribe(data => {
-        
-          console.log('tt1:', this.products[i].id);
-          //console.log('bb:', b);
-          this.productImg = data;
-          console.log(this.productImg.name);          
-          this.imgname.push(this.productImg.name)  ;         
-          //console.log(this.imgname[i]);
-        })                    
-      }
-      this.imgPush = this.imgname;
-      console.log(this.imgPush);
-      console.log(this.imgPush.length);
-    })
-  }
   
-  getProductList(){
+  getProductList = () =>{
     console.log(this.intSelect);
-    if(this.intSelect==1){
-      this.productService.getListPage(0).subscribe(data => {
-        this.products = data.content;
-        console.log(data.content);
-   
-        this.imgname = [];
-  
-        var b =[];
-        var a: number;
-        for(let i=0; i<this.products.length; i++){
-          console.log('ttt:', this.products[i].id);
-          b.push(this.products[i].id);
-          a= this.products[i].id;
-          //console.log('a=',b);
-          this.productService.getProductImgByProductIdLimit(a).subscribe(data1 => {
-            console.log('tt1:', this.products[i].id);
-            //console.log('bb:', b);
-            this.productImg = data1;
-            console.log(this.productImg.name);          
-            this.imgname.push(this.productImg.name)  ;        
-          })                    
-        }
-        
+    if(this.intSelect===1){
+     this.productService.getListPage(0).subscribe( data => {
+        this.products2 = [...data.content];
+        if(data)
+          for(let i=this.products2[0].id; i<this.products2.length + this.products2[0].id; i++){
+               this.productService.getProductImgByProductIdLimit(i).subscribe( data1 => {
+              if(i === data1.product.id)
+              {
+                this.products.push(data1.product);
+                this.imgname.push(data1.name);   }
+            })                    
+          }
         console.log(this.imgname);
+        console.log(this.products);
       })
     }else if(this.intSelect ==2){
-      this.productService.getListPageAsc(0).subscribe(data3 => {
-        this.products = data3.content;
-        console.log(data3.content);
-        this.imgname = [];
-  
-        for(let i=0; i<this.products.length; i++){
-          console.log('ttt:', this.products[i].id);
-          this.productService.getProductImgByProductIdLimit(this.products[i].id).subscribe(data4 => {
-            
-            this.productImg = data4;
-            console.log(this.productImg.name);          
-            this.imgname.push(this.productImg.name)           
-            console.log(this.imgname.length);
-          })                    
-        }
+      this.productService.getListPageAsc(0).subscribe( data => {
+        this.products2 = [...data.content];
+        if(data)
+          for(let i=this.products2[0].id; i<this.products2.length + this.products2[0].id; i++){
+               this.productService.getProductImgByProductIdLimit(i).subscribe( data1 => {
+              if(i === data1.product.id)
+              {
+                this.products.push(data1.product);
+                this.imgname.push(data1.name);   }
+            })                    
+          }
+        console.log(this.imgname);
+        console.log(this.products);
       })
     }else{
-      this.productService.getListPageDesc(0).subscribe(data5 => {
-        this.products = data5.content;
-        console.log(data5.content);
-        this.imgname = [];
-  
-        for(let i=0; i<this.products.length; i++){
-          console.log('ttt:', this.products[i].id);
-          this.productService.getProductImgByProductIdLimit(this.products[i].id).subscribe(data6 => {
-            
-            this.productImg = data6;
-            console.log(this.productImg.name);          
-            this.imgname.push(this.productImg.name)           
-            console.log(this.imgname.length);
-          })                    
-        }
+      this.productService.getListPageDesc(0).subscribe( data => {
+        this.products2 = [...data.content];
+        if(data)
+          for(let i=this.products2[0].id; i<this.products2.length + this.products2[0].id; i++){
+               this.productService.getProductImgByProductIdLimit(i).subscribe( data1 => {
+              if(i === data1.product.id)
+              {
+                this.products.push(data1.product);
+                this.imgname.push(data1.name);   }
+            })                    
+          }
+        console.log(this.imgname);
+        console.log(this.products);
       })
 
     }
@@ -178,42 +136,34 @@ export class ProductComponent implements OnInit {
   onChangedPage(event){
 
     if(this.intSelect==1){
-      this.productService.getListPage(event.pageIndex).subscribe(data => {
-        this.products = data.content;
-        console.log(event.pageIndex);
-        this.pageIn = event.pageIndex;
-        console.log(this.pageIn);  
-        
-        this.imgname = [];
-        for(let i=0; i<this.products.length; i++){
-          console.log('ttt:', this.products[i].id);
-          this.productService.getProductImgByProductIdLimit(this.products[i].id).subscribe(data1 => {           
-            this.productImg = data1;
-            console.log(this.productImg.name);
-            
-            console.log(this.imgname.length);           
-            this.imgname.push(this.productImg.name)         
-          })          
-        }
-        
+      this.productService.getListPage(event.pageIndex).subscribe( data => {
+        this.products2 = [...data.content];
+        if(data)
+          for(let i=this.products2[0].id; i<this.products2.length + this.products2[0].id; i++){
+               this.productService.getProductImgByProductIdLimit(i).subscribe( data1 => {
+              if(i === data1.product.id)
+              {
+                this.products.push(data1.product);
+                this.imgname.push(data1.name);   }
+            })                    
+          }
+        console.log(this.imgname);
+        console.log(this.products);
       });
     }else if(this.intSelect==2){
-      this.productService.getListPageAsc(event.pageIndex).subscribe(data2 => {
-        this.products = data2.content;
-        console.log(event.pageIndex);
-        this.pageIn = event.pageIndex;
-        console.log(this.pageIn);  
-  
-        for(let i=0; i<this.products.length; i++){
-          console.log('ttt:', this.products[i].id);
-          this.productService.getProductImgByProductIdLimit(this.products[i].id).subscribe(data3 => {           
-            this.productImg = data3;
-            console.log(this.productImg.name);
-            
-            console.log(this.imgname.length);           
-          })          
-        }
-      
+      this.productService.getListPageAsc(event.pageIndex).subscribe( data => {
+        this.products2 = [...data.content];
+        if(data)
+          for(let i=this.products2[0].id; i<this.products2.length + this.products2[0].id; i++){
+               this.productService.getProductImgByProductIdLimit(i).subscribe( data1 => {
+              if(i === data1.product.id)
+              {
+                this.products.push(data1.product);
+                this.imgname.push(data1.name);   }
+            })                    
+          }
+        console.log(this.imgname);
+        console.log(this.products);
       });
     }else{
       this.productService.getListPageDesc(event.pageIndex).subscribe(data4 => {

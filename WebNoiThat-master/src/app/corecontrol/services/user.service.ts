@@ -22,7 +22,7 @@ export class UserService {
   private headers= new HttpHeaders({
     'Content-Type': 'application/json',
     //'x-access-token':localStorage.getItem('token'),
-    //'Authorization': 'Bearer ' + localStorage.getItem('token')
+    'Authorization': 'Bearer ' + localStorage.getItem('token')
   })
 
   // private headers2= new HttpHeaders({
@@ -48,19 +48,22 @@ export class UserService {
     return this.http.get(`${this.baseUrl+"/userfind"}/${email}`, this.options);
   }
   signup(credentials: SignupRequest){
-    return this.http.post(`${this.baseUrl}`+"/signup",credentials);
+    return this.http.post(`${this.baseUrl}`+"/signupA",credentials);
   }
 
   getUserme(): Observable<any> {
-    const headers = new HttpHeaders({
-      //'Content-Type': 'application/json',
-    })
-
-    if (localStorage.getItem('token')) {
-      headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'))
-    }
-    console.log(localStorage.getItem('token'));
-    console.log(headers);
-    return this.http.get(`${this.urlme}`, { headers: headers });
+    return this.http.get(`${this.urlme}`, this.options);
   }
+  // getUserme(): Observable<any> {
+  //   const headers = new HttpHeaders({
+  //     //'Content-Type': 'application/json',
+  //   })
+
+  //   if (localStorage.getItem('token')) {
+  //     headers.append('Authorization', 'Bearer ' + localStorage.getItem('token'))
+  //   }
+  //   console.log(localStorage.getItem('token'));
+  //   console.log(headers);
+  //   return this.http.get(`${this.urlme}`, { headers: headers });
+  // }
 }
