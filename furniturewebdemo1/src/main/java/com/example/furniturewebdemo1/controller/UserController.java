@@ -138,6 +138,21 @@ public class UserController {
 
     }
 
+    @RequestMapping(value = "/api/userreset/{email}/{pass}", method = RequestMethod.PUT,produces = "application/json")
+    public @ResponseBody ResponseEntity<User> resetPassword(@PathVariable(value = "email") String email, @PathVariable(value = "pass") String pass) throws ResourceNotFoundException {
+        User currentUser = userRepository.findByEmail(email).orElseThrow(()-> new ResourceNotFoundException("User not found"));
+
+        logger.info(pass);
+        logger.info(email);
+        currentUser.setPassword(passwordEncoder.encode(pass));
+        currentUser.setLastModifiedDate(new Date());
+
+        userRepository.save(currentUser);
+
+        return ResponseEntity.ok(currentUser);
+
+    }
+
     //update image customer information
     @PutMapping("api/userimg/{id}")
     public ResponseEntity<User> upload(@RequestParam("file") MultipartFile file, @PathVariable(value = "id") long id) throws IOException, ResourceNotFoundException {

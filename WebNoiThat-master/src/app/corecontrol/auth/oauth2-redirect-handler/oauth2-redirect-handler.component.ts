@@ -25,6 +25,7 @@ export class OAuth2RedirectHandlerComponent implements OnInit {
       this.tokenService.saveToken(token);
         localStorage.setItem('token', token);
         console.log(token);
+        localStorage.setItem('inSocial','1');
         //location.replace('');
         this.router.navigate['/login'];
         if(localStorage.getItem('token')){

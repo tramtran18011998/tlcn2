@@ -15,6 +15,7 @@ export class CustomerService {
   private url = 'http://localhost:8080/api/customeruser';
   private urlImgae = 'http://localhost:8080/api/userimg';
   private urlU = 'http://localhost:8080/api/employeeuser';
+  private urlreset = 'http://localhost:8080/api/userreset';
 
   private _refresh = new Subject<void>();
   private headers= new HttpHeaders({
@@ -65,6 +66,14 @@ export class CustomerService {
 
   updateUser(id: number, value: any): Observable<Object> {
     return this.http.put(`${this.urlU}/${id}`, value, this.options).pipe(
+      tap(()=> {
+        this._refresh.next();
+      })
+    );
+  }
+
+  updateUserPass(email: string, pass: string): Observable<Object> {
+    return this.http.put(`${this.urlreset}/${email}/${pass}`,this.options).pipe(
       tap(()=> {
         this._refresh.next();
       })

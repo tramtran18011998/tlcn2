@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   id: number;
   id2: number;
   customerUser: User = new User();
+  inSocial = JSON.parse(localStorage.getItem('inSocial'));
 
   instatus = 0;
   imgForm: FormGroup;

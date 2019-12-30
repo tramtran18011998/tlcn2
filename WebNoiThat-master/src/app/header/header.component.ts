@@ -38,6 +38,7 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('token');
     localStorage.removeItem('currentuser');
     localStorage.removeItem('quantitycart');
+    localStorage.removeItem('inSocial');
     localStorage.setItem('inLogin','false');
     location.replace('');
     this.token.signOut();

@@ -10,6 +10,7 @@ import { Customvalidators } from '../corecontrol/validators/customvalidators';
 import { SignupRequest } from '../corecontrol/payloads/signup-request';
 import Swal from 'sweetalert2'
 import { TokenStorageService } from '../corecontrol/auth/token-storage.service';
+import { CustomerService } from '../corecontrol/services/customer.service';
 
 
 @Component({
@@ -21,6 +22,7 @@ export class LoginComponent implements OnInit {
 
   form: any = {};
   formSignup: FormGroup;
+  resetPassword: FormGroup;
   isLoggedIn = false;
   isLoginFailed = false;
   inLogin = false;
@@ -28,6 +30,9 @@ export class LoginComponent implements OnInit {
   token: string;
   rolename: string;
   user: User = new User();
+
+  userPass: User = new User();
+
   authResponse: AuthResponse;
 
   checkUser: User = new User();
@@ -35,7 +40,7 @@ export class LoginComponent implements OnInit {
   private loginRequest: LoginRequest;
   private signupRequest: SignupRequest;
 
-  constructor(private tokenStorage: TokenStorageService, private userService: UserService, private router: Router, private formBuilder: FormBuilder) { }
+  constructor(private tokenStorage: TokenStorageService, private userService: UserService, private router: Router, private formBuilder: FormBuilder, private customerService: CustomerService) { }
 
   onSubmit() {
     console.log(this.form);
@@ -161,6 +166,34 @@ export class LoginComponent implements OnInit {
       password2: new FormControl('', Validators.required),
 
     }, { validators: Customvalidators.passwordMatchValidator });
+
+    this.resetPassword = this.formBuilder.group({
+
+      email: new FormControl('',  [Validators.required,Validators.email]),
+      password:new FormControl( '', [Validators.required,Validators.minLength(6),Validators.pattern('^[a-zA-Z0-9_.-]{6,20}$')]),
+      password2: new FormControl('', Validators.required),
+      
+    },{validators: Customvalidators.passwordMatchValidator});
+  }
+
+  onSubmitReset(resetpassform: FormGroup){
+
+
+    if(this.resetPassword.invalid){
+      return
+    }else{
+      //this.userPass.password = this.resetPassword.controls['password'].value;
+      console.log(this.userPass);
+      
+      this.customerService.updateUserPass(this.resetPassword.controls['email'].value, this.resetPassword.controls['password'].value).subscribe(data => {
+        Swal.fire(
+          'Đổi mật khẩu thành công!',
+          'success'
+        ); 
+      });
+    }
+
+    resetpassform.reset();
   }
 
 
