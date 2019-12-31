@@ -27,6 +27,8 @@ export class CartComponent implements OnInit {
   idCus: number;
   idEmp: number = 2 ;
 
+  sl: number;
+
   constructor(private cartService: CartService, private customerService: CustomerService,private router: Router) { }
 
   ngOnInit() {
@@ -100,7 +102,7 @@ export class CartComponent implements OnInit {
 
       
       this.cart1 = data;
-      console.log(this.cart1);
+      //console.log(this.cart1);
       //this.cart1.quantity = value;
       //this.cart1.totalprice = this.cart1.price * value;
 
@@ -109,13 +111,14 @@ export class CartComponent implements OnInit {
       cart2.quantity = value;
       cart2.totalprice = this.cart1.price * value;
 
+      this.sl = this.cart1.product.quantity;
+
       this.cartService.update(cart2.id,cart2).subscribe(data2=> {
-        console.log(data2);
         this.getList();
       })
+    
+      
     })
-    console.log(value);
-    console.log(id);
     
   }
 

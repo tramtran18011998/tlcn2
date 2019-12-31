@@ -22,7 +22,7 @@
                 <th scope="row">{{cart.productname}}</th>
                 <td style="text-align: right;">{{cart.price}}</td>
                 <td >
-                    <input style="margin: auto;width: 30%;" type="number" min="1"  [(ngModel)]="cart.quantity" 
+                    <input style="margin: auto;width: 30%;" type="number" min="1" max="{{sl}}" [(ngModel)]="cart.quantity" 
                     class="form-control" (input)="onSearchChange($event.target.value,cart.id)" >
                 </td>
                 <td style="text-align: right;">{{cart.totalprice}}</td>
