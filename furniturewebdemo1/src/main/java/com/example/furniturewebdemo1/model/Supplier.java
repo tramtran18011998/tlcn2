@@ -15,6 +15,7 @@ import java.util.Collection;
 @Setter
 @NoArgsConstructor
 @Table(name = "supplier")
+@JsonIgnoreProperties({"products"})
 public class Supplier {
 
     @Id

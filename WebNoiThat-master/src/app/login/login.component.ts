@@ -191,6 +191,15 @@ export class LoginComponent implements OnInit {
           'Đổi mật khẩu thành công!',
           'success'
         ); 
+      },error => {
+        console.log(error);
+        this.errorMessage = error.error.message;
+        this.isLoginFailed = true;
+        Swal.fire(
+          'Kiểm tra lại email',
+          'Lỗi xảy ra',
+          'error'
+        );
       });
     }
 

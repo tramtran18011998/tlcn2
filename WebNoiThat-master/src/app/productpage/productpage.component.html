@@ -33,7 +33,7 @@
             <p>{{product.description}}</p>
             <div class="input-group mb-3" style="width:120px">
                 
-                <input style="margin: auto;width: 30%;" type="number" min="1" placeholder="1" [(ngModel)]="quantity" 
+                <input style="margin: auto;width: 30%;" type="number" min="1" max="{{product.quantity}}" placeholder="1" [(ngModel)]="quantity" 
                     class="form-control" (input)="onSearchChange($event.target.value)" >
                 
             </div>

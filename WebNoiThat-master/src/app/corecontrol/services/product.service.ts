@@ -135,6 +135,13 @@ export class ProductService {
       })
     );
   }
+  update2(id: number,idtype: number,idsup:number, value: any): Observable<Object> {
+    return this.http.put(`${this.baseUrl}/${id}/${idtype}/${idsup}`, value, this.options).pipe(
+      tap(()=> {
+        this._refresh.next();
+      })
+    );
+  }
 
   delete(id: number): Observable<any> {
     return this.http.delete(`${this.baseUrl}/${id}`,this.options);

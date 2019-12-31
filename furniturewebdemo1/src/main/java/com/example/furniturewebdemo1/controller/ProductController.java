@@ -101,8 +101,11 @@ public class ProductController {
     }
 
 
-    @PutMapping("/product/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable(value = "id") long id, @Valid @RequestBody Product product) throws ResourceNotFoundException {
+    @PutMapping("/product/{id}/{idtype}/{idsup}")
+    public ResponseEntity<Product> updateProduct(@PathVariable(value = "id") long id,@PathVariable(value = "idtype") long idtype,@PathVariable(value = "idsup") long idsup, @Valid @RequestBody Product product) throws ResourceNotFoundException {
+        Supplier supplier = supplierService.findSupplierById(idsup).orElseThrow(()-> new ResourceNotFoundException("Detail not found"));
+        Category category = categoryService.findCategoryById(idtype).orElseThrow(()-> new ResourceNotFoundException("Detail not found"));
+
         Product currentProduct= productService.findProductById(id).orElseThrow(()-> new ResourceNotFoundException("Product not found"));
 
         if(product.getColor()!=null){
@@ -135,10 +138,10 @@ public class ProductController {
         if(product.getSize()!=null){
             currentProduct.setSize(product.getSize());
         }
-        if (product.getCategory()!=null){
+        if (category!=null){
             currentProduct.setCategory(product.getCategory());
         }
-        if(product.getSupplier()!=null){
+        if(supplier!=null){
             currentProduct.setSupplier(product.getSupplier());
         }
 

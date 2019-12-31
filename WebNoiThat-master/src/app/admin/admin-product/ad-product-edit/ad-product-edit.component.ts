@@ -115,7 +115,7 @@ export class AdProductEditComponent implements OnInit {
     console.log(this.product.category);
     console.log(this.product.supplier);
 
-    this.productService.update(this.id,this.product).subscribe(data=>{
+    this.productService.update2(this.id,this.product.category.id,this.product.supplier.id,this.product).subscribe(data=>{
       console.log(data);
       if(this.urls.length>0){
             
