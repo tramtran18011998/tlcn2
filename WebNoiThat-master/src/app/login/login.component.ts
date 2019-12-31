@@ -55,11 +55,12 @@ export class LoginComponent implements OnInit {
         this.tokenStorage.saveToken(data);
         this.tokenStorage.saveUsername(this.loginRequest.email);
 
-        console.log(this.tokenStorage.getToken);
-        console.log(this.tokenStorage.getUsername);
+        //console.log(this.tokenStorage.getToken);
+        //console.log(this.tokenStorage.getUsername);
 
         console.log(data);
-        localStorage.setItem('token', JSON.stringify(this.tokenStorage.getToken));
+        //localStorage.setItem('token', JSON.stringify(this.tokenStorage.getToken));
+        localStorage.setItem('token', data);
 
         this.inLogin = true;
         localStorage.setItem('inLogin', JSON.stringify(this.inLogin));
@@ -75,9 +76,9 @@ export class LoginComponent implements OnInit {
           this.userService.check(this.loginRequest.email).subscribe(
             (data) => {
               this.tokenStorage.saveAuthorities(data);
-              console.log(this.tokenStorage.getAuthorities);
+              //console.log(this.tokenStorage.getAuthorities);
               if (data == 'ROLE_USER') {
-                console.log("ktra dc customer");
+                //console.log("ktra dc customer");
                 this.gotoList();
               }
               else {

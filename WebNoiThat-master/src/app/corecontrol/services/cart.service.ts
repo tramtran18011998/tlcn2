@@ -12,6 +12,7 @@ export class CartService {
   private urlcount = 'http://localhost:8080/api/cartcount';
   private urllist = 'http://localhost:8080/api/cartlist';
   private urlInvoice = 'http://localhost:8080/api/invoiceproduct';
+  private urllisthistory = 'http://localhost:8080/api/invoicehistory';
 
 
   private _refresh = new Subject<void>();
@@ -35,6 +36,12 @@ export class CartService {
   getListCartByCustomer(id: number): Observable<any>{
     return this.http.get(`${this.urllist}/${id}`, this.options);
   }
+
+  //history invoice
+  getHistoryByCustomer(id: number): Observable<any>{
+    return this.http.get(`${this.urllisthistory}/${id}`, this.options);
+  }
+
 
 
   getList(): Observable<any>{

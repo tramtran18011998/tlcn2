@@ -2,7 +2,9 @@ package com.example.furniturewebdemo1.controller;
 
 import com.example.furniturewebdemo1.exception.ResourceNotFoundException;
 
+import com.example.furniturewebdemo1.model.Cart;
 import com.example.furniturewebdemo1.model.InvoiceProduct;
+import com.example.furniturewebdemo1.repository.InvoiceProductRepository;
 import com.example.furniturewebdemo1.service.InvoiceProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,9 @@ import java.util.List;
 public class InvoiceProductController {
     @Autowired
     private InvoiceProductService invoiceProductService;
+
+    @Autowired
+    InvoiceProductRepository invoiceProductRepository;
 
     @GetMapping("/invoiceproduct")
     public List<InvoiceProduct> getAllInvoiceProduct(){
@@ -53,5 +58,10 @@ public class InvoiceProductController {
         InvoiceProduct invoiceProduct=invoiceProductService.findInvoiceProductById(id).orElseThrow(()-> new ResourceNotFoundException("InvoiceProduct not found"));
         invoiceProductService.delete(invoiceProduct);
         return ResponseEntity.ok(invoiceProduct);
+    }
+
+    @GetMapping("/invoicehistory/{id}")
+    public List<InvoiceProduct> getHistoryByCustomer(@PathVariable(value = "id") long id){
+        return invoiceProductRepository.getHistoryByCustomer(id);
     }
 }

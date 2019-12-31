@@ -31,7 +31,7 @@ export class AdminProductComponent implements OnInit {
 
   getList(){
     this.productService.getList().subscribe(data =>{
-      console.log(data);
+      //console.log(data);
       this.products = data;
       this.dataSource = new MatTableDataSource(this.products);
       this.dataSource.paginator = this.paginator;

@@ -21,4 +21,7 @@ public interface CartRepository extends JpaRepository<Cart,Long> {
 
     @Query(value = "select *from cart c where c.status='0' and c.customer_id =:customer_id",nativeQuery = true)
     List<Cart> getListCartByCustomer(@Param("customer_id") long customer_id);
+
+    @Query(value = "select *from cart c where c.status='1' and c.customer_id =:customer_id",nativeQuery = true)
+    List<Cart> getHistoryCartByCustomer(@Param("customer_id") long customer_id);
 }

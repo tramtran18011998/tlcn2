@@ -54,42 +54,95 @@
                 </form>
             </div> -->
             <div class="row">
-                <div class="col-4" style="margin: 20px auto;padding-left: 10%;">
-                    <div class="form_row">
-                        <label>Đang giao :</label>
-                        <form>
-                            <input type="radio" name="stateDelivering" value="true" [(ngModel)]="receipt.stateDelivering">
-                            True<br>
-                            <input type="radio" name="stateDelivering" value="false" [(ngModel)]="receipt.stateDelivering">
-                            False<br>
+                <div class="col-4" *ngIf="receipt.stateDelivering== false;else showEl">
+                    <div  style="margin: 20px auto;padding-left: 10%;">
+                        <div class="form_row">
+                            <label>Đang giao :</label>
+                            <form>
+                                <input type="radio" name="stateDelivering" value="true" [(ngModel)]="receipt.stateDelivering">
+                                True<br>
+                                <input type="radio" name="stateDelivering" value="false" [(ngModel)]="receipt.stateDelivering">
+                                False<br>
+                    
+                            </form>
+                        </div>
+                    </div>
+                    <ng-template  #showEl>
+                        <div  style="margin: 20px auto;padding-left: 10%;">
+                            <div class="form_row" style="pointer-events: none;">
+                                <label>Đang giao :</label>
+                                <form>
+                                    <input type="radio" name="stateDelivering" value="true" [(ngModel)]="receipt.stateDelivering">
+                                    True<br>
+                                    <input type="radio" name="stateDelivering" value="false" [(ngModel)]="receipt.stateDelivering">
+                                    False<br>
+                        
+                                </form>
+                            </div>
+                        </div>
+                    </ng-template>
+                </div>
                 
-                        </form>
+                <div class="col-4" *ngIf="receipt.stateDelivering== true && receipt.stateDelivered == false ;else showEl2">
+                    <div  style="margin: 20px auto;padding-left: 10%;">
+                        <div class="form_row">
+                            <label>Đã giao :</label>
+                            <form>
+                                <input type="radio" name="stateDelivered" value="true" [(ngModel)]="receipt.stateDelivered">
+                                True<br>
+                                <input type="radio" name="stateDelivered" value="false" [(ngModel)]="receipt.stateDelivered">
+                                False<br>
+            
+                            </form>
+                        </div>
                     </div>
+                    <ng-template  #showEl2>
+                        <div style="margin: 20px auto;padding-left: 10%;">
+                            <div class="form_row" style="pointer-events: none;">
+                                <label>Đã giao :</label>
+                                <form>
+                                    <input type="radio" name="stateDelivered" value="true" [(ngModel)]="receipt.stateDelivered">
+                                    True<br>
+                                    <input type="radio" name="stateDelivered" value="false" [(ngModel)]="receipt.stateDelivered">
+                                    False<br>
+                
+                                </form>
+                            </div>
+                        </div>
+                    </ng-template>
                 </div>
-                <div class="col-4" style="margin: 20px auto;padding-left: 10%;">
-                    <div class="form_row">
-                        <label>Đã giao :</label>
-                        <form>
-                            <input type="radio" name="stateDelivered" value="true" [(ngModel)]="receipt.stateDelivered">
-                            True<br>
-                            <input type="radio" name="stateDelivered" value="false" [(ngModel)]="receipt.stateDelivered">
-                            False<br>
-        
-                        </form>
+                
+                <div class="col-4" *ngIf="receipt.stateDelivered== true && receipt.statePaid == false ;else showEl3">
+
+                    <div  style="margin: 20px auto;padding-left: 10%;">
+                        <div class="form_row">
+                            <label>Đã thanh toán :</label>
+                            <form>
+                                <input type="radio" name="statePaid" value="true" [(ngModel)]="receipt.statePaid">
+                                True<br>
+                                <input type="radio" name="statePaid" value="false" [(ngModel)]="receipt.statePaid">
+                                False<br>
+            
+                            </form>
+                        </div>
                     </div>
+
+                    <ng-template  #showEl3>
+                        <div  style="margin: 20px auto;padding-left: 10%;">
+                            <div class="form_row" style="pointer-events: none;">
+                                <label>Đã thanh toán :</label>
+                                <form>
+                                    <input type="radio" name="statePaid" value="true" [(ngModel)]="receipt.statePaid">
+                                    True<br>
+                                    <input type="radio" name="statePaid" value="false" [(ngModel)]="receipt.statePaid">
+                                    False<br>
+                
+                                </form>
+                            </div>
+                        </div>
+                    </ng-template>
                 </div>
-                <div class="col-4" style="margin: 20px auto;padding-left: 10%;">
-                    <div class="form_row">
-                        <label>Đã thanh toán :</label>
-                        <form>
-                            <input type="radio" name="statePaid" value="true" [(ngModel)]="receipt.statePaid">
-                            True<br>
-                            <input type="radio" name="statePaid" value="false" [(ngModel)]="receipt.statePaid">
-                            False<br>
-        
-                        </form>
-                    </div>
-                </div>
+                
             </div>
             
 

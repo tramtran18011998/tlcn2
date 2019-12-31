@@ -166,13 +166,17 @@ export class AdProductAddComponent implements OnInit {
             );  
             
           }
-          this.router.navigate(['/admin/adproduct']);
+          this.gotoList();
         })
       });
 
     });
     addForm.reset();
  
+  }
+
+  gotoList(){
+    this.router.navigate(['/admin/adproduct']);
   }
 
 }

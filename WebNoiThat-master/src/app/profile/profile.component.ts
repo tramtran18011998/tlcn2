@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2'
 import { User } from '../corecontrol/models/user';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { CustomerService } from '../corecontrol/services/customer.service';
+import { Customer } from '../corecontrol/models/customer';
 
 @Component({
   selector: 'app-profile',
@@ -16,13 +17,14 @@ export class ProfileComponent implements OnInit {
   id2: number;
   customerUser: User = new User();
   inSocial = JSON.parse(localStorage.getItem('inSocial'));
+  customer: Customer = new Customer();
 
   instatus = 0;
   imgForm: FormGroup;
   image: File;
   imgState : boolean = false;
 
-  constructor(private acroute: ActivatedRoute,private customerService: CustomerService,private formBuilder: FormBuilder) { }
+  constructor(private acroute: ActivatedRoute,private customerService: CustomerService,private formBuilder: FormBuilder, private router: Router) { }
 
   ngOnInit() {
     this.id= this.acroute.snapshot.params['id'];
@@ -38,6 +40,10 @@ export class ProfileComponent implements OnInit {
     },error=>console.log(error));
 
 
+    this.customerService.getIdByUserId(this.id).subscribe(data => {
+      console.log(data);
+      this.id2 = data;
+    })
     this.imgForm = this.formBuilder.group({     
       file: new FormControl('')    
     });
@@ -82,6 +88,10 @@ export class ProfileComponent implements OnInit {
     },error=>console.log(error));
   
       
+  }
+
+  gotoCartHistory(){
+    this.router.navigate(['/carthistory',this.id2]);
   }
 
 }

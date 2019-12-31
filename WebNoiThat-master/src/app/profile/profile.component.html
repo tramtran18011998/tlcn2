@@ -3,7 +3,7 @@
 <div class="form-wrap">
     <form class="forms-sample" (ngSubmit)="onSubmit()">
         <div class="profile" style=" float: none; margin: auto;">
-            <div>
+            <!-- <div>
                 <div  style="text-align: center; padding-right: 16px;margin: 20px auto;"
                 *ngIf="imgState;then thenBlock else showEl">
                 <img src="http://localhost:8080/customerimg/{{customerUser.imageUrl}}" style="border-radius: 50%;" width="250px"
@@ -14,7 +14,19 @@
                 height="250px"></ng-template>
             <ng-template et-file pTemplate="file" #showEl><img
                     src="https://html5book.ru/wp-content/uploads/2016/10/profile-image.png"></ng-template>
-                    <!-- <h1>{{customerUser.name}}</h1> -->
+                    
+            </div > -->
+            <div>
+                <div  style="text-align: center; padding-right: 16px;margin: 20px auto;"
+                *ngIf="inSocial!=null;else showEl">
+                <img src="{{customerUser.imageUrl}}"  style="border-radius: 50%; margin-left: -40px;" width="250px"
+                    height="250px" /> </div>
+            </div>
+            
+            <ng-template et-file pTemplate="file" #showEl><img
+                src="http://localhost:8080/customerimg/{{customerUser.imageUrl}}" style="border-radius: 50%; margin-left: -40px;" width="250px"
+                height="250px"></ng-template>
+                    
             </div >
             
         <div>
@@ -35,7 +47,7 @@
         
         <div>
             <label for="email">E-mail</label>
-            <input type="email" class="form-control" required [(ngModel)]="customerUser.email" name="email" required>
+            <input readonly type="email" class="form-control" required [(ngModel)]="customerUser.email" name="email" required>
         </div>
 
         <div>
@@ -52,4 +64,7 @@
         
         <button type="submit">Update profile</button>
     </form>
+
+    <a (click)="gotoCartHistory()" style="color: white;" class="btn btn-primary btn-rounded">Lịch sử mua hàng</a>
+    
 </div>
