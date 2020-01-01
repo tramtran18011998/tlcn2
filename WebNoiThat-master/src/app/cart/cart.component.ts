@@ -126,10 +126,13 @@ export class CartComponent implements OnInit {
 
     this.cartService.createInvoice(this.idCus, this.idEmp).subscribe(data => {
       console.log(data);
-      Swal.fire(
-        'Tạo đơn thành công!',
-        'success'
-      );
+      
+      Swal.fire({
+        icon: 'success',
+        title: 'Tạo đơn thành công!',
+        showConfirmButton: false,
+        timer: 1000
+      })  
       this.getList();
       this.subtotal = 0;
       this.total =0;

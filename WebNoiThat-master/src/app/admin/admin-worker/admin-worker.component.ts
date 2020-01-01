@@ -72,11 +72,13 @@ export class AdminWorkerComponent implements OnInit {
           console.log(data);
           this.getList();
         });
-        Swal.fire(
-          'Đã xóa!',
-          'Đã khóa trạng thái.',
-          'success'
-        );
+        
+        Swal.fire({
+          icon: 'success',
+          title: 'Đã khóa trạng thái!',
+          showConfirmButton: false,
+          timer: 1000
+        })  
       }
     });
   }

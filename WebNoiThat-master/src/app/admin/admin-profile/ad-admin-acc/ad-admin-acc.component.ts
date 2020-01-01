@@ -64,11 +64,13 @@ export class AdAdminAccComponent implements OnInit {
 
     this.employeeService.createNewAdmin(formData).subscribe(data => {
       console.log(data);
-      Swal.fire(
-        'Đã thêm!',
-        'Dữ liệu đã được thêm thành công.',
-        'success'
-      );  
+        
+      Swal.fire({
+        icon: 'success',
+        title: 'Dữ liệu đã được thêm thành công!',
+        showConfirmButton: false,
+        timer: 1000
+      })
     })
     addForm1.reset();
 

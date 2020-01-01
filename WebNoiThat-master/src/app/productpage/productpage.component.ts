@@ -72,11 +72,13 @@ export class ProductpageComponent implements OnInit {
   addCart() {
 
     if (!this.currentUser) {
-      Swal.fire(
-        'Bạn chưa đăng nhập!',
-        'Bạn cần đăng nhập để thực hiện mua hàng.',
-        'success'
-      );
+      
+      Swal.fire({
+        icon: 'error',
+        title: 'Bạn cần đăng nhập để thực hiện mua hàng!',
+        showConfirmButton: false,
+        timer: 1500
+      })
     } else {
       
       this.customerService.getIdByUserId(this.currentUser.id).subscribe(data => {

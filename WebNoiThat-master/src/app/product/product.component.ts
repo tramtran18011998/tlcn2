@@ -256,11 +256,14 @@ export class ProductComponent implements OnInit {
   onSubmitSearch(search: FormGroup){
     var name = this.searchF.controls['name'].value;
     if(name !=""){
+      
       this.productService.getListSearch(name).subscribe(data => {
         this.products = data;
       })
     }
     else{
+      this.products = [];
+      this.imgname = [];
       this.getProductList();
     }
     

@@ -134,11 +134,12 @@ export class AdProductEditComponent implements OnInit {
       }
     })
 
-    Swal.fire(
-      'Đã cập nhật!',
-      'Dữ liệu đã được sửa thành công.',
-      'success'
-    );
+    Swal.fire({
+      icon: 'success',
+      title: 'Đã cập nhật!',
+      showConfirmButton: false,
+      timer: 1000
+    })
   }
 
 }

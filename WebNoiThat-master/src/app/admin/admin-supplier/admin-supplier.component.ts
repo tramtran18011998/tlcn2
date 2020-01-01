@@ -64,11 +64,13 @@ export class AdminSupplierComponent implements OnInit {
           console.log(data);
           this.getList();
         });
-        Swal.fire(
-          'Đã xóa!',
-          'Dữ liệu đã xóa.',
-          'success'
-        );
+        
+        Swal.fire({
+          icon: 'success',
+          title: 'Đã xóa!',
+          showConfirmButton: false,
+          timer: 1000
+        })  
       }
     });
     

@@ -27,11 +27,13 @@ export class AdSupplierEditComponent implements OnInit {
   onSubmit(){
     this.supplierService.update(this.id,this.supplier).subscribe(data=>{
       console.log(data);
-      Swal.fire(
-        'Đã cập nhật!',
-        'Dữ liệu đã được cập nhật.',
-        'success'
-      );      
+         
+      Swal.fire({
+        icon: 'success',
+        title: 'Đã cập nhật!',
+        showConfirmButton: false,
+        timer: 1000
+      })  
     },error=>console.log(error));
   }
 

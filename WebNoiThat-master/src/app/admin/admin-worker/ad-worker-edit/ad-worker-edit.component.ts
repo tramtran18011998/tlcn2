@@ -86,12 +86,13 @@ export class AdWorkerEditComponent implements OnInit {
     this.employeeService.updateUser(this.id,this.employeeUser).subscribe(data=>{
       console.log(data);        
     },error=>console.log(error));
-  
-    Swal.fire(
-      'Đã cập nhật!',
-      'Dữ liệu đã được cập nhật.',
-      'success'
-    );   
+    
+    Swal.fire({
+      icon: 'success',
+      title: 'Đã cập nhật!',
+      showConfirmButton: false,
+      timer: 1000
+    })  
   }
 
 }

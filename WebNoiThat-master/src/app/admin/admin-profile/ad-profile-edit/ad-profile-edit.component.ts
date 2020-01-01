@@ -101,11 +101,13 @@ export class AdProfileEditComponent implements OnInit {
       console.log(data);
     }, error => console.log(error));
 
-    Swal.fire(
-      'Đã cập nhật!',
-      'Dữ liệu đã được cập nhật.',
-      'success'
-    );
+    
+    Swal.fire({
+      icon: 'success',
+      title: 'Đã cập nhật!',
+      showConfirmButton: false,
+      timer: 1000
+    })
   }
 
 }

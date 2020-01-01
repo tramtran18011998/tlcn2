@@ -111,11 +111,13 @@ export class AdCategoryAddComponent implements OnInit {
           this.category.name = addForm.controls['name'].value;
           this.categoryService.createNew(this.category).subscribe(data => {
               console.log(data);
-              Swal.fire(
-                'Đã thêm!',
-                'Dữ liệu đã được thêm thành công.',
-                'success'
-              );  
+               
+              Swal.fire({
+                icon: 'success',
+                title: 'Dữ liệu đã được thêm thành công!',
+                showConfirmButton: false,
+                timer: 1000
+              })
             })
             addForm.reset();
             this.router.navigate(['/admin/adcategory']);

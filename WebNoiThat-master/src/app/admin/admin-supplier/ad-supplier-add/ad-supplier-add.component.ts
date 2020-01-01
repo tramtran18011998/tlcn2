@@ -33,11 +33,13 @@ export class AdSupplierAddComponent implements OnInit {
     
     this.supplierService.createNew(this.addForm.value).subscribe(data => {
       console.log(data);
-      Swal.fire(
-        'Đã thêm!',
-        'Dữ liệu đã được thêm thành công.',
-        'success'
-      );  
+       
+      Swal.fire({
+        icon: 'success',
+        title: 'Đã thêm!',
+        showConfirmButton: false,
+        timer: 1000
+      })
     })
     addForm.reset();
 

@@ -63,11 +63,13 @@ export class AdReceiptEditComponent implements OnInit {
 
     this.receiptService.update(this.id,this.receipt).subscribe(data=>{
       console.log(data);
-      Swal.fire(
-        'Đã cập nhật!',
-        'Dữ liệu đã được cập nhật.',
-        'success'
-      );      
+      
+      Swal.fire({
+        icon: 'success',
+        title: 'Đã cập nhật!',
+        showConfirmButton: false,
+        timer: 1000
+      })    
     },error=>console.log(error));
   }
 

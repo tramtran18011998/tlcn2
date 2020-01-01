@@ -75,11 +75,13 @@ export class AdminCategoryComponent implements OnInit {
           console.log(data);
           this.getListCategory();
         });
-        Swal.fire(
-          'Đã xóa!',
-          'Dữ liệu đã xóa.',
-          'success'
-        );
+        
+        Swal.fire({
+          icon: 'success',
+          title: 'Dữ liệu đã xóa!',
+          showConfirmButton: false,
+          timer: 1000
+        })
       }
     });
     

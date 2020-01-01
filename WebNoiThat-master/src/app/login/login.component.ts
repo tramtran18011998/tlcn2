@@ -88,20 +88,25 @@ export class LoginComponent implements OnInit {
 
         })
 
-        Swal.fire(
-          'Đăng nhập thành công!',
-          'success'
-        );  
+        Swal.fire({
+          icon: 'success',
+          title: 'Đăng nhập thành công!',
+          showConfirmButton: false,
+          timer: 1000
+        })
+        
       },
       error => {
         console.log(error);
         this.errorMessage = error.error.message;
         this.isLoginFailed = true;
-        Swal.fire(
-          'Lỗi đăng nhập!',
-          'Mời bạn kiểm tra lại email, password.',
-          'error'
-        );
+        
+        Swal.fire({
+          icon: 'error',
+          title: 'Mời bạn kiểm tra lại email, password',
+          showConfirmButton: false,
+          timer: 1000
+        })
       }
     );
 
@@ -129,10 +134,14 @@ export class LoginComponent implements OnInit {
     this.userService.signup(this.signupRequest).subscribe(
       (data) => {
         console.log(data);
-        Swal.fire(
-          'Đăng kí thành công!',
-          'success'
-        ); 
+        
+        Swal.fire({
+          
+          icon: 'success',
+          title: 'Đăng kí thành công!',
+          showConfirmButton: false,
+          timer: 1000
+        })
 
         formSignup.reset();
         location.reload();
@@ -141,11 +150,13 @@ export class LoginComponent implements OnInit {
         console.log(error);
         this.errorMessage = error.error.message;
         this.isLoginFailed = true;
-        Swal.fire(
-          'Email đã tồn tại!',
-          'Mời bạn đăng kí lại.',
-          'error'
-        );
+        
+        Swal.fire({
+          icon: 'error',
+          title: 'Email đã tồn tại!',
+          showConfirmButton: false,
+          timer: 1000
+        })
       }
     );
 
@@ -187,19 +198,24 @@ export class LoginComponent implements OnInit {
       console.log(this.userPass);
       
       this.customerService.updateUserPass(this.resetPassword.controls['email'].value, this.resetPassword.controls['password'].value).subscribe(data => {
-        Swal.fire(
-          'Đổi mật khẩu thành công!',
-          'success'
-        ); 
+        
+        Swal.fire({
+          icon: 'success',
+          title: 'Đổi mật khẩu thành công!',
+          showConfirmButton: false,
+          timer: 1000
+        })
       },error => {
         console.log(error);
         this.errorMessage = error.error.message;
         this.isLoginFailed = true;
-        Swal.fire(
-          'Kiểm tra lại email',
-          'Lỗi xảy ra',
-          'error'
-        );
+        
+        Swal.fire({
+          icon: 'error',
+          title: 'Kiểm tra lại email',
+          showConfirmButton: false,
+          timer: 1000
+        })
       });
     }
 
