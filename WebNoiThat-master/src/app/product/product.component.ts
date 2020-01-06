@@ -206,25 +206,18 @@ export class ProductComponent implements OnInit {
 
   getListByCate(id: number){
     this.productService.getListByCate(id).subscribe(data =>{
-      this.products = data;
-        
-        this.imgname = [];
-  
-        var b =[];
-        var a: number;
-        for(let i=0; i<this.products.length; i++){
-          console.log('ttt:', this.products[i].id);
-          b.push(this.products[i].id);
-          a= this.products[i].id;
-          //console.log('a=',b);
-          this.productService.getProductImgByProductIdLimit(a).subscribe(data1 => {
-            console.log('tt1:', this.products[i].id);
-            //console.log('bb:', b);
-            this.productImg = data1;
-            console.log(this.productImg.name);          
-            this.imgname.push(this.productImg.name)  ;        
-          })                    
-        }
+      this.products2 = [...data];
+        if(data)
+        this.products =[];
+        this.imgname =[];
+          for(let i=this.products2[0].id; i<this.products2.length + this.products2[0].id; i++){
+               this.productService.getProductImgByProductIdLimit(i).subscribe( data1 => {
+              if(i === data1.product.id)
+              {
+                this.products.push(data1.product);
+                this.imgname.push(data1.name);   }
+            })                    
+          }
     })
   }
 
