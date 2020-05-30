@@ -20,12 +20,12 @@
         <tbody *ngFor="let cart of carts">
             <tr>
                 <th scope="row">{{cart.productname}}</th>
-                <td style="text-align: right;">{{cart.price}}</td>
+                <td style="text-align: right;">{{cart.price | number:'1.0-2'}}</td>
                 <td >
                     <input style="margin: auto;width: 30%;" type="number" min="1" max="{{sl}}" [(ngModel)]="cart.quantity" 
                     class="form-control" (input)="onSearchChange($event.target.value,cart.id)" >
                 </td>
-                <td style="text-align: right;">{{cart.totalprice}}</td>
+                <td style="text-align: right;">{{cart.totalprice | number:'1.0-2'}}</td>
                 <td>
                     <button (click)="delete(cart.id)" class="btn btn-success " type="submit">X</button>
                 </td>
@@ -62,11 +62,11 @@
                 <table class="table table-bordered">
                     <tr>
                         <td><strong>Subtotal:</strong></td>
-                        <td>{{subtotal}}</td>
+                        <td>{{subtotal | number:'1.0-2'}}</td>
                     </tr>
                     <tr>
                         <td><strong>Total:</strong></td>
-                        <td>{{total}}</td>
+                        <td>{{total | number:'1.0-2'}}</td>
                     </tr>
                 </table>
                 <button (click)="submitInvoice()" class="btn btn-success" id="pay" type="submit">Thanh toán</button>

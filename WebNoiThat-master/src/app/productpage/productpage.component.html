@@ -24,8 +24,8 @@
         </div>
         <div class="col-12 col-md-6" style="padding-left: 60px;padding-top: 20px;">
             <h3>{{product.name}}</h3>
-            <h5>Giá  : {{product.price}} VNĐ</h5>
-            <h5 style="color: red; font-weight: bold;">Giá giảm : {{product.discountPrice}} VNĐ</h5>
+            <h5>Giá  : {{product.price | number:'1.0-2'}} VNĐ</h5>
+            <h5 style="color: red; font-weight: bold;">Giá giảm : {{product.discountPrice | number:'1.0-2'}} VNĐ</h5>
             <h6 style="font-weight: bold;margin-bottom: 10px;">Chất liệu : {{product.material}}</h6>
             <h6 style="font-weight: bold;margin-bottom: 10px;">Màu sắc : {{product.color}}</h6>
             <h6 style="font-weight: bold;margin-bottom: 10px;">Kích thước : {{product.size}}</h6>

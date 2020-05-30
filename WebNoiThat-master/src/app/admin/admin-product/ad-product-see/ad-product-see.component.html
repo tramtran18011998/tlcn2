@@ -60,11 +60,11 @@
                 </tr>
                 <tr>
                     <td style="width: 30%;">Giá:</td>
-                    <td>{{product.price}}</td>
+                    <td>{{product.price  | number:'1.0-2'}}</td>
                 </tr>
                 <tr>
                     <td style="width: 30%;">Giá giảm: </td>
-                    <td>{{product.discountPrice}}</td>
+                    <td>{{product.discountPrice  | number:'1.0-2'}}</td>
                 </tr>
                 <tr>
                     <td style="width: 30%;"> Chất liệu : </td>
@@ -80,7 +80,7 @@
                 </tr>
                 <tr>
                     <td style="width: 30%;">Số lượng :</td>
-                    <td>{{product.quantity}}</td>
+                    <td>{{product.quantity  | number:'1.0-2'}}</td>
                 </tr>
                 <tr>
                     <td style="width: 30%;">Loại sản phẩm :</td>

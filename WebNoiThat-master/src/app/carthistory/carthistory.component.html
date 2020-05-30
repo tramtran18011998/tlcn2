@@ -25,7 +25,7 @@
 
             <ng-container matColumnDef="total">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Thành tiền </th>
-                <td mat-cell *matCellDef="let element"> {{element.total}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.total | number:'1.0-2'}} </td>
             </ng-container>
 
             <ng-container matColumnDef="choose">
@@ -75,9 +75,9 @@
                                 <tr *ngFor="let invoiceprodetail of invoiceprodetails">
             
                                     <td>{{invoiceprodetail.product.name}}</td>
-                                    <td>{{invoiceprodetail.price}}</td>
+                                    <td>{{invoiceprodetail.price | number:'1.0-2'}}</td>
                                     <td>{{invoiceprodetail.quantity}}</td>
-                                    <td>{{invoiceprodetail.totalprice}}</td>
+                                    <td>{{invoiceprodetail.totalprice | number:'1.0-2'}}</td>
                                     
                                 </tr>
             
