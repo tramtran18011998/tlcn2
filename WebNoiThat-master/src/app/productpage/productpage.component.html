@@ -6,44 +6,318 @@
         <li class="breadcrumb-item active" aria-current="page">Chi tiết sản phẩm</li>
     </ol>
 </nav>
-<div class="container">
-    <div class="row">
-        <div class="col-2 col-md-1" >
-            <div class="img-product" *ngFor="let productImg of productImgs; let i = index">
-                <img src="http://localhost:8080/api/productimage/{{productImg.name}}"  (click)="ImageClick(productImg.name)" style="cursor: pointer">
+<div class="wrapper">
+    <div class="container">
+        <div class="product-img">
+            <div class="big-img">
+                <img src="http://localhost:8080/api/productimage/{{currentImg}}"
+                    alt="hinhsanpham" id="current-img">
             </div>
-            
+            <div class="mini-img">
+                <img *ngFor="let productImg of productImgs; let i = index"
+                src="http://localhost:8080/api/productimage/{{productImg.name}}"  (click)="ImageClick(productImg.name)" style="cursor: pointer"
+                    alt="hinhsanpham" >
+            </div>
         </div>
+        <div class="product-basic-info" id="zoom-zone">
+            <h2>{{product.name}}</h2>
+            <div class="product-price">
+                <div class="original-price">{{product.price | number:'1.0-2'}} VNĐ</div>
+                <div class="sale-price">{{product.discountPrice | number:'1.0-2'}} VNĐ</div>
 
-        <div class="col-10 col-md-5">
-            <div class="product-image">
-                <div class="row img-show">
-                    <img src="http://localhost:8080/api/productimage/{{currentImg}}">
+            </div>
+            <h4>Mô tả</h4>
+            <p>{{product.description}}</p>
+            <div class="number-picker">
+                <p>Số lượng</p>
+                <input type="number" min="1" max="{{product.quantity}}" placeholder="1" [(ngModel)]="quantity" 
+                class="form-control" (input)="onSearchChange($event.target.value)">
+                <p>Hiện có 10 sản phẩm</p>
+            </div>
+            <div class="add-to-cart">
+                <button (click)="addCart()" class="add-btn"><i class="fas fa-cart-plus"></i> Thêm Vào Giỏ Hàng</button>
+                <button class="buy-btn">Mua ngay</button>
+            </div>
+            <div class="marketing">
+                <div><i class="fas fa-check-circle"></i> Hàng chính hãng 100%</div>
+                <div><i class="fas fa-truck-moving"></i> Giao hàng siêu tốc trên cả nước chỉ trong vòng 7 ngày</div>
+            </div>
+        </div>
+    </div>
+    <div class="container1">
+        <h3>Chi tiết sản phẩm</h3>
+        <div class="table-info">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Thương hiệu</td>
+                        <td>{{product.supplier}}</td>
+                    </tr>
+                    <tr>
+                        <td>Chất liệu</td>
+                        <td>{{product.material}}</td>
+                    </tr>
+                    <tr>
+                        <td>Màu sắc</td>
+                        <td>{{product.color}}</td>
+                    </tr>
+                    <tr>
+                        <td>Kích thước</td>
+                        <td>{{product.size}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="container1">
+        <h3 style="margin-bottom: 20px;">Các sản phẩm khác</h3>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="product-card">
+                                <img src="https://media3.scdn.vn/img2/2018/8_27/ipgR10_simg_de2fe0_500x500_maxb.jpg"
+                                    class="d-block w-100" alt="suggest-img">
+                                <div class="product-name">
+                                    <p>Bàn ăn</p>
+                                </div>
+                                <div class="product-price">
+                                    <p>100.000 VND</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="product-card">
+                                <img src="https://media3.scdn.vn/img2/2018/8_27/ipgR10_simg_de2fe0_500x500_maxb.jpg"
+                                    class="d-block w-100" alt="suggest-img">
+                                <div class="product-name">
+                                    <p>Bàn ăn</p>
+                                </div>
+                                <div class="product-price">
+                                    <p>100.000 VND</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="product-card">
+                                <img src="https://media3.scdn.vn/img2/2018/8_27/ipgR10_simg_de2fe0_500x500_maxb.jpg"
+                                    class="d-block w-100" alt="suggest-img">
+                                <div class="product-name">
+                                    <p>Bàn ăn</p>
+                                </div>
+                                <div class="product-price">
+                                    <p>100.000 VND</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="product-card">
+                                <img src="https://media3.scdn.vn/img2/2018/8_27/ipgR10_simg_de2fe0_500x500_maxb.jpg"
+                                    class="d-block w-100" alt="suggest-img">
+                                <div class="product-name">
+                                    <p>Bàn ăn</p>
+                                </div>
+                                <div class="product-price">
+                                    <p>100.000 VND</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="product-card">
+                                <img src="https://media3.scdn.vn/img2/2018/8_27/ipgR10_simg_de2fe0_500x500_maxb.jpg"
+                                    class="d-block w-100" alt="suggest-img">
+                                <div class="product-name">
+                                    <p>Bàn ăn</p>
+                                </div>
+                                <div class="product-price">
+                                    <p>100.000 VND</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="product-card">
+                                <img src="https://media3.scdn.vn/img2/2018/8_27/ipgR10_simg_de2fe0_500x500_maxb.jpg"
+                                    class="d-block w-100" alt="suggest-img">
+                                <div class="product-name">
+                                    <p>Bàn ăn</p>
+                                </div>
+                                <div class="product-price">
+                                    <p>100.000 VND</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="product-card">
+                                <img src="https://media3.scdn.vn/img2/2018/8_27/ipgR10_simg_de2fe0_500x500_maxb.jpg"
+                                    class="d-block w-100" alt="suggest-img">
+                                <div class="product-name">
+                                    <p>Bàn ăn</p>
+                                </div>
+                                <div class="product-price">
+                                    <p>100.000 VND</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="product-card">
+                                <img src="https://media3.scdn.vn/img2/2018/8_27/ipgR10_simg_de2fe0_500x500_maxb.jpg"
+                                    class="d-block w-100" alt="suggest-img">
+                                <div class="product-name">
+                                    <p>Bàn ăn</p>
+                                </div>
+                                <div class="product-price">
+                                    <p>100.000 VND</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="product-card">
+                                <img src="https://media3.scdn.vn/img2/2018/8_27/ipgR10_simg_de2fe0_500x500_maxb.jpg"
+                                    class="d-block w-100" alt="suggest-img">
+                                <div class="product-name">
+                                    <p>Bàn ăn</p>
+                                </div>
+                                <div class="product-price">
+                                    <p>100.000 VND</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="product-card">
+                                <img src="https://media3.scdn.vn/img2/2018/8_27/ipgR10_simg_de2fe0_500x500_maxb.jpg"
+                                    class="d-block w-100" alt="suggest-img">
+                                <div class="product-name">
+                                    <p>Bàn ăn</p>
+                                </div>
+                                <div class="product-price">
+                                    <p>100.000 VND</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="product-card">
+                                <img src="https://media3.scdn.vn/img2/2018/8_27/ipgR10_simg_de2fe0_500x500_maxb.jpg"
+                                    class="d-block w-100" alt="suggest-img">
+                                <div class="product-name">
+                                    <p>Bàn ăn</p>
+                                </div>
+                                <div class="product-price">
+                                    <p>100.000 VND</p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-3">
+                            <div class="product-card">
+                                <img src="https://media3.scdn.vn/img2/2018/8_27/ipgR10_simg_de2fe0_500x500_maxb.jpg"
+                                    class="d-block w-100" alt="suggest-img">
+                                <div class="product-name">
+                                    <p>Bàn ăn</p>
+                                </div>
+                                <div class="product-price">
+                                    <p>100.000 VND</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <div class="container1">
+        <h3>Bình luận</h3>
+        <div class="my-comment">
+            <textarea name="binhluan" cols="30" rows="10"
+                placeholder=" Viết nhận xét của bạn về sản phẩm này"></textarea>
+            <button>Bình luận</button>
+        </div>
+        <div class="comment-group">
+            <div class="one-comment">
+                <div class="user">
+                    <img src="https://avatarfiles.alphacoders.com/109/thumb-109784.png" alt="user-avatar">
+                    <p>Tên user</p>
+                </div>
+                <div class="comment-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel fugiat asperiores aspernatur
+                        iure molestias! Culpa eveniet dolor, id, illo doloribus expedita eligendi deserunt cum aut
+                        iusto dolores nesciunt, cumque obcaecati.</p>
+                    <div class="reply">
+                        <a href="#">Trả lời</a>
+                    </div>
+                </div>
+            </div>
+            <div class="one-comment">
+                <div class="user">
+                    <img src="https://avatarfiles.alphacoders.com/109/thumb-109784.png" alt="user-avatar">
+                    <p>Tên user</p>
+                </div>
+                <div class="comment-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel fugiat asperiores aspernatur
+                        iure molestias! Culpa eveniet dolor, id, illo doloribus expedita eligendi deserunt cum aut
+                        iusto dolores nesciunt, cumque obcaecati.</p>
+                    <div class="reply">
+                        <a href="#">Trả lời</a>
+                    </div>
+                </div>
+            </div>
+            <div class="one-comment">
+                <div class="user">
+                    <img src="https://avatarfiles.alphacoders.com/109/thumb-109784.png" alt="user-avatar">
+                    <p>Tên user</p>
+                </div>
+                <div class="comment-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel fugiat asperiores aspernatur
+                        iure molestias! Culpa eveniet dolor, id, illo doloribus expedita eligendi deserunt cum aut
+                        iusto dolores nesciunt, cumque obcaecati.</p>
+                    <div class="reply">
+                        <a href="#">Trả lời</a>
+                    </div>
+                </div>
+            </div>
+            <div class="one-comment">
+                <div class="user">
+                    <img src="https://avatarfiles.alphacoders.com/109/thumb-109784.png" alt="user-avatar">
+                    <p>Tên user</p>
+                </div>
+                <div class="comment-content">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel fugiat asperiores aspernatur
+                        iure molestias! Culpa eveniet dolor, id, illo doloribus expedita eligendi deserunt cum aut
+                        iusto dolores nesciunt, cumque obcaecati.</p>
+                    <div class="reply">
+                        <a href="#">Trả lời</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-6" style="padding-left: 60px;padding-top: 20px;">
-            <h3>{{product.name}}</h3>
-            <h5>Giá  : {{product.price | number:'1.0-2'}} VNĐ</h5>
-            <h5 style="color: red; font-weight: bold;">Giá giảm : {{product.discountPrice | number:'1.0-2'}} VNĐ</h5>
-            <h6 style="font-weight: bold;margin-bottom: 10px;">Chất liệu : {{product.material}}</h6>
-            <h6 style="font-weight: bold;margin-bottom: 10px;">Màu sắc : {{product.color}}</h6>
-            <h6 style="font-weight: bold;margin-bottom: 10px;">Kích thước : {{product.size}}</h6>
-            <h6 style="font-weight: bold;margin-bottom: 10px;">Mô tả  :</h6>
-            <p>{{product.description}}</p>
-            <div class="input-group mb-3" style="width:120px">
-                
-                <input style="margin: auto;width: 30%;" type="number" min="1" max="{{product.quantity}}" placeholder="1" [(ngModel)]="quantity" 
-                    class="form-control" (input)="onSearchChange($event.target.value)" >
-                
-            </div>
-            <button (click)="addCart()" class="btn btn-success" id="them-vao-gio-hang">Thêm vào giỏ</button>
-
-        </div>
-
-
     </div>
-    
 </div>
 
 <app-footer></app-footer>

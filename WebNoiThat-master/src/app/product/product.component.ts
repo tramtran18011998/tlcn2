@@ -237,7 +237,7 @@ export class ProductComponent implements OnInit {
   }
 
   onOptionsSelected(value: number){
-    // console.log("nani");
+    console.log("nani");
     this.intSelect = value;
     console.log(this.intSelect);
     this.getProductList();
