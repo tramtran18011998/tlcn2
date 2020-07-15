@@ -2,104 +2,106 @@
 <app-header></app-header>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+        <li class="breadcrumb-item"><a routerLink="/">Trang chủ</a></li>
         <li class="breadcrumb-item active" aria-current="page">Sản phẩm</li>
     </ol>
 </nav>
-<div class="container">
-    <div class="row">
-        <div class="col-md-3 col-12">
+<div class="wrapper">
+    <div class="container">
+        <div class="sidebar">
             <h3>Danh mục</h3>
-            <div class="list-group">
-                <div *ngFor="let categoryType of categoryTypes">
-                    <div class="dropdown-container">
-                        <a class="list-group-item list-group-item-action"
-                            (click)="getCateByType(categoryType.id)">{{categoryType.name}}
-
-                        </a>
-                    </div>
-
-                </div>
-
-            </div>
-            <h3 class="line">Loại</h3>
-            <div class="note-price">
-                <p>---------------</p>
-            </div>
-            <div class="list-group">
-                <div *ngFor="let category of categories">
-                    <div class="dropdown-container">
-                        <a style="margin-right: 20%;width: 80%;" class="list-group-item list-group-item-action"
-                        (click)="getListByCate(category.id)" >{{category.name}}
-
-                        </a>
-                    </div>
-
-                </div>
-
-            </div>
             <div class="line"></div>
+            <ul>
+                <li *ngFor="let categoryType of categoryTypes">
+                    <a (click)="getCateByType(categoryType.id)">{{categoryType.name}}</a>
+                </li>
+            </ul>
+            <div class="line"></div>
+            <h3>Giá</h3>
+            <div class="line"></div>
+            <div class="price">
+                <input type="text" name="giathap" placeholder=" Từ">
+                <div>—</div>
+                <input type="text" name="giacao" placeholder=" Đến">
+            </div>
+            <!-- <button type="button" class="btn btn-outline-primary">OK</button> -->
+            <button mat-raised-button color="warn">OK</button>
+            <div class="line"></div>
+            <h3>Thương hiệu</h3>
+            <div class="line"></div>
+            <ul>
+                <li><a href="#">Samsung</a></li>
+                <li><a href="#">Samsung</a></li>
+                <li><a href="#">Samsung</a></li>
+                <li><a href="#">Samsung</a></li>
+                <li><a href="#">Samsung</a></li>
+                <li><a href="#">Samsung</a></li>
+            </ul>
         </div>
-        <div class="col-md-9 col-12">
-            <h3>Sản phẩm</h3>
-            <div class="alert alert-secondary" role="alert">
-                <div class="row">
-                    <div class="col-6">
-                        <select style="width: 210px;" class="form-control" name="item"  #mySelectType
+        <div class="products">
+            <div class="filter">
+                <div style="margin-left: 20px;">Sắp xếp theo</div>
+                <button class="filter-btn" (click)="onOptionsSelected(1)">Phổ biến</button>
+                <button class="filter-btn">Mới nhất</button>
+                <button class="filter-btn">Bán chạy</button>
+                <div class="dropdown">
+                    <!-- <div class="price">
+                        <button style="width:200px">Giá
+                            <i class="fas fa-angle-down" aria-hidden="true"></i></button>
+                        <ul>
+                            <li *ngFor="let item of items " [value]="item.id">
+                                <a>{{item.name}}</a>
+                            </li>
+                            <li><a>Giá: Cao đến Thấp</a></li>
+                        </ul>
+                    </div> -->
+                    <select style="width: 200px; height: 30px;" class="form-control" name="item"  #mySelectType
                             (change)='onOptionsSelected(mySelectType.value)' id="item">
                             <option *ngFor="let item of items " [value]="item.id">
                                 {{item.name}}
                             </option>
-                        </select>
-                       
-                    </div>
-                    <div class="col-6">
-                    <form [formGroup]="searchF" (ngSubmit)="onSubmitSearch(searchF)">
-                        <div class="row">
-                            <div class="col-8 seach-product">
-                                <input class="form-control" type="text"  formControlName="name" id="name"
-                                name="name" placeholder="Tìm kiếm" aria-label="Search">
-                            </div>
-                            <div class="col-4" style="margin-left: -20px;">
-                                <button class="btn btn-dark my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-                            </div>
-                        </div>
-                        
-                    </form>
+                    </select>
                 </div>
+                <div class="searchproduct">
+                    <input type="text" placeholder=" Tìm kiếm">
+                    <button>Tìm kiếm</button>
                 </div>
             </div>
-
-            <div class="row" >
-                <div class="col-md-4 col-sm-6 col-12" *ngFor="let product of products; let i = index">
-                    <div class="product-img">
-                        <a routerLink="/productdetail"(click)="detail(product.id)">
-                            <img style="width: 200px;height: 200px; margin: 0;padding: 0; margin-bottom: 10px;width: 100%;"  
-                            src="http://localhost:8080/api/productimage/{{imgname[i]}}"></a>
+            <div class="product-list">
+                <div class="product-row">
+                    <div class="product-card" *ngFor="let product of products; let i=index">
+                        <img routerLink="/productdetail"(click)="detail(product.id)" src="http://localhost:8080/api/productimage/{{imgname[i]}}"
+                            alt="product">
+                        <!-- <div class="addtocard-btn">
+                            <button (click)="detail(product.id)">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button>
+                                <i class="fas fa-heart"></i>
+                            </button>
+                            <button>
+                                <i class="fas fa-cart-arrow-down"></i>
+                            </button>
+                        </div> -->
                         
-                    </div>
-                    <div class="product-info">
-                        <div class="row">
-                            <div class="col-6 product-name">
-                                <p>{{product.name}}</p>
-                            </div>
-                            <div class="col-6 product-price">
-                                <strong>{{product.discountPrice | number:'1.0-2'}}</strong>
-                            </div>
+                        <div class="product-name">
+                            <p>{{product.name}}</p>
                         </div>
-
+                        <div class="product-price">
+                            <p>{{product.price | number:'1.0-2'}}</p>
+                        </div>
+                        <div class="product-price-discount">
+                            <p>{{product.discountPrice | number:'1.0-2'}}</p>
+                        </div>
+                        <button class="add-to-cart" (click)="detail(product.id)">Thêm vào giỏ</button>
                     </div>
                 </div>
-                
             </div>
-           
             <mat-paginator [length]="totalProduct" [pageSize]="productsPerPage" 
                     (page)="onChangedPage($event)">
                 </mat-paginator>
             
- 
         </div>
-
     </div>
 </div>
 <app-footer></app-footer>

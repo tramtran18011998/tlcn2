@@ -83,14 +83,14 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Page<Product> findAllByPriceAsc(Pageable pageable, int pageNum) {
-        pageable= PageRequest.of(pageNum,6, Sort.by("discountPrice").ascending());
+        pageable= PageRequest.of(pageNum,8, Sort.by("discountPrice").ascending());
         Page<Product> page = productRepository.findAll(pageable);
         return page;
     }
 
     @Override
     public Page<Product> findAllByPriceDesc(Pageable pageable, int pageNum) {
-        pageable= PageRequest.of(pageNum,6, Sort.by("discountPrice").descending());
+        pageable= PageRequest.of(pageNum,8, Sort.by("discountPrice").descending());
         Page<Product> page = productRepository.findAll(pageable);
         //page.c
         //page.map(a -> a)
@@ -101,7 +101,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Page<Product> findAll(Pageable pageable, int pageNum) {
-        pageable= PageRequest.of(pageNum,6);
+        pageable= PageRequest.of(pageNum,8);
         Page<Product> page = productRepository.findAll(pageable);
         return page;
     }

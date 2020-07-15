@@ -45,6 +45,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSliderModule} from '@angular/material/slider';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
+import {MatButtonModule} from '@angular/material/button';
 
 import { ProfileComponent } from './profile/profile.component';
 import { AdminCategoryComponent } from './admin/admin-category/admin-category.component';
@@ -125,7 +126,8 @@ import { CarthistoryComponent } from './carthistory/carthistory.component';
     MatSortModule,
     MatFormFieldModule, 
     MatInputModule,
-    MatCarouselModule
+    MatCarouselModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

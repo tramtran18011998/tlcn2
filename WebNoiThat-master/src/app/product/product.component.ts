@@ -9,6 +9,8 @@ import { ProductService } from '../corecontrol/services/product.service';
 import { ProductImage } from '../corecontrol/models/productimage';
 
 import { MatPaginator } from '@angular/material/paginator';
+import {MatButtonModule} from '@angular/material/button';
+
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { async } from '@angular/core/testing';
@@ -22,7 +24,7 @@ export class ProductComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   totalProduct: number;
-  productsPerPage = 6;
+  productsPerPage = 8;
   pageIn : number;
   intSelect: number = 1;
 
@@ -235,7 +237,7 @@ export class ProductComponent implements OnInit {
   }
 
   onOptionsSelected(value: number){
-
+    // console.log("nani");
     this.intSelect = value;
     console.log(this.intSelect);
     this.getProductList();

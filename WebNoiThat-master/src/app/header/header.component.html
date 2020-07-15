@@ -1,5 +1,5 @@
 <!--Header-->
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row header-content">
         <div class="header-logo col-sm-5 col-md-9">
             <a  routerLink="/"><img src="assets/image/logo.png">Webnoithat</a>
@@ -7,15 +7,28 @@
         <div class="form-inline col-sm-7 col-md-3">
             <input class="form-control search-header" style="width: 86%;" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-dark my-2 my-sm-0 btn-search-header" type="submit"><i class="fa fa-search"></i></button>
-
-            <!-- <button class="btn btn-dark" style="margin-left: 5px; width: 12%;" (click)="logout()" type="submit"><i
-                class="fa fa-sign-out"></i></button> -->
         </div>
     
     </div>
+</div> -->
+<div class="header-content">
+    <div class="logo">
+        <a routerLink="/">Webnoithat</a>
+    </div>
+    <div class="sign-in-up">
+        <div *ngIf="!checkLogin; else showCustomer">
+            <a routerLink="/login">Đăng nhập</a>
+            <a href="#">Đăng ký</a>
+        </div>
+        <ng-template #showCustomer>
+            mlem mlem
+        </ng-template>
+
+
+    </div>
 </div>
 <!--Thanh Navbar-->
-<div class="navbar">
+<!-- <div class="navbar">
     <ul>
         <li><a routerLink="/">Trang chủ</a></li>
         <li><a routerLink="/product">Sản phẩm</a></li>
@@ -45,4 +58,39 @@
             
         </li>
     </ul>
+</div> -->
+<div class="menu">
+    <nav class="nav-bar">
+        <ul>
+            <li><a routerLink="/">Trang chủ</a></li>
+            <li><a routerLink="/product">Sản phẩm</a></li>
+            <li><a routerLink="/about">Phụ kiện</a></li>
+            <li><a routerLink="/about">Giới thiệu</a></li>
+            <li><a routerLink="/contact">Liên hệ</a></li>
+        </ul>
+    </nav>
+    <div class="searchbar">
+        <input type="text" placeholder=" Tìm kiếm">
+        <button class="iconsearch">
+            <i class="fas fa-search" aria-hidden="true"></i>
+        </button>
+        <div class="cart" >
+            <!-- <div *ngIf="!quantitycart;else showCart">
+                <i class="fas fa-shopping-cart"></i>
+                <div class="cart-number">0</div>
+            </div>
+            <ng-template #showCart>
+
+            </ng-template> -->
+            <ng-template [ngIf]="!quantitycart" [ngIfElse]="showCart"]>
+                <i class="fas fa-shopping-cart"></i>
+                <div class="cart-number">0</div>
+            </ng-template>
+            <ng-template #showCart>
+                Mlem
+            </ng-template>
+            
+
+        </div>
+    </div>
 </div>

@@ -2,35 +2,153 @@
 
 .footer-content {
     margin-top: 30px;
-    display: block;
     position: relative;
+    background: url('https://mir-s3-cdn-cf.behance.net/project_modules/fs/3beb4732976653.569b6aabdba18.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #ffffff;
+    padding: 50px;
+    flex-wrap: wrap;
+}
+.footer-content a{
+    text-decoration: none;
+    color: #ffffff;
+}
+.footer-content a:hover{
+    text-decoration: none;
+    color: #ffffff;
+}
+.footer-content .info{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+}
+.footer-content .communicate a i{
+    font-size: 30px;
+    margin: 10px;
+}
+.footer-content .communicate .icon-com{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer-content .communicate {
+    align-self: flex-start;
 }
 
-.footer-content .container-fluid {
-    position: absolute;
-    /* left: 5px; */
-    top: 70px;
-    color: white;
+@media (min-width: 360px){
+    
+    .wrapper .container .products .filter .searchproduct input[type="text"]{
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    .menu .searchbar input[type="text"]{
+        display: none;
+    }
+    .menu .searchbar .iconsearch {
+        display: none;
+    }
+    .menu .nav-bar {
+        flex:5;
+    }
+    .menu .nav-bar ul li a{
+        font-size: 12px;
+    }
+    .footer-content .info a{
+        text-align: center;
+    }
+    .footer-content .contact{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* for chi tiết sản phẩm */
+    .container{
+        flex-direction: column;
+    }
+    .wrapper .container .product-img .big-img img{
+        width: 100%;
+        height: 100%;
+    }
+    .wrapper .container .product-basic-info h2{
+        text-align: center;
+    }
+    .wrapper .container .product-basic-info .product-price .sale-price {
+        flex: 1;
+    }
+    .wrapper .container .product-basic-info {
+        padding-left: 10px;
+    }
+    .wrapper .container .product-basic-info .number-picker input[type="number"]{
+        width: 100px;
+    }
+    .wrapper .container .product-basic-info .add-to-cart .add-btn{
+        margin-bottom: 10px;
+        margin-left: 10px;
+    }
+    .wrapper .container1 .comment-group .one-comment .comment-content{
+        padding-left: 10px;
+    }
+    .wrapper .container .product-basic-info h4{
+        text-align: center;
+    }
 }
 
-.footer-title {
-    text-align: center;
-}
+@media (min-width: 768px){
 
-.form-row {
-    margin-bottom: 5px;
-}
-
-textarea.form-control {
-    margin-bottom: 5px;
-}
-
-.send-contact form input {
-    background-color: rgba(255, 255, 255, 0.6);
-    transition: all 0.5s;
-}
-
-.send-contact form textarea {
-    background-color: rgba(255, 255, 255, 0.6);
-    transition: all 0.5s;
+    .menu .searchbar input[type="text"]{
+        opacity: 1;
+    }
+    .menu .searchbar .iconsearch {
+        opacity: 1;
+    }
+    .menu .nav-bar {
+        flex:1;
+    }
+    .menu .nav-bar ul li a{
+        font-size: 1rem;
+    }
+    .menu .searchbar input[type="text"]{
+        display: block;
+    }
+    .menu .searchbar .iconsearch {
+        display: block;
+    }
+    /* for trang chi tiết sản phẩm */
+    .container{
+        flex-direction: row;
+    }
+    .wrapper .container .product-img .big-img img{
+        max-width: 450px;
+        max-height: 450px;
+    }
+    .wrapper .container .product-basic-info h2{
+        text-align: start;
+    }
+    .wrapper .container .product-basic-info .product-price .sale-price {
+        flex: 3;
+    }
+    .wrapper .container .product-basic-info {
+        padding-left: 10px;
+    }
+    .wrapper .container .product-basic-info .number-picker input[type="number"]{
+        width: 100px;
+    }
+    .wrapper .container .product-basic-info .add-to-cart .add-btn{
+        margin-bottom: 0;
+        margin-left: 0;
+    }
+    .wrapper .container1 .comment-group .one-comment .comment-content{
+        padding-left: 10px;
+    }
+    .wrapper .container .product-basic-info h4{
+        text-align: start;
+    }
 }

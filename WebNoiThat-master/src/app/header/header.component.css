@@ -1,4 +1,4 @@
-.header-content {
+/* .header-content {
     padding: 5px 10px 5px 0px;
 }
 
@@ -53,4 +53,198 @@
 
 .navbar .nav-right {
     float: right;
+} */
+
+.header-content{
+    display: flex;
+    justify-content: space-between;
+    background-color: #0B0C10;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+}
+.header-content a:hover{
+    color: #ffffff;
+    text-decoration: none;
+}
+.header-content .logo{
+    font-size: 25px;
+    margin: 0 30px;
+}
+.header-content a{
+    color: #ffffff;
+}
+.header-content .sign-in-up {
+    margin: 0 30px;
+    font-size: 15px;
+
+}
+.header-content .sign-in-up a{
+    margin-left: 30px;
+}
+/* thanh navbar*/
+.menu .nav-bar{
+    /* float: left; */
+    background-color: #1F2833;
+    flex: 1;
+    height:40px ;
+}
+.menu .nav-bar ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    height: 40px;
+}
+.menu .nav-bar ul li{
+    flex: 1;
+    align-self: center;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.menu .nav-bar ul li a{
+    color: #ffffff;
+    font-weight: 500;
+    text-decoration: none;
+}
+.menu .nav-bar ul li:hover{
+    background-color: #1d7874;
+}
+.menu .searchbar{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex: 1;
+    
+}
+.menu .searchbar i{
+    color: #ffffff;
+    text-align: center;
+    cursor: pointer;
+}
+.menu .searchbar .iconsearch i{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.menu .searchbar .iconsearch{
+    background: #0B0C10;
+    height: 30px;
+    width: 30px;
+    border-radius: 3px;
+    position: relative;
+    border: none;
+}
+.menu .searchbar .cart {
+    margin: 0 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.menu .searchbar .cart .cart-number{
+    font-size: 12px;
+    padding: 3px;
+    margin-left: 3px;
+    background-color: red;
+    color: #ffffff;
+    border-radius: 9px;
+}
+.menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1F2833;
+    height: 40px;
+}
+@media (min-width: 360px){
+    
+    .wrapper .container .products .filter .searchproduct input[type="text"]{
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+    .menu .searchbar input[type="text"]{
+        display: none;
+    }
+    .menu .searchbar .iconsearch {
+        display: none;
+    }
+    .menu .nav-bar {
+        flex:5;
+    }
+    .menu .nav-bar ul li a{
+        font-size: 12px;
+    }
+    .footer-content .info a{
+        text-align: center;
+    }
+    .footer-content .contact{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* for Trang chủ */
+    .banner #carouselExampleIndicators{
+        height: auto;
+        width: auto;
+    }
+    .banner .right-banner{
+        display: none;
+    }
+    .wrapper .container .product-row{
+        flex-direction: column;
+    }
+    .wrapper .team .members{
+        flex-direction: column;
+    }
+    .wrapper .container h3{
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 768px){
+
+    .menu .searchbar input[type="text"]{
+        opacity: 1;
+    }
+    .menu .searchbar .iconsearch {
+        opacity: 1;
+    }
+    .menu .nav-bar {
+        flex:1;
+    }
+    .menu .nav-bar ul li a{
+        font-size: 1rem;
+    }
+    .menu .searchbar input[type="text"]{
+        display: block;
+    }
+    .menu .searchbar .iconsearch {
+        display: block;
+    }
+    /* for trang chủ */
+    .banner #carouselExampleIndicators{
+        width: 800px;
+        height: 400px;
+    }
+    .banner .right-banner{
+        display: flex;
+    }
+    .wrapper .container .product-row{
+        flex-direction: row;
+    }
+    .wrapper .team .members{
+        flex-direction: row;
+    }
+    .wrapper .container h3{
+        margin-left: 0;
+    }
 }
