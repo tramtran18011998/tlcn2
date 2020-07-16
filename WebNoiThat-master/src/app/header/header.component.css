@@ -14,6 +14,7 @@
     height: 50px;
 }
 
+
 .search-header {
     border-radius: 25px 0 0 25px;
 }
@@ -77,7 +78,10 @@
 .header-content .sign-in-up {
     margin: 0 30px;
     font-size: 15px;
-
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .header-content .sign-in-up a{
     margin-left: 30px;
@@ -247,4 +251,46 @@
     .wrapper .container h3{
         margin-left: 0;
     }
+}
+
+/* ACCCCCCCCOUNT */
+.account{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.account img{
+    border-radius: 30px;
+}
+.account p{
+    margin-bottom: 0;
+    margin-left: 10px;
+    color: #ffffff;
+}
+.account-menu button{
+    padding: 5px 10px;
+    margin-left: 5px;
+    background-color: #484a4d;
+    border-radius: 15px;
+    border: none;
+    
+}
+.account-menu button:focus{
+    outline: none;
+}
+.account-menu button i{
+    color: #ffffff;
+}
+.account-menu-content a{
+    display: block;
+    margin: 5px 0;
+}
+.account-menu-content{
+    position: absolute;
+    left: 10px;
+    top:40px;
+    background-color: #484a4d;
+    padding: 10px 25px 10px 0;
+    display: none;
+    z-index: 1;
 }

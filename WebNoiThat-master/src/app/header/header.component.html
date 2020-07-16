@@ -19,18 +19,30 @@
         <div *ngIf="!checkLogin; else showCustomer">
             <a routerLink="/login">Đăng nhập</a>
             <a href="#">Đăng ký</a>
+            
         </div>
         <ng-template #showCustomer>
-            mlem mlem
+            <div class="account">
+                <img src="assets/image/yeah.jpg" height="30px" width="30px">
+                <p>Phạm Gia Thịnh</p>
+            </div>
+            <div class="account-menu">
+                <button id="acc-menu"><i class="fas fa-caret-down"></i></button>
+                <div class="account-menu-content" id="accMenu">
+                    <a href="#">Trang cá nhân</a>
+                    <a href="#">Trang cá nhân</a>
+                    <a href="#">Thoát</a>
+                </div>
+            </div>
         </ng-template>
-        <li class="nav-right">
+        <!-- <li class="nav-right">
                    
             <div *ngIf="checkLogin">
                 <button class="btn btn-dark" style="background: fixed; margin-top: 7px;" (click)="logout()" type="submit"><i
                     class="fa fa-sign-out"></i></button>
             </div>
             
-        </li>
+        </li> -->
 
 
     </div>
