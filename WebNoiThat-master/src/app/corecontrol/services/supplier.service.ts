@@ -8,7 +8,7 @@ import {tap} from 'rxjs/operators'
 })
 export class SupplierService {
 
-  private baseUrl = 'http://localhost:8080/api/supplier';
+  private baseUrl = 'https://localhost:8443/api/supplier';
 
   private _refresh = new Subject<void>();
   private headers= new HttpHeaders({

@@ -32,7 +32,7 @@ export class OAuth2RedirectHandlerComponent implements OnInit {
           this.userService.getUserme().subscribe(data => {
             console.log(data);
           })
-          location.replace('');
+          // location.replace('');
         }
   });
 

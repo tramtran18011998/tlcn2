@@ -1,5 +1,6 @@
 package com.example.furniturewebdemo1.security.oauth2;
 
+import com.example.furniturewebdemo1.controller.ProductController;
 import com.example.furniturewebdemo1.exception.AppException;
 import com.example.furniturewebdemo1.exception.OAuth2AuthenticationProcessingException;
 import com.example.furniturewebdemo1.exception.ResourceNotFoundException;
@@ -11,6 +12,8 @@ import com.example.furniturewebdemo1.security.oauth2.user.OAuth2UserInfo;
 import com.example.furniturewebdemo1.security.oauth2.user.OAuth2UserInfoFactory;
 import com.example.furniturewebdemo1.service.CustomerService;
 import com.example.furniturewebdemo1.service.CustomerTypeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.AuthenticationException;
@@ -32,6 +35,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
     @Autowired
     private UserRepository userRepository;
 
+    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
     @Autowired
     RoleRepository roleRepository;
 
@@ -74,6 +78,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
             user = updateExistingUser(user, oAuth2UserInfo);
         } else {
             user = registerNewUser(oAuth2UserRequest, oAuth2UserInfo);
+            logger.error(user.getEmail());
             customer.setUser(user);
             customerService.save(customer);
 

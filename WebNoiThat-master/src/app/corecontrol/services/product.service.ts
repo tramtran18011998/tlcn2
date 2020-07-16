@@ -8,22 +8,22 @@ import {tap} from 'rxjs/operators';
 })
 export class ProductService {
 
-  private baseUrl = 'http://localhost:8080/api/product';
-  private urlImg = 'http://localhost:8080/api/productimg';
-  private urlImgList = 'http://localhost:8080/api/productimglist';
-  private urlImg2 = 'http://localhost:8080/api/productimgA';
+  private baseUrl = 'https://localhost:8443/api/product';
+  private urlImg = 'https://localhost:8443/api/productimg';
+  private urlImgList = 'https://localhost:8443/api/productimglist';
+  private urlImg2 = 'https://localhost:8443/api/productimgA';
 
-  private urlByType = 'http://localhost:8080/api/producttype';
+  private urlByType = 'https://localhost:8443/api/producttype';
 
-  private urlImgListLimit = 'http://localhost:8080/api/productimglistlimit';
-  private urltotal = 'http://localhost:8080/api/producttotal';
-  private urlPageAsc = 'http://localhost:8080/api/products/pageasc';
-  private urlPageDesc = 'http://localhost:8080/api/products/pagedesc';
-  private urlPage = 'http://localhost:8080/api/products/page';
-  private urlSearch = 'http://localhost:8080/api/products/search';
-  private urlBestSeller = 'http://localhost:8080/api/products/bestseller';
-  private urlNewPro = 'http://localhost:8080/api/products/newproduct';
-  private urlCate = 'http://localhost:8080/api/productcate';
+  private urlImgListLimit = 'https://localhost:8443/api/productimglistlimit';
+  private urltotal = 'https://localhost:8443/api/producttotal';
+  private urlPageAsc = 'https://localhost:8443/api/products/pageasc';
+  private urlPageDesc = 'https://localhost:8443/api/products/pagedesc';
+  private urlPage = 'https://localhost:8443/api/products/page';
+  private urlSearch = 'https://localhost:8443/api/products/search';
+  private urlBestSeller = 'https://localhost:8443/api/products/bestseller';
+  private urlNewPro = 'https://localhost:8443/api/products/newproduct';
+  private urlCate = 'https://localhost:8443/api/productcate';
 
 
 

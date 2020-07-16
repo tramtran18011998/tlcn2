@@ -8,9 +8,9 @@ import {tap} from 'rxjs/operators'
 })
 export class ReceiptService {
 
-  private baseUrl = 'http://localhost:8080/api/receipt';
-  private baseUrlInvoice = 'http://localhost:8080/api/invoiceproduct';
-  private baseUrlInvoiceDetail = 'http://localhost:8080/api/invoiceproduct-product';
+  private baseUrl = 'https://localhost:8443/api/receipt';
+  private baseUrlInvoice = 'https://localhost:8443/api/invoiceproduct';
+  private baseUrlInvoiceDetail = 'https://localhost:8443/api/invoiceproduct-product';
 
   private _refresh = new Subject<void>();
   private headers= new HttpHeaders({

@@ -9,12 +9,12 @@ import {tap} from 'rxjs/operators'
 })
 export class EmployeeService {
 
-  private baseUrl = 'http://localhost:8080/api/employee';
-  private url = 'http://localhost:8080/api/employeeuser';
-  private urlUser = 'http://localhost:8080/api/user';
+  private baseUrl = 'https://localhost:8443/api/employee';
+  private url = 'https://localhost:8443/api/employeeuser';
+  private urlUser = 'https://localhost:8443/api/user';
 
-  private urlU = 'http://localhost:8080/api/employeeuser';
-  private urlImg = 'http://localhost:8080/api/employeeimg';
+  private urlU = 'https://localhost:8443/api/employeeuser';
+  private urlImg = 'https://localhost:8443/api/employeeimg';
 
 
   private _refresh = new Subject<void>();

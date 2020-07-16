@@ -13,9 +13,9 @@ import { ApiResponse } from '../payloads/api-response';
 })
 export class UserService {
 
-  private baseUrl = 'http://localhost:8080/api';
-  private baseUrlcheck = 'http://localhost:8080/api/loginCheck';
-  private urlme = 'http://localhost:8080/user/me';
+  private baseUrl = 'https://localhost:8443/api';
+  private baseUrlcheck = 'https://localhost:8443/api/loginCheck';
+  private urlme = 'https://localhost:8443/user/me';
   rolename: string;
 
   private _refresh = new Subject<void>();

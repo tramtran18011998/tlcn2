@@ -10,7 +10,7 @@
                 <div *ngFor="let productImg of productImgs; let i = index ">
                     <div style="padding: 20px;">
                         <img style="width: 200px;height: 200px; margin: 0;padding: 0;" 
-                                  class="img-fluid mx-auto d-block" src="http://localhost:8080/api/productimage/{{productImg.name}}" >
+                                  class="img-fluid mx-auto d-block" src="https://localhost:8443/api/productimage/{{productImg.name}}" >
                     </div>
                 </div>
                 
@@ -22,7 +22,7 @@
                           <div class="panel-thumbnail" >
                             <a href="#" title="image 1" class="thumb">
                               <img style="height: 250px;width: 250px !important; margin: 0;padding: 0;" 
-                              class="img-fluid mx-auto d-block" src="http://localhost:8080/api/productimage/{{productImg.name}}" alt="slide {{i}}">
+                              class="img-fluid mx-auto d-block" src="https://localhost:8443/api/productimage/{{productImg.name}}" alt="slide {{i}}">
                             </a>
                           </div>
                         </div>

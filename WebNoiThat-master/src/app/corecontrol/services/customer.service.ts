@@ -9,13 +9,13 @@ import {tap} from 'rxjs/operators'
 })
 export class CustomerService {
 
-  private baseUrl = 'http://localhost:8080/api/customer';
-  private urlUser = 'http://localhost:8080/api/user';
-  private urlUser2 = 'http://localhost:8080/api/users';
-  private url = 'http://localhost:8080/api/customeruser';
-  private urlImgae = 'http://localhost:8080/api/userimg';
-  private urlU = 'http://localhost:8080/api/employeeuser';
-  private urlreset = 'http://localhost:8080/api/userreset';
+  private baseUrl = 'https://localhost:8443/api/customer';
+  private urlUser = 'https://localhost:8443/api/user';
+  private urlUser2 = 'https://localhost:8443/api/users';
+  private url = 'https://localhost:8443/api/customeruser';
+  private urlImgae = 'https://localhost:8443/api/userimg';
+  private urlU = 'https://localhost:8443/api/employeeuser';
+  private urlreset = 'https://localhost:8443/api/userreset';
 
   private _refresh = new Subject<void>();
   private headers= new HttpHeaders({

@@ -1,0 +1,13 @@
+.image {
+
+    /* background: url(../../../../assets/image/bgredirec.PNG); */
+    background-image: url(./../../../../assets/image/bgredirec.PNG);
+    /* background-image: url('https://mir-s3-cdn-cf.behance.net/project_modules/fs/3beb4732976653.569b6aabdba18.jpg'); */
+    height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: aqua;
+  /* position: relative; */
+    
+}

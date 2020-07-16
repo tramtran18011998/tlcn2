@@ -8,8 +8,8 @@ import {tap} from 'rxjs/operators'
 })
 export class CustomerTypeService {
 
-  private baseUrl = 'http://localhost:8080/api/customertype';
-  private url = 'http://localhost:8080/api/customertypename';
+  private baseUrl = 'https://localhost:8443/api/customertype';
+  private url = 'https://localhost:8443/api/customertypename';
 
   private _refresh = new Subject<void>();
   private headers= new HttpHeaders({

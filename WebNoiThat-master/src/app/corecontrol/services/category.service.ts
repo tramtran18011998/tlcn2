@@ -10,8 +10,8 @@ import { Category } from '../models/category';
 })
 export class CategoryService {
 
-  private baseUrl = 'http://localhost:8080/api/category';
-  private url = 'http://localhost:8080/api/category/list';
+  private baseUrl = 'https://localhost:8443/api/category';
+  private url = 'https://localhost:8443/api/category/list';
   
 
   private category: Category[]=[];

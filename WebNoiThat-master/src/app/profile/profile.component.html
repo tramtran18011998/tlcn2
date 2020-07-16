@@ -6,7 +6,7 @@
             <!-- <div>
                 <div  style="text-align: center; padding-right: 16px;margin: 20px auto;"
                 *ngIf="imgState;then thenBlock else showEl">
-                <img src="http://localhost:8080/customerimg/{{customerUser.imageUrl}}" style="border-radius: 50%;" width="250px"
+                <img src="https://localhost:8443/customerimg/{{customerUser.imageUrl}}" style="border-radius: 50%;" width="250px"
                     height="250px" /> </div>
             </div>
             <ng-template #thenBlock><img
@@ -24,7 +24,7 @@
             </div>
             
             <ng-template et-file pTemplate="file" #showEl><img
-                src="http://localhost:8080/customerimg/{{customerUser.imageUrl}}" style="border-radius: 50%; margin-left: -40px;" width="250px"
+                src="https://localhost:8443/customerimg/{{customerUser.imageUrl}}" style="border-radius: 50%; margin-left: -40px;" width="250px"
                 height="250px"></ng-template>
                     
             </div >
