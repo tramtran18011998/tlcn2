@@ -105,6 +105,24 @@
             });
         });
     </script>
+    <script>
+        $(document).ready(function(){
+            $("#loginbtn").click(function(){
+                $("#login").css({"left":"60px" ,"transition":"all 0.5s ease"});
+                $("#register").css({"left":"460px","transition":"all 0.5s ease"});
+                $("#background-btn").css({"left":"0px","transition":"all 0.5s ease"});
+            });
+    
+        });
+        $(document).ready(function(){
+            $("#registerbtn").click(function(){
+                $("#login").css({"left":"-400px","transition":"all 0.5s ease"});
+                $("#register").css({"left":"60px","transition":"all 0.5s ease"});
+                $("#background-btn").css({"left":"140px","transition":"all 0.5s ease"});
+            });
+    
+        });
+    </script>
       
       
     <!-- <script>

@@ -1,205 +1,96 @@
 <app-header></app-header>
-<div class="container">
-    <div class="row content-wrapper">
-        <div class="col-lg-12">
-            <div class="row">
-                
-                <div class="col-lg-6 login-form">
+<div class="main-form">
+    <div class="login-box">
+        <div class="switch-btn">
+            <div id="background-btn"></div>
+            <button type="button" class="toggle-btn" id="loginbtn">Đăng nhập</button>
+            <button type="button" class="toggle-btn" id="registerbtn">Đăng ký</button>
+        </div>
+        <div class="social">
+            <button id="facebook"><a href="https://localhost:8443/oauth2/authorize/facebook?redirect_uri=http://localhost:4200/oauth2/redirect"><i class="fab fa-facebook-f"></i> Facebook</a></button>
+            <button id="google"><a href="https://localhost:8443/oauth2/authorize/google?redirect_uri=http://localhost:4200/oauth2/redirect"><i class="fab fa-google"></i> Google</a></button>
+        </div>
 
-                    <div class="container mt-5 pt-5">
-                        <div class="card mx-auto border-0">
-                            <div class="card-header border-bottom-0 bg-transparent">
-                                <ul class="nav nav-tabs justify-content-center pt-4" id="pills-tab" role="tablist">
-                                    <li class="nav-item">
-                                        <a class="nav-link active text-primary" id="pills-login-tab" data-toggle="pill"
-                                            href="#pills-login" role="tab" aria-controls="pills-login"
-                                            aria-selected="true">Login</a>
-                                    </li>
-
-                                    <li class="nav-item">
-                                        <a class="nav-link text-primary" id="pills-register-tab" data-toggle="pill"
-                                            href="#pills-register" role="tab" aria-controls="pills-register"
-                                            aria-selected="false">Register</a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="card-body pb-4">
-                                <div class="tab-content" id="pills-tabContent">
-
-
-                                    <!-- login -->
-                                    <div class="tab-pane fade show active" id="pills-login" role="tabpanel"
-                                        aria-labelledby="pills-login-tab">
-                                        <form name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm"
-                                            novalidate>
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" name="email"
-                                                    aria-describedby="emailHelp" placeholder="Email"
-                                                    [(ngModel)]="form.email" #email="ngModel" required autofocus>
-                                                <div *ngIf="f.submitted && email.invalid">
-                                                    <div *ngIf="email.errors.required">Email is required</div>
-                                                </div>
-                                            </div>
-
-                                          
-                                          
-                                          
-                                          
-                                            <div class="form-group">
-                                                <input type="password" class="form-control" placeholder="Mật khẩu"
-                                                    name="password" [(ngModel)]="form.password" #password="ngModel"
-                                                    required minlength="6" />
-                                                <div *ngIf="f.submitted && password.invalid">
-                                                    <div *ngIf="password.errors.required">Password is required</div>
-                                                    <div *ngIf="password.errors.minlength">Password must be at least 6
-                                                        characters</div>
-                                                </div>
-                                            </div>
-
-
-
-                                            <div class="text-center pt-4">
-                                                <button type="submit" class="btn btn-primary">Login</button>
-                                            </div>
-                                            <div class="social-login clearfix">
-                                                <a class="login-facebook"
-                                                href="https://localhost:8443/oauth2/authorize/facebook?redirect_uri=http://localhost:4200/oauth2/redirect">
-                                                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                                                    Facebook
-                                                </a>
-                                                <a class="login-google"
-                                                    href="https://localhost:8443/oauth2/authorize/google?redirect_uri=http://localhost:4200/oauth2/redirect">
-                                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
-                                                    Google
-                                                </a>
-
-                                                <div class="text-center pt-2">
-                                                    <a class="btn btn-link text-primary" href="#" class="qmk" data-toggle="modal" data-target="#myModalQuenMK" 
-                                                    data-dismiss="modal" style="color: black;width: 100%;">Forgot Your Password?</a>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-
-
-
-                                    <!-- signup -->
-                                    <div class="tab-pane fade" id="pills-register" role="tabpanel"
-                                        aria-labelledby="pills-register-tab">
-                                        <form [formGroup]="formSignup" (ngSubmit)="onSubmitSignup(formSignup)">
-
-
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="name" placeholder="Họ tên"
-                                                    id="name"
-                                                    [ngClass]="{'is-invalid':formSignup.get('name').touched && formSignup.get('name').invalid}"
-                                                    formControlName="name" autofocus>
-                                                <div *ngIf="formSignup.get('name').touched && formSignup.get('name').invalid"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="formSignup.controls.name.errors.required">Tên không được
-                                                        để trống</div>
-                                                </div>
-                                            </div>
-
-
-
-
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" name="email" id="email"
-                                                    placeholder="Email"
-                                                    [ngClass]="{'is-invalid':formSignup.get('email').touched && formSignup.get('email').invalid}"
-                                                    formControlName="email" required>
-                                                <div *ngIf="formSignup.get('email').touched && formSignup.get('email').invalid"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="formSignup.controls.email.errors.required">Email không
-                                                        được để trống</div>
-                                                    <div *ngIf="formSignup.controls.email.errors.email">Email không hợp
-                                                        lệ</div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="form-group">
-                                                <input type="password" class="form-control" name="password"
-                                                    id="password" formControlName="password" placeholder="Mật khẩu"
-                                                    [ngClass]="{'is-invalid':formSignup.get('password').touched && formSignup.get('password').invalid }"
-                                                    required />
-                                                <div *ngIf="formSignup.get('password').touched && formSignup.get('password').invalid"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="formSignup.controls.password.errors.required">Mật khẩu
-                                                        không được để
-                                                        trống</div>
-                                                    <div *ngIf="formSignup.controls.password.errors.minlength">Mật khẩu
-                                                        tối thiếu 6 kí
-                                                        tự
-                                                    </div>
-                                                    <div *ngIf="formSignup.controls.password.errors.pattern">Các kí tự:
-                                                        [a-z], [A-Z],
-                                                        [0-9], - . _ được cho phép</div>
-                                                </div>
-                                            </div>
-
-
-
-                                            <div class="form-group">
-
-                                                <input type="password" id="password2" name="password2"
-                                                    class="form-control" formControlName="password2"
-                                                    placeholder="Nhập lại Mật khẩu"
-                                                    [ngClass]="{'is-invalid':formSignup.get('password2').touched && formSignup.get('password2').invalid}"
-                                                    required>
-
-                                                <div *ngIf="formSignup.get('password2').touched && formSignup.get('password2').invalid"
-                                                    class="invalid-feedback">
-                                                    <div *ngIf="formSignup.controls.password2.errors.required">Cần nhập
-                                                        lại mật
-                                                        khẩu
-                                                    </div>
-                                                    <div *ngIf="formSignup.controls.password2.errors.NoPassswordMatch">
-                                                        Mật khẩu không
-                                                        chính
-                                                        xác</div>
-
-                                                </div>
-
-                                            </div>
-                                            <div class="text-center pt-2 pb-1">
-                                                <button type="submit" class="btn btn-primary">Register</button>
-                                            </div>
-
-                                            <div class="social-login clearfix">
-                                                <a class="login-facebook"
-                                                    href="https://localhost:8443/oauth2/authorize/facebook?redirect_uri=http://localhost:4200/oauth2/redirect">
-                                                    <i class="fa fa-facebook" aria-hidden="true"></i>
-                                                    Facebook
-                                                </a>
-                                                <a class="login-google"
-                                                    href="https://localhost:8443/oauth2/authorize/google?redirect_uri=http://localhost:4200/oauth2/redirect">
-                                                    <i class="fa fa-google-plus" aria-hidden="true"></i>
-                                                    Google
-                                                </a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                
-                <div class="col-lg-6">
-                    <img src="assets/image/login-img.jpg" width="100%">
+        <!-- Đăng nhập -->
+        <form name="form" id="login" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+            <div class="form-group">
+                <input type="email" class="form-control" name="email"
+                aria-describedby="emailHelp" placeholder="Email" 
+                [(ngModel)]="form.email" #email="ngModel" required autofocus>
+                <div *ngIf="f.submitted && email.invalid">
+                    <div *ngIf="email.errors.required"><small style="color: red;">Email is required</small></div>
                 </div>
             </div>
-        </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Mật khẩu"
+                name="password" [(ngModel)]="form.password" #password="ngModel"
+                required minlength="6">
+                <div *ngIf="f.submitted && password.invalid">
+                    <div *ngIf="password.errors.required"><small style="color: red;">Password is required</small></div>
+                    <div *ngIf="password.errors.minlength"><small style="color: red;">Password must be at least 6 characters</small></div>
+                </div>
+            </div>
+            <button type="submit" id="btn-submit">Đăng nhập</button>
+            <a href="#" class="qmk" data-toggle="modal" data-target="#myModalQuenMK" 
+            data-dismiss="modal" style="color: black;width: 100%;">Quên mật khẩu?</a>
+        </form>
+
+        <!-- Đăng kí -->
+        <form id="register" [formGroup]="formSignup" (ngSubmit)="onSubmitSignup(formSignup)">
+            <div class="form-group">
+                <input type="text" class="form-control" name="name" placeholder="Họ tên"
+                id="name" [ngClass]="{'is-invalid':formSignup.get('name').touched && formSignup.get('name').invalid}"
+                formControlName="name" autofocus>
+                <div *ngIf="formSignup.get('name').touched && formSignup.get('name').invalid"
+                class="invalid-feedback">
+                    <div *ngIf="formSignup.controls.name.errors.required">Tên không được để trống</div>
+                </div>
+                
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" name="email" id="email"
+                placeholder="Email"
+                [ngClass]="{'is-invalid':formSignup.get('email').touched && formSignup.get('email').invalid}"
+                formControlName="email" required>
+                <div *ngIf="formSignup.get('email').touched && formSignup.get('email').invalid"
+                class="invalid-feedback">
+                    <div *ngIf="formSignup.controls.email.errors.required">Email không được để trống</div>
+                    <div *ngIf="formSignup.controls.email.errors.email">Email không hợp lệ</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input ttype="password" class="form-control" name="password"
+                id="password" formControlName="password" placeholder="Mật khẩu"
+                [ngClass]="{'is-invalid':formSignup.get('password').touched && formSignup.get('password').invalid }"
+                required>
+                <div *ngIf="formSignup.get('password').touched && formSignup.get('password').invalid"
+                class="invalid-feedback">
+                    <div *ngIf="formSignup.controls.password.errors.required">Mật khẩu không được để trống</div>
+                    <div *ngIf="formSignup.controls.password.errors.minlength">Mật khẩu tối thiếu 6 kí tự</div>
+                    <div *ngIf="formSignup.controls.password.errors.pattern">Các kí tự: [a-z], [A-Z], [0-9], - . _ được cho phép</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="password" id="password2" name="password2"
+                class="form-control" formControlName="password2"
+                placeholder="Nhập lại Mật khẩu"
+                [ngClass]="{'is-invalid':formSignup.get('password2').touched && formSignup.get('password2').invalid}"
+                required>
+
+                <div *ngIf="formSignup.get('password2').touched && formSignup.get('password2').invalid"
+                class="invalid-feedback">
+                    <div *ngIf="formSignup.controls.password2.errors.required">Cần nhập lại mật khẩu</div>
+                    <div *ngIf="formSignup.controls.password2.errors.NoPassswordMatch">Mật khẩu không chính xác</div>
+
+                </div>
+            </div>
+            <button type="submit" id="btn-submit">Đăng ký</button>
+        </form>
+        
+        
     </div>
-
     
-
 </div>
-
 <div class="modal fade" id="myModalQuenMK">
 
     <form [formGroup]="resetPassword" (ngSubmit)="onSubmitReset(resetPassword)">
@@ -217,7 +108,7 @@
 
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-envelope-o"></i></span>
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                         </div>
                         <div class="form-group"></div>
                         <input type="text" class="form-control" placeholder="Nhập email" name="email"
