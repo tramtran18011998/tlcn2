@@ -32,6 +32,10 @@
                     <a href="#">Trang cá nhân</a>
                     <a href="#">Trang cá nhân</a>
                     <a href="#">Thoát</a>
+                    <div *ngIf="checkLogin">
+                        <button class="btn btn-dark" style="background: fixed; margin-top: 7px;" (click)="logout()" type="submit"><i
+                            class="fa fa-sign-out"></i></button>
+                    </div>
                 </div>
             </div>
         </ng-template>
