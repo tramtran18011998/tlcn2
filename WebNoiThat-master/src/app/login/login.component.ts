@@ -221,7 +221,28 @@ export class LoginComponent implements OnInit {
 
     resetpassform.reset();
   }
-
+  loginbtn(){
+    let x = document.getElementById("login");
+    let y = document.getElementById("register");
+    let z = document.getElementById("background-btn");
+    x.style.left="60px";
+    x.style.transition="all 0.3s ease";
+    y.style.left="460px";
+    y.style.transition="all 0.3s ease";
+    z.style.left="0";
+    z.style.transition="all 0.3s ease";
+  }
+  registerbtn(){
+    let x = document.getElementById("login");
+    let y = document.getElementById("register");
+    let z = document.getElementById("background-btn");
+    x.style.left="-400px";
+    x.style.transition="all 0.3s ease";
+    y.style.left="60px";
+    y.style.transition="all 0.3s ease";
+    z.style.left="140px";
+    z.style.transition="all 0.3s ease";
+  }
 
 
 }

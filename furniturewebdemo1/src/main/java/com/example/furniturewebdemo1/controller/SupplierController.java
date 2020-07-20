@@ -49,6 +49,7 @@ public class SupplierController {
         return ResponseEntity.ok(currentSupplier);
     }
 
+
     @DeleteMapping("/supplier/{id}")
     public ResponseEntity<Supplier> deleteSupplier(@PathVariable(value = "id") long id) throws ResourceNotFoundException {
         Supplier supplier=supplierService.findSupplierById(id).orElseThrow(()-> new ResourceNotFoundException("Supplier not found"));

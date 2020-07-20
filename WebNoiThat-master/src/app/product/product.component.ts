@@ -1,3 +1,5 @@
+import { SupplierService } from './../corecontrol/services/supplier.service';
+import { Supplier } from 'src/app/corecontrol/models/supplier';
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CategoryType } from '../corecontrol/models/categorytype';
@@ -24,7 +26,7 @@ export class ProductComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   totalProduct: number;
-  productsPerPage = 8;
+  productsPerPage = 12;
   pageIn : number;
   intSelect: number = 1;
 
@@ -42,6 +44,8 @@ export class ProductComponent implements OnInit {
   products: Product[]=[];
   products2: Product[]=[];
 
+  suppliers: Supplier[]=[];
+
   ps: Product[]=[];
   productImages: ProductImage[]=[];
   pis: ProductImage[]=[];
@@ -58,7 +62,7 @@ export class ProductComponent implements OnInit {
   productImg: ProductImage= new ProductImage();
 
 
-  constructor(private productService: ProductService,private categoryTypeService: CategoryTypeService, private categoryService:CategoryService,private router: Router,private formBuilder: FormBuilder) { }
+  constructor(private productService: ProductService, private supplierService:SupplierService,private categoryTypeService: CategoryTypeService, private categoryService:CategoryService,private router: Router,private formBuilder: FormBuilder) { }
 
   ngOnInit() {
 
@@ -73,6 +77,7 @@ export class ProductComponent implements OnInit {
     this.searchF = this.formBuilder.group({
         name: new FormControl('')
       });
+    this.getSupplierList();
   }
   getList(){
 
@@ -139,6 +144,11 @@ export class ProductComponent implements OnInit {
 
     }
     
+  }
+  getSupplierList(){
+    this.supplierService.getList().subscribe(data => {
+      this.suppliers=data;
+    })
   }
 
   onChangedPage(event){
@@ -248,11 +258,26 @@ export class ProductComponent implements OnInit {
     console.log(id);
   }
 
-  onSubmitSearch(search: FormGroup){
-    var name = this.searchF.controls['name'].value;
-    if(name !=""){
+  // onSubmitSearch(search: FormGroup){
+  //   var name = this.searchF.controls['name'].value;
+  //   if(name !=""){
       
-      this.productService.getListSearch(name).subscribe(data => {
+  //     this.productService.getListSearch(name).subscribe(data => {
+  //       this.products = data;
+  //     })
+  //   }
+  //   else{
+  //     this.products = [];
+  //     this.imgname = [];
+  //     this.getProductList();
+  //   }
+    
+  // }
+  // TÌm kiếmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm sản phẩm
+  searchProduct(val){
+    if(val !=""){
+      
+      this.productService.getListSearch(val).subscribe(data => {
         this.products = data;
       })
     }
@@ -261,7 +286,7 @@ export class ProductComponent implements OnInit {
       this.imgname = [];
       this.getProductList();
     }
-    
   }
+  
 
 }

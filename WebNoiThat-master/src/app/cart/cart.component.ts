@@ -1,3 +1,5 @@
+import { ProductService } from 'src/app/corecontrol/services/product.service';
+import { ProductImage } from 'src/app/corecontrol/models/productimage';
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../corecontrol/services/cart.service';
 import { User } from '../corecontrol/models/user';
@@ -6,6 +8,7 @@ import { CustomerService } from '../corecontrol/services/customer.service';
 import { Cart } from '../corecontrol/models/cart';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
+import { Product } from '../corecontrol/models/product';
 
 @Component({
   selector: 'app-cart',
@@ -29,7 +32,10 @@ export class CartComponent implements OnInit {
 
   sl: number;
 
-  constructor(private cartService: CartService, private customerService: CustomerService,private router: Router) { }
+  productImages=[];
+  productId: Product[]=[];
+
+  constructor(private cartService: CartService, private productService:ProductService ,private customerService: CustomerService,private router: Router) { }
 
   ngOnInit() {
     
@@ -50,10 +56,17 @@ export class CartComponent implements OnInit {
           console.log(this.carts);
           this.subtotal =0;
           this.total =0;
+          this.productId=[];
+          this.productImages=[];
           for(let i=0; i< this.carts.length; i++){
             console.log(this.carts[i].totalprice);
             this.subtotal+= this.carts[i].totalprice;
             console.log(this.subtotal);
+            this.productService.getProductImgByProductIdLimit(this.carts[i].product.id).subscribe(data3 => {
+              this.productImages.push(data3.name);
+            })
+
+
           }
           this.total = this.subtotal - this.subtotal*this.currentCustomer.discount;
           console.log(this.total);

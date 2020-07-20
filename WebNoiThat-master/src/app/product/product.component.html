@@ -30,12 +30,9 @@
             <h3>Thương hiệu</h3>
             <div class="line"></div>
             <ul>
-                <li><a href="#">Samsung</a></li>
-                <li><a href="#">Samsung</a></li>
-                <li><a href="#">Samsung</a></li>
-                <li><a href="#">Samsung</a></li>
-                <li><a href="#">Samsung</a></li>
-                <li><a href="#">Samsung</a></li>
+                <li #supp *ngFor="let supplier of suppliers" >
+                    <a>{{supplier.name}}</a>
+                </li>
             </ul>
         </div>
         <div class="products">
@@ -63,8 +60,8 @@
                     </select>
                 </div>
                 <div class="searchproduct">
-                    <input type="text" placeholder=" Tìm kiếm">
-                    <button>Tìm kiếm</button>
+                    <input type="text" placeholder=" Tìm kiếm" #search>
+                    <button (click)="searchProduct(search.value)">Tìm kiếm</button>
                 </div>
             </div>
             <div class="product-list">
@@ -88,10 +85,10 @@
                             <p>{{product.name}}</p>
                         </div>
                         <div class="product-price">
-                            <p>{{product.price | number:'1.0-2'}}</p>
+                            <p>{{product.price | number:'1.0-2'}} VNĐ</p>
                         </div>
                         <div class="product-price-discount">
-                            <p>{{product.discountPrice | number:'1.0-2'}}</p>
+                            <p>{{product.discountPrice | number:'1.0-2'}} VNĐ</p>
                         </div>
                         <button class="add-to-cart" (click)="addCart()">Thêm vào giỏ</button>
                     </div>

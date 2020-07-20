@@ -18,24 +18,24 @@
     <div class="sign-in-up">
         <div *ngIf="!checkLogin; else showCustomer">
             <a routerLink="/login">Đăng nhập</a>
-            <a href="#">Đăng ký</a>
+            <!-- <a href="#">Đăng ký</a> -->
             
         </div>
         <ng-template #showCustomer>
             <div class="account">
-                <img src="assets/image/yeah.jpg" height="30px" width="30px">
-                <p>Phạm Gia Thịnh</p>
+                <img src="{{user.imageUrl}}" height="30px" width="30px">
+                <p>{{user.name}}</p>
             </div>
             <div class="account-menu">
-                <button id="acc-menu"><i class="fas fa-caret-down"></i></button>
+                <button id="acc-menu" (click)="showAccMenu()"><i class="fas fa-caret-down"></i></button>
                 <div class="account-menu-content" id="accMenu">
-                    <a href="#">Trang cá nhân</a>
-                    <a href="#">Trang cá nhân</a>
-                    <a href="#">Thoát</a>
-                    <div *ngIf="checkLogin">
+                    <a routerLink="/profile/{{user.id}}">Trang cá nhân</a>
+                    <!-- <a href="#">Trang cá nhân</a> -->
+                    <a *ngIf="checkLogin" (click)="logout()" style="cursor:pointer">Thoát</a>
+                    <!-- <div *ngIf="checkLogin">
                         <button class="btn btn-dark" style="background: fixed; margin-top: 7px;" (click)="logout()" type="submit"><i
                             class="fa fa-sign-out"></i></button>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </ng-template>
@@ -107,11 +107,12 @@
 
             </ng-template> -->
             <ng-template [ngIf]="!quantitycart" [ngIfElse]="showCart"]>
-                <i class="fas fa-shopping-cart"></i>
+                <a routerLink="/cart"><i class="fas fa-shopping-cart"></i></a>
                 <div class="cart-number">0</div>
             </ng-template>
             <ng-template #showCart>
-                Mlem
+                <a routerLink="/cart" ><i class="fas fa-shopping-cart"></i></a>
+                <div class="cart-number">{{quantitycart}}</div>
             </ng-template>
             
 

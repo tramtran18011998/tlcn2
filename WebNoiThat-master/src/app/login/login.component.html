@@ -3,8 +3,8 @@
     <div class="login-box">
         <div class="switch-btn">
             <div id="background-btn"></div>
-            <button type="button" class="toggle-btn" id="loginbtn">Đăng nhập</button>
-            <button type="button" class="toggle-btn" id="registerbtn">Đăng ký</button>
+            <button type="button" class="toggle-btn" id="loginbtn" (click)="loginbtn()">Đăng nhập</button>
+            <button type="button" class="toggle-btn" id="registerbtn" (click)="registerbtn()">Đăng ký</button>
         </div>
         <div class="social">
             <button id="facebook"><a href="https://localhost:8443/oauth2/authorize/facebook?redirect_uri=http://localhost:4200/oauth2/redirect"><i class="fab fa-facebook-f"></i> Facebook</a></button>

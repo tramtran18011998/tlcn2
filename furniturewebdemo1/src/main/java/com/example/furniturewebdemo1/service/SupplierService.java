@@ -9,6 +9,7 @@ import java.util.Optional;
 public interface SupplierService {
     List<Supplier> findAllSupplier();
     Optional<Supplier> findSupplierById(long id);
+//    Supplier findByName(String name);
     void save (Supplier supplier);
     void delete (Supplier supplier);
 }

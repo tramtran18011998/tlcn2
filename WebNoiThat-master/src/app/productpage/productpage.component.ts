@@ -1,3 +1,5 @@
+import { Supplier } from 'src/app/corecontrol/models/supplier';
+import { SupplierService } from './../corecontrol/services/supplier.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../corecontrol/services/product.service';
@@ -30,11 +32,13 @@ export class ProductpageComponent implements OnInit {
   currentImg: string;
   quantity: number = 1;
 
+  supplier: Supplier=new Supplier();
+  idSup:number;
 
   //total for show number product
   quantitycart: number;
 
-  constructor(private acroute: ActivatedRoute, private productService: ProductService, private cartService: CartService, private customerService: CustomerService) { }
+  constructor(private acroute: ActivatedRoute, private productService: ProductService, private supplierService:SupplierService ,private cartService: CartService, private customerService: CustomerService) { }
 
   ngOnInit() {
     this.id = this.acroute.snapshot.params['id'];

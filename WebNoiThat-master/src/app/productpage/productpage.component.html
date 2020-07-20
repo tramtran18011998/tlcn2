@@ -32,7 +32,7 @@
                 <p>Số lượng</p>
                 <input type="number" min="1" max="{{product.quantity}}" placeholder="1" [(ngModel)]="quantity" 
                 class="form-control" (input)="onSearchChange($event.target.value)">
-                <p>Hiện có 10 sản phẩm</p>
+                <p>Hiện có {{product.quantity}} sản phẩm</p>
             </div>
             <div class="add-to-cart">
                 <button (click)="addCart()" class="add-btn"><i class="fas fa-cart-plus"></i> Thêm Vào Giỏ Hàng</button>
@@ -51,7 +51,7 @@
                 <tbody>
                     <tr>
                         <td>Thương hiệu</td>
-                        <td>{{product.supplier}}</td>
+                        <td>{{product.supplier.name}}</td>
                     </tr>
                     <tr>
                         <td>Chất liệu</td>

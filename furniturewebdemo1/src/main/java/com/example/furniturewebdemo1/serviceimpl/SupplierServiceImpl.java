@@ -30,6 +30,7 @@ public class SupplierServiceImpl implements SupplierService {
         return supplierRepository.findById(id);
     }
 
+
     @Override
     public void save(Supplier supplier) {
         supplierRepository.save(supplier);

@@ -90,6 +90,7 @@ export class ProductService {
   getById(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`, this.options);
   }
+  
 
   getProductImgByProductId(id: number): Observable<any> {
     return this.http.get(`${this.urlImgList}/${id}`, this.options);

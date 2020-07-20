@@ -44,7 +44,7 @@
                     <p><b>{{newProduct.name}}</b></p>
                 </div>
                 <div class="product-price">
-                    <p>{{newProduct.price}}</p>
+                    <p>{{newProduct.price | number:'1.0-2'}} VNĐ</p>
                 </div>
             </div> 
         </div>
@@ -58,7 +58,7 @@
                     <p><b>{{bestProduct.name}}</b></p>
                 </div>
                 <div class="product-price">
-                    <p>{{bestProduct.price}}</p>
+                    <p>{{bestProduct.price | number:'1.0-2'}} VNĐ</p>
                 </div>
             </div> 
         </div>

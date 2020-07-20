@@ -1,4 +1,4 @@
-.breadcrumb {
+/* .breadcrumb {
     margin-top: 10px;
 }
 
@@ -13,4 +13,128 @@ textarea.form-control {
 
 .product-list {
     margin-top: 100px;
+} */
+.container .table-info table{
+    width: 100%;
+}
+.container .table-info table .tb-img{
+    width: 10%;
+}
+.container .table-info table .tb-name{
+    width: 35%;
+}
+.container .table-info table .tb-quantity{
+    width: 10%;
+}
+.container .table-info table .tb-price{
+    width: 20%;
+}
+.container .table-info table .tb-sum{
+    width: 20%;
+}
+.container .table-info table .tb-button{
+    width: 5%;
+}
+.container .table-info table .tb-header{
+    border-bottom: 2px solid #000000;
+    background-color: rgb(239, 239, 239) !important;
+}
+.container .table-info table th,td{
+    padding: 10px;
+}
+.container .table-info table input[type="number"]{
+    width: 100px !important;
+}
+.container .table-info table{
+    text-align: center;
+}
+.container .table-info table button{
+    background: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    position: relative;
+}
+.container .table-info table button i{
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: red;
+}
+.container .table-info table tr:nth-child(odd) {
+    background-color: rgb(250, 250, 250);
+}
+.container .table-info table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+/* Giảm giá */
+.container .coupon{
+    width: 100%;
+    margin: 10px 0 30px 0;
+    padding: 10px;
+    background-color:rgb(239, 239, 239) ;
+}
+.container .coupon input{
+    width: 300px;
+    margin-right: 10px;
+}
+.container .coupon button{
+    width: 120px;
+    color: #ffffff;
+    border: none;
+    background-color: #009688;
+    padding: 5px;
+}
+/* THông tin khách hàng */
+.container .customer-info {
+    background-color: rgb(250, 250, 250);
+    padding: 10px;
+}
+.container .customer-info button{
+    color: #ffffff;
+    border: none;
+    background-color: #009688;
+    margin-top: 10px;
+    padding: 5px 20px;
+}
+.container .customer-info table{
+    width: 100%;
+}
+.container .customer-info  table tr td:first-child{
+    background: silver;
+    width: 20%;
+}
+.container .customer-info table tr:nth-child(2n+1){
+    background-color: rgb(239, 239, 239);
+}
+.container .customer-info table tr:nth-child(2n){
+    background-color: #ffffff;
+}
+/* Tổng tiền */
+.container .sum-price {
+    background-color: rgb(250, 250, 250);
+    padding: 10px;
+}
+.container .sum-price button{
+    color: #ffffff;
+    border: none;
+    background-color: #009688;
+    margin-top: 10px;
+    padding: 5px 20px;
+}
+.container .sum-price table{
+    width: 100%;
+}
+.container .sum-price  table tr td:first-child{
+    background: silver;
+    width: 20%;
+}
+.container .sum-price table tr:nth-child(2n+1){
+    background-color: rgb(239, 239, 239);
+}
+.container .sum-price table tr:nth-child(2n){
+    background-color: #ffffff;
 }

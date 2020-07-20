@@ -5,7 +5,7 @@
         <li class="breadcrumb-item active" aria-current="page">Giỏ hàng</li>
     </ol>
 </nav>
-<div class="container">
+<!-- <div class="container">
 
     <table class="table product-list">
         <thead class="font-size-h5">
@@ -74,5 +74,82 @@
         </div>
     </div>
 
+</div> -->
+<div class="container">
+    <div class="table-info">
+        <table>
+            <tr class="tb-header">
+                <th class="tb-img"></th>
+                <th class="tb-name">Tên sản phẩm</th>
+                <th class="tb-quantity">Số lượng</th>
+                <th class="tb-price">Đơn giá</th>
+                <th class="tb-sum">Tổng tiền</th>
+                <th class="tb-button"></th>
+            </tr>
+            <tr *ngFor="let cart of carts; let i=index">
+                <td><img src="https://localhost:8443/api/productimage/{{productImages[i]}}" width="50" height="50"></td>
+                <td>{{cart.productname}}</td>
+                <td>
+                    <input style="margin: auto;width: 30%;" type="number" min="1" max="{{sl}}" [(ngModel)]="cart.quantity" 
+                    class="form-control" (input)="onSearchChange($event.target.value,cart.id)" >
+                </td>
+                <td>{{cart.price | number:'1.0-2'}}</td>
+                <td>{{cart.totalprice | number:'1.0-2'}}</td>
+                <td>
+                    <button (click)="delete(cart.id)"><i class="fas fa-times"></i></button>
+                </td>
+            </tr>
+            
+        </table>
+    </div>
+    <div class="coupon">
+        <input type="text">
+        <button type="submit">Áp dụng</button>
+    </div>
+    <div class="cus-sum">
+        
+        <div class="customer-info">
+            <h3>Thông tin khách hàng</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Họ và tên</td>
+                        <td>{{currentUser.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>{{currentUser.email}}</td>
+                    </tr>
+                    <tr>
+                        <td>Địa chỉ</td>
+                        <td>{{currentUser.address}}</td>
+                    </tr>
+                    <tr>
+                        <td>Số điện thoại</td>
+                        <td>{{currentUser.phoneNumber}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button (click)="edit(currentUser.id)" routerLink="/profile">Cập nhật thông tin cá nhân</button>
+        </div>
+        <div class="sum-price">
+            <h3>Tổng tiền</h3>
+            <table>
+                <tbody>
+                    <tr>
+                        <td>Tạm tính</td>
+                        <td>{{subtotal | number:'1.0-2'}}</td>
+                    </tr>
+                    <tr>
+                        <td>Thành tiền</td>
+                        <td>{{total | number:'1.0-2'}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button (click)="submitInvoice()">Thanh toán</button>
+        </div>
+
+    </div>
+    
 </div>
 <app-footer></app-footer>
