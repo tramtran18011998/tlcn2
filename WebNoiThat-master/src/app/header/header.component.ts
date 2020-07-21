@@ -16,6 +16,8 @@ export class HeaderComponent implements OnInit {
   //user: User = JSON.parse(localStorage.getItem('currentuser'));
   user: User = new User();
   //currentName: string= this.user.name;
+  inSocial: any;
+
   constructor(private token: TokenStorageService, private userService: UserService, private cartService: CartService) { }
 
   ngOnInit() {
@@ -52,6 +54,8 @@ export class HeaderComponent implements OnInit {
   }
 
   getCurrentUser(){
+    this.inSocial = JSON.parse(localStorage.getItem('inSocial'));
+
     if(localStorage.getItem('token')){
       this.userService.getUserme().subscribe(data => {
         console.log(data);

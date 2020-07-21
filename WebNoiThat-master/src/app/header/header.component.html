@@ -23,7 +23,16 @@
         </div>
         <ng-template #showCustomer>
             <div class="account">
-                <img src="{{user.imageUrl}}" height="30px" width="30px">
+                <div>
+                <div  *ngIf="inSocial!=null;else showEl">
+                    <img src="{{user.imageUrl}}" height="30px" width="30px" /> 
+                </div>
+              
+                
+                <ng-template et-file pTemplate="file" #showEl><img
+                    src="https://localhost:8443/customerimg/{{user.imageUrl}}" height="30px" width="30px"></ng-template>
+                        
+                </div >
                 <p>{{user.name}}</p>
             </div>
             <div class="account-menu">

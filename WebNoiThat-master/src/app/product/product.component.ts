@@ -145,6 +145,65 @@ export class ProductComponent implements OnInit {
     }
     
   }
+
+  //test for select and filter (chua viet xog)
+  getListProductBySelectFilter(select: number, filter: string){
+
+    if(select===1){
+     this.productService.getListPage(0).subscribe( data => {
+        this.products2 = [...data.content];
+        if(data)
+        this.products =[];
+        this.imgname =[];
+          for(let i=this.products2[0].id; i<this.products2.length + this.products2[0].id; i++){
+               this.productService.getProductImgByProductIdLimit(i).subscribe( data1 => {
+              if(i === data1.product.id)
+              {
+                this.products.push(data1.product);
+                this.imgname.push(data1.name);   }
+            })                    
+          }
+        console.log(this.imgname);
+        console.log(this.products);
+      })
+    }else if(select ==2){
+      this.productService.getListPageAsc(0).subscribe( data => {
+        this.products2 = [...data.content];
+        if(data)
+        this.products =[];
+        this.imgname =[];
+          for(let i=this.products2[0].id; i<this.products2.length + this.products2[0].id; i++){
+               this.productService.getProductImgByProductIdLimit(i).subscribe( data1 => {
+              if(i === data1.product.id)
+              {
+                this.products.push(data1.product);
+                this.imgname.push(data1.name);   }
+            })                    
+          }
+        console.log(this.imgname);
+        console.log(this.products);
+      })
+    }else{
+      this.productService.getListPageDesc(0).subscribe( data => {
+        this.products2 = [...data.content];
+        if(data)
+        this.products =[];
+        this.imgname =[];
+          for(let i=this.products2[0].id; i<this.products2.length + this.products2[0].id; i++){
+               this.productService.getProductImgByProductIdLimit(i).subscribe( data1 => {
+              if(i === data1.product.id)
+              {
+                this.products.push(data1.product);
+                this.imgname.push(data1.name);   }
+            })                    
+          }
+        console.log(this.imgname);
+        console.log(this.products);
+      })
+
+    }
+  }
+
   getSupplierList(){
     this.supplierService.getList().subscribe(data => {
       this.suppliers=data;
