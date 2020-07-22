@@ -13,19 +13,19 @@
             <div class="line"></div>
             <ul>
                 <li *ngFor="let categoryType of categoryTypes">
-                    <a (click)="getCateByType(categoryType.id)">{{categoryType.name}}</a>
+                    <a (click)="getListByCateType(categoryType.id)">{{categoryType.name}}</a>
                 </li>
             </ul>
             <div class="line"></div>
             <h3>Giá</h3>
             <div class="line"></div>
             <div class="price">
-                <input type="text" name="giathap" placeholder=" Từ">
+                <input type="text" #min name="min" placeholder=" Từ">
                 <div>—</div>
-                <input type="text" name="giacao" placeholder=" Đến">
+                <input type="text" #max name="max" placeholder=" Đến">
             </div>
             <!-- <button type="button" class="btn btn-outline-primary">OK</button> -->
-            <button mat-raised-button color="warn">OK</button>
+            <button mat-raised-button color="warn" (click)="searchRange(min.value, max.value)">OK</button>
             <div class="line"></div>
             <h3>Thương hiệu</h3>
             <div class="line"></div>

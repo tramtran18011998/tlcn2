@@ -292,6 +292,18 @@ public class ProductController {
         return productService.findAll(page, pageNum);
     }
 
+    //list product with discount_price range
+    @GetMapping("/products/range/{min}/{max}")
+    public List<Product> findByPriceRange(@PathVariable(value = "min") double min,@PathVariable(value = "max") double max) throws ResourceNotFoundException {
+        return productRepository.findByPriceRange(min,max);
+    }
+
+    //list product with related limit 4
+    @GetMapping("/products/related/{categoryid}")
+    public List<Product> findByRelatedProduct(@PathVariable(value = "categoryid") long categoryid) throws ResourceNotFoundException {
+        return productRepository.findByRelatedProduct(categoryid);
+    }
+
 
 
 }

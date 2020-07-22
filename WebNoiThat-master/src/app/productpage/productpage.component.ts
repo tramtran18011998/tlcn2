@@ -11,6 +11,7 @@ import { Customer } from '../corecontrol/models/customer';
 import { User } from '../corecontrol/models/user';
 import { CustomerService } from '../corecontrol/services/customer.service';
 import Swal from 'sweetalert2'
+import { Category } from '../corecontrol/models/category';
 
 @Component({
   selector: 'app-productpage',
@@ -24,6 +25,12 @@ export class ProductpageComponent implements OnInit {
   currentCustomer: Customer = new Customer();
   currentUser: User = new User();
   idCus: number;
+
+  //for related product
+  currentCategory: Category = new Category;
+  productRelateds: Product[]=[];
+  productRelateds2: Product[]=[];
+  productRelatedImages : ProductImage[]=[];
 
   cart: Cart = new Cart();
 
@@ -48,6 +55,26 @@ export class ProductpageComponent implements OnInit {
     this.productService.getById(this.id).subscribe(data => {
       this.product = data;
       console.log(this.product);
+      this.currentCategory = this.product.category;
+
+      this.productService.getListRelated(this.currentCategory.id).subscribe(data =>{
+        console.log(data);
+        this.productRelateds2 = data;
+        if(data){
+          this.productRelateds =[];
+          this.productRelatedImages =[];
+            for(let i=0; i<this.productRelateds2.length ; i++){
+                 this.productService.getProductImgByProductIdLimit(this.productRelateds2[i].id).subscribe( data1 => {
+                   
+                if(this.productRelateds2[i].id === data1.product.id)
+                {
+                  this.productRelateds.push(data1.product);
+                  this.productRelatedImages.push(data1.name);   
+                }
+              })                    
+            }     
+        }
+      })
     }, error => console.log(error));
 
     this.productService.getProductImgByProductId(this.id).subscribe(data => {
@@ -125,5 +152,26 @@ export class ProductpageComponent implements OnInit {
 
 
   }
+
+  // getListRelated(categoryid: number){
+  //   this.productService.getListRelated(categoryid).subscribe(data =>{
+  //     console.log(data);
+  //     this.productRelateds2 = data;
+  //     if(data){
+  //       this.productRelateds =[];
+  //       this.productRelatedImages =[];
+  //         for(let i=0; i<this.productRelateds2.length ; i++){
+  //              this.productService.getProductImgByProductIdLimit(this.productRelateds2[i].id).subscribe( data1 => {
+                 
+  //             if(this.productRelateds2[i].id === data1.product.id)
+  //             {
+  //               this.productRelateds.push(data1.product);
+  //               this.productRelatedImages.push(data1.name);   
+  //             }
+  //           })                    
+  //         }     
+  //     }
+  //   })
+  // }
 
 }

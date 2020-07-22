@@ -24,6 +24,8 @@ export class ProductService {
   private urlBestSeller = 'https://localhost:8443/api/products/bestseller';
   private urlNewPro = 'https://localhost:8443/api/products/newproduct';
   private urlCate = 'https://localhost:8443/api/productcate';
+  private urlSearchRange = 'https://localhost:8443/api/products/range';
+  private urlRelated = 'https://localhost:8443/api/products/related';
 
 
 
@@ -78,12 +80,20 @@ export class ProductService {
     return this.http.get(`${this.urlSearch}/${name}`, this.options);
   }
 
+  getListSearchRange(min: number, max: number): Observable<any>{
+    return this.http.get(`${this.urlSearchRange}/${min}/${max}`, this.options);
+  }
+
   getListBestSeller(): Observable<any>{
     return this.http.get(`${this.urlBestSeller}`, this.options);
   }
 
   getListNewPro(): Observable<any>{
     return this.http.get(`${this.urlNewPro}`, this.options);
+  }
+
+  getListRelated(id: number): Observable<any>{
+    return this.http.get(`${this.urlRelated}/${id}`, this.options);
   }
 
 

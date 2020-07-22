@@ -39,12 +39,12 @@
         <h3>Sản phẩm mới</h3>
         <div class="product-row">
             <div class="product-card" *ngFor="let newProduct of newProducts; let i = index">
-                <img routerLink="/productdetail/{{newProduct.id}}" src="https://localhost:8443/api/productimage/{{imgname[i]}}">
+                <img routerLink="/productdetail/{{newProduct.id}}" src="https://localhost:8443/api/productimage/{{imgnameNP[i]}}">
                 <div class="product-name">
                     <p><b>{{newProduct.name}}</b></p>
                 </div>
                 <div class="product-price">
-                    <p>{{newProduct.price | number:'1.0-2'}} VNĐ</p>
+                    <p>{{newProduct.discountPrice | number:'1.0-2'}} VNĐ</p>
                 </div>
             </div> 
         </div>
@@ -53,12 +53,12 @@
         <h3>Sản phẩm bán chạy</h3>
         <div class="product-row">
             <div class="product-card" *ngFor="let bestProduct of bestProducts; let i = index">
-                <img routerLink="/productdetail/{{bestProduct.id}}" src="https://localhost:8443/api/productimage/{{imgname2[i]}}">
+                <img routerLink="/productdetail/{{bestProduct.id}}" src="https://localhost:8443/api/productimage/{{imgnameBS[i]}}">
                 <div class="product-name">
                     <p><b>{{bestProduct.name}}</b></p>
                 </div>
                 <div class="product-price">
-                    <p>{{bestProduct.price | number:'1.0-2'}} VNĐ</p>
+                    <p>{{bestProduct.discountPrice | number:'1.0-2'}} VNĐ</p>
                 </div>
             </div> 
         </div>

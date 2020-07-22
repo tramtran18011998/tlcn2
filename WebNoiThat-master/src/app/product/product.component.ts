@@ -29,6 +29,7 @@ export class ProductComponent implements OnInit {
   productsPerPage = 12;
   pageIn : number;
   intSelect: number = 1;
+  clickCateType = false;
 
   items = [
     {id: '1',name: 'default'},
@@ -146,63 +147,7 @@ export class ProductComponent implements OnInit {
     
   }
 
-  //test for select and filter (chua viet xog)
-  getListProductBySelectFilter(select: number, filter: string){
-
-    if(select===1){
-     this.productService.getListPage(0).subscribe( data => {
-        this.products2 = [...data.content];
-        if(data)
-        this.products =[];
-        this.imgname =[];
-          for(let i=this.products2[0].id; i<this.products2.length + this.products2[0].id; i++){
-               this.productService.getProductImgByProductIdLimit(i).subscribe( data1 => {
-              if(i === data1.product.id)
-              {
-                this.products.push(data1.product);
-                this.imgname.push(data1.name);   }
-            })                    
-          }
-        console.log(this.imgname);
-        console.log(this.products);
-      })
-    }else if(select ==2){
-      this.productService.getListPageAsc(0).subscribe( data => {
-        this.products2 = [...data.content];
-        if(data)
-        this.products =[];
-        this.imgname =[];
-          for(let i=this.products2[0].id; i<this.products2.length + this.products2[0].id; i++){
-               this.productService.getProductImgByProductIdLimit(i).subscribe( data1 => {
-              if(i === data1.product.id)
-              {
-                this.products.push(data1.product);
-                this.imgname.push(data1.name);   }
-            })                    
-          }
-        console.log(this.imgname);
-        console.log(this.products);
-      })
-    }else{
-      this.productService.getListPageDesc(0).subscribe( data => {
-        this.products2 = [...data.content];
-        if(data)
-        this.products =[];
-        this.imgname =[];
-          for(let i=this.products2[0].id; i<this.products2.length + this.products2[0].id; i++){
-               this.productService.getProductImgByProductIdLimit(i).subscribe( data1 => {
-              if(i === data1.product.id)
-              {
-                this.products.push(data1.product);
-                this.imgname.push(data1.name);   }
-            })                    
-          }
-        console.log(this.imgname);
-        console.log(this.products);
-      })
-
-    }
-  }
+  
 
   getSupplierList(){
     this.supplierService.getList().subscribe(data => {
@@ -212,7 +157,7 @@ export class ProductComponent implements OnInit {
 
   onChangedPage(event){
 
-    if(this.intSelect==1){
+    if(this.intSelect==1 && this.clickCateType == false){
       this.productService.getListPage(event.pageIndex).subscribe( data => {
         this.products2 = [...data.content];
         if(data)
@@ -229,7 +174,7 @@ export class ProductComponent implements OnInit {
         console.log(this.imgname);
         console.log(this.products);
       });
-    }else if(this.intSelect==2){
+    }else if(this.intSelect==2 && this.clickCateType == false){
       this.productService.getListPageAsc(event.pageIndex).subscribe( data => {
         this.products2 = [...data.content];
         if(data)
@@ -270,25 +215,34 @@ export class ProductComponent implements OnInit {
 
   getCateByType(id: number){
     this.categoryService.getByType(id).subscribe(data => {
+      console.log("naksk");
       console.log(data);
       this.categories = data;
+      
     });   
   }
 
-  getListByCate(id: number){
-    this.productService.getListByCate(id).subscribe(data =>{
-      this.products2 = [...data];
-        if(data)
-        this.products =[];
-        this.imgname =[];
-          for(let i=this.products2[0].id; i<this.products2.length + this.products2[0].id; i++){
-               this.productService.getProductImgByProductIdLimit(i).subscribe( data1 => {
-              if(i === data1.product.id)
-              {
-                this.products.push(data1.product);
-                this.imgname.push(data1.name);   }
-            })                    
-          }
+  getListByCateType(id: number){
+    this.clickCateType = true;
+    this.productService.getByType(id).subscribe(data =>{
+      this.products2 = data;
+        if(data){
+          this.products =[];
+          this.imgname =[];
+            for(let i=0; i<this.products2.length ; i++){
+                 this.productService.getProductImgByProductIdLimit(this.products2[i].id).subscribe( data1 => {
+                   
+                if(this.products2[i].id === data1.product.id)
+                {
+                  this.products.push(data1.product);
+                  this.imgname.push(data1.name);   
+                }
+              })                    
+            }
+            this.totalProduct= this.products2.length;
+            this.productsPerPage = this.totalProduct;
+        
+        }
     })
   }
 
@@ -317,27 +271,67 @@ export class ProductComponent implements OnInit {
     console.log(id);
   }
 
-  // onSubmitSearch(search: FormGroup){
-  //   var name = this.searchF.controls['name'].value;
-  //   if(name !=""){
-      
-  //     this.productService.getListSearch(name).subscribe(data => {
-  //       this.products = data;
-  //     })
-  //   }
-  //   else{
-  //     this.products = [];
-  //     this.imgname = [];
-  //     this.getProductList();
-  //   }
-    
-  // }
+  
   // TÌm kiếmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm sản phẩm
   searchProduct(val){
     if(val !=""){
       
       this.productService.getListSearch(val).subscribe(data => {
-        this.products = data;
+        this.products2 = data;
+        if(data){
+          this.products =[];
+          this.imgname =[];
+            for(let i=0; i<this.products2.length ; i++){
+                 this.productService.getProductImgByProductIdLimit(this.products2[i].id).subscribe( data1 => {
+                   
+                if(this.products2[i].id === data1.product.id)
+                {
+                  this.products.push(data1.product);
+                  this.imgname.push(data1.name);   
+                  console.log(this.imgname);
+                }
+              })                    
+            }
+            this.totalProduct= this.products2.length;
+            this.productsPerPage = this.totalProduct;
+        }
+
+      })
+    }
+    else{
+      this.products = [];
+      this.imgname = [];
+      this.getProductList();
+    }
+  }
+
+  searchRange(min: number, max:number){
+
+    if(min != 0 && max !=0){
+      
+      this.productService.getListSearchRange(min,max).subscribe(data =>{
+        this.products2 = data;
+        console.log(data);
+        if(data){
+          this.products =[];
+          this.imgname =[];
+            for(let i=0; i<this.products2.length ; i++){
+                 this.productService.getProductImgByProductIdLimit(this.products2[i].id).subscribe( data1 => {
+                   
+                if(this.products2[i].id === data1.product.id)
+                {
+                  this.products.push(data1.product);
+                  this.imgname.push(data1.name);   
+                  console.log(this.imgname);
+                }
+              })                    
+            }
+            this.totalProduct= this.products2.length;
+            this.productsPerPage = this.totalProduct;
+        
+        }
+        
+        
       })
     }
     else{

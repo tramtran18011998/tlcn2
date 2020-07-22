@@ -13,10 +13,12 @@ import { User } from '../corecontrol/models/user';
 export class HomeComponent implements OnInit {
 
   bestProducts: Product[]=[];
+  bestProducts2: Product[]=[];
   newProducts: Product[]=[];
+  newProducts2: Product[]=[];
   productImages: ProductImage[]=[];
-  imgname=[];
-  imgname2=[];
+  imgnameNP=[];
+  imgnameBS=[];
   currentUser: User = new User();
 
   productImg: ProductImage= new ProductImage();
@@ -38,47 +40,48 @@ export class HomeComponent implements OnInit {
     
 
     this.productService.getListBestSeller().subscribe(data =>{
-      this.bestProducts = data;
+      this.bestProducts2 = data;
 
-      this.imgname2 = [];
-
-      var b =[];
-      var a: number;
-      for(let i=0; i<this.bestProducts.length; i++){
-        //console.log('ttt:', this.bestProducts[i].id);
-        b.push(this.bestProducts[i].id);
-        a= this.bestProducts[i].id;
-        this.productService.getProductImgByProductIdLimit(a).subscribe(data1 => {
-          //console.log('tt1:', this.bestProducts[i].id);
-          this.productImg = data1;
-          //console.log(this.productImg.name);          
-          this.imgname2.push(this.productImg.name)  ;        
-        })                    
+      console.log(data);
+      if(data){
+        this.bestProducts =[];
+        this.imgnameBS =[];
+          for(let i=0; i<this.bestProducts2.length ; i++){
+               this.productService.getProductImgByProductIdLimit(this.bestProducts2[i].id).subscribe( data1 => {
+                 console.log(i);
+                 console.log(data1);
+              if(this.bestProducts2[i].id === data1.product.id)
+              {
+                this.bestProducts.push(data1.product);
+                this.imgnameBS.push(data1.name);  
+              }
+            })                    
+          }
+      
       }
+          
     })
 
     this.productService.getListNewPro().subscribe(data1 => {
-      this.newProducts = data1;
 
-      this.imgname = [];
+      this.newProducts2 = data1;
 
-      var b =[];
-      var a: number;
-      for(let i=0; i<this.newProducts.length; i++){
-        //console.log('ttt:', this.newProducts[i].id);
-        b.push(this.newProducts[i].id);
-        a= this.newProducts[i].id;
-        //console.log('a=',b);
-        this.productService.getProductImgByProductIdLimit(a).subscribe(data1 => {
-          //console.log('tt1:', this.newProducts[i].id);
-          //console.log('bb:', b);
-          this.productImg = data1;
-          //console.log(this.productImg.name);          
-          this.imgname.push(this.productImg.name)  ;         
-          //console.log(this.imgname[i]);
-        })                    
+      if(data1){
+        this.newProducts =[];
+        this.imgnameNP =[];
+          for(let i=0; i<this.newProducts2.length ; i++){
+               this.productService.getProductImgByProductIdLimit(this.newProducts2[i].id).subscribe( data1 => {
+                 
+              if(this.newProducts2[i].id === data1.product.id)
+              {
+                this.newProducts.push(data1.product);
+                this.imgnameNP.push(data1.name);  
+              }
+            })                    
+          }
+      
       }
-
+    
     })
     
   }

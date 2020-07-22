@@ -44,4 +44,10 @@ public interface ProductRepository extends JpaRepository<Product,Long> {
 
     @Query(value = "select *from product p where p.category_id=:category_id",nativeQuery = true)
     List<Product> findByCategoryId(@Param("category_id") long category_id);
+
+    @Query(value = "select *from product p where p.discount_price between :min and :max",nativeQuery = true)
+    List<Product> findByPriceRange(@Param("min") double min,@Param("max") double max);
+
+    @Query(value = "select *from product p where p.category_id=:category_id ORDER by rand() limit 4",nativeQuery = true)
+    List<Product> findByRelatedProduct (@Param("category_id") long category_id);
 }
