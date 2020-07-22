@@ -12,7 +12,7 @@
             <h3>Danh mục</h3>
             <div class="line"></div>
             <ul>
-                <li *ngFor="let categoryType of categoryTypes">
+                <li *ngFor="let categoryType of categoryTypes" style="cursor: pointer;">
                     <a (click)="getListByCateType(categoryType.id)">{{categoryType.name}}</a>
                 </li>
             </ul>
@@ -90,7 +90,7 @@
                         <div class="product-price-discount">
                             <p>{{product.discountPrice | number:'1.0-2'}} VNĐ</p>
                         </div>
-                        <button class="add-to-cart" (click)="addCart()">Thêm vào giỏ</button>
+                        <button class="add-to-cart" (click)="addCart(product.id)">Thêm vào giỏ</button>
                     </div>
                 </div>
             </div>

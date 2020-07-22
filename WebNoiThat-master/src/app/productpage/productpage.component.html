@@ -10,13 +10,12 @@
     <div class="container">
         <div class="product-img">
             <div class="big-img">
-                <img src="https://localhost:8443/api/productimage/{{currentImg}}"
-                    alt="hinhsanpham" id="current-img">
+                <img src="https://localhost:8443/api/productimage/{{currentImg}}" alt="hinhsanpham" id="current-img">
             </div>
             <div class="mini-img">
                 <img *ngFor="let productImg of productImgs; let i = index"
-                src="https://localhost:8443/api/productimage/{{productImg.name}}"  (click)="ImageClick(productImg.name)" style="cursor: pointer"
-                    alt="hinhsanpham" >
+                    src="https://localhost:8443/api/productimage/{{productImg.name}}"
+                    (click)="ImageClick(productImg.name)" style="cursor: pointer" alt="hinhsanpham">
             </div>
         </div>
         <div class="product-basic-info" id="zoom-zone">
@@ -30,8 +29,8 @@
             <p>{{product.description}}</p>
             <div class="number-picker">
                 <p>Số lượng</p>
-                <input type="number" min="1" max="{{product.quantity}}" placeholder="1" [(ngModel)]="quantity" 
-                class="form-control" (input)="onSearchChange($event.target.value)">
+                <input type="number" min="1" max="{{product.quantity}}" placeholder="1" [(ngModel)]="quantity"
+                    class="form-control" (input)="onSearchChange($event.target.value)">
                 <p>Hiện có {{product.quantity}} sản phẩm</p>
             </div>
             <div class="add-to-cart">
@@ -72,21 +71,20 @@
     <div class="container1">
         <h3 style="margin-bottom: 20px;">Các sản phẩm khác</h3>
 
-    
-            <div class="product-row">
-                
-                    <div class="product-card" *ngFor="let productRelated of productRelateds; let i = index" 
-                    style="margin-right: 15%; width: 100%;">
-                        <img src="https://localhost:8443/api/productimage/{{productRelatedImages[i]}}"
-                            class="d-block w-100" alt="suggest-img">
-                        <div class="product-name">
-                            <a routerLink="/productdetail/{{productRelated.id}}" target="_blank" >{{productRelated.name}}</a>
-                        </div>
-                        <div class="product-price">
-                            <p>{{productRelated.discountPrice | number:'1.0-2'}} VNĐ</p>
-                        </div>
-                    </div>
-                
+
+        <div class="product-row">
+
+            <div class="product-card" *ngFor="let productRelated of productRelateds; let i = index">
+                <img src="https://localhost:8443/api/productimage/{{productRelatedImages[i]}}" alt="suggest-img">
+                <div class="product-name">
+                    <a routerLink="/productdetail/{{productRelated.id}}"
+                        target="_blank">{{productRelated.name}}</a>
+                </div>
+                <div class="product-price">
+                    <p>{{productRelated.discountPrice | number:'1.0-2'}} VNĐ</p>
+                </div>
+            </div>
+
         </div>
         <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">

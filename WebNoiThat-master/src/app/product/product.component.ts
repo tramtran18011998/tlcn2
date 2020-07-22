@@ -1,3 +1,6 @@
+import { CartService } from './../corecontrol/services/cart.service';
+import { User } from 'src/app/corecontrol/models/user';
+import { CustomerService } from './../corecontrol/services/customer.service';
 import { SupplierService } from './../corecontrol/services/supplier.service';
 import { Supplier } from 'src/app/corecontrol/models/supplier';
 import { Component, OnInit,ViewChild } from '@angular/core';
@@ -16,6 +19,9 @@ import {MatButtonModule} from '@angular/material/button';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { async } from '@angular/core/testing';
+import { Customer } from '../corecontrol/models/customer';
+import Swal from 'sweetalert2';
+import { Cart } from '../corecontrol/models/cart';
 
 @Component({
   selector: 'app-product',
@@ -63,9 +69,21 @@ export class ProductComponent implements OnInit {
   productImg: ProductImage= new ProductImage();
 
 
-  constructor(private productService: ProductService, private supplierService:SupplierService,private categoryTypeService: CategoryTypeService, private categoryService:CategoryService,private router: Router,private formBuilder: FormBuilder) { }
+
+
+  currentCustomer: Customer = new Customer();
+  currentUser: User = new User();
+  idCus: number;
+  cart: Cart = new Cart();
+  product: Product=new Product();
+  quantitycart: number;
+
+  constructor(private productService: ProductService,private cartService: CartService, private customerService: CustomerService,private supplierService:SupplierService,private categoryTypeService: CategoryTypeService, private categoryService:CategoryService,private router: Router,private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+
+
+    this.currentUser = JSON.parse(localStorage.getItem('currentuser'));
 
     this.productService.total().subscribe(data =>{
       this.totalProduct = data;
@@ -340,6 +358,62 @@ export class ProductComponent implements OnInit {
       this.getProductList();
     }
   }
+
+  addCart(val) {
+
+    if (!this.currentUser) {
+      
+      Swal.fire({
+        icon: 'error',
+        title: 'Bạn cần đăng nhập để thực hiện mua hàng!',
+        showConfirmButton: false,
+        timer: 1500
+      })
+    } else {
+      this.productService.getById(val).subscribe(dataa =>{
+        this.product=dataa;
+
+        // console.log("Lấy được proooooooo" +this.product.name);
+      })
+      
+      this.customerService.getIdByUserId(this.currentUser.id).subscribe(data => {
+        // console.log("Lấy được custommer?????" +data);
+        this.idCus = data;
+        
+        
+
+        this.customerService.getById(this.idCus).subscribe(dataaa => {
+          this.currentCustomer = dataaa;
+          // console.log("Đây nàyyyyyyyyyyyy" +this.currentCustomer.id);
+
+          // console.log("Cái gì đang diễn ra vậy? Gán thôi mà?" +this.product.name);
+          
+          this.cart.productname=this.product.name;
+          this.cart.status=0;
+          this.cart.price=this.product.discountPrice;
+          this.cart.totalprice=this.product.discountPrice;
+          this.cart.quantity=1;
+
+          console.log(this.cart);
+          
+
+          this.cartService.createNew(this.product.id,this.currentCustomer.id,this.cart).subscribe(data => {
+            console.log(data);
+            this.cartService.countQuantity(this.idCus).subscribe(x => {
+              this.quantitycart = x;
+              localStorage.setItem('quantitycart', this.quantitycart.toString());
+            })
+          })
+          
+
+        })
+      })
+    }
+
+
+
+  }
+
   
 
 }
