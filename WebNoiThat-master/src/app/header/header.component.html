@@ -103,8 +103,8 @@
         </ul>
     </nav>
     <div class="searchbar">
-        <input type="text" placeholder=" Tìm kiếm">
-        <button class="iconsearch">
+        <input type="text" placeholder=" Tìm kiếm" #search>
+        <button class="iconsearch" (click)="navigateSearch(search.value)">
             <i class="fas fa-search" aria-hidden="true"></i>
         </button>
         <div class="cart" >

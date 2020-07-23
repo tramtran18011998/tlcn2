@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { User } from '../corecontrol/models/user';
 import { TokenStorageService } from '../corecontrol/auth/token-storage.service';
 import { UserService } from '../corecontrol/services/user.service';
 import { CartService } from '../corecontrol/services/cart.service';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -11,14 +13,16 @@ import { CartService } from '../corecontrol/services/cart.service';
 })
 export class HeaderComponent implements OnInit {
 
+  @Output() public searchHeader=new EventEmitter();
   checkLogin = false;
   quantitycart: any = JSON.parse(localStorage.getItem('quantitycart'));
   //user: User = JSON.parse(localStorage.getItem('currentuser'));
   user: User = new User();
   //currentName: string= this.user.name;
   inSocial: any;
+  public value="";
 
-  constructor(private token: TokenStorageService, private userService: UserService, private cartService: CartService) { }
+  constructor(private token: TokenStorageService, private router: Router,private userService: UserService, private cartService: CartService) { }
 
   ngOnInit() {
     //localStorage.setItem('inLogin', 'false');
@@ -77,6 +81,10 @@ export class HeaderComponent implements OnInit {
     }
     else
     x.style.display="none";
+  }
+  navigateSearch(value){
+    localStorage.setItem("searchval",value);
+    this.router.navigate(['product']);
   }
 
 }

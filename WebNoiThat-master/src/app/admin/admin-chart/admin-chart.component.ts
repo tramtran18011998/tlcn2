@@ -1,7 +1,7 @@
+import { Chart } from 'chart.js';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/corecontrol/services/product.service';
 import { Product } from 'src/app/corecontrol/models/product';
-import {Chart} from 'chart.js';
 import { ChartBestProduct } from 'src/app/corecontrol/models/chartbestproduct';
 import { ReceiptService } from 'src/app/corecontrol/services/receipt.service';
 
