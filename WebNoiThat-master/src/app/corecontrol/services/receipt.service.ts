@@ -12,6 +12,9 @@ export class ReceiptService {
   private baseUrlInvoice = 'https://localhost:8443/api/invoiceproduct';
   private baseUrlInvoiceDetail = 'https://localhost:8443/api/invoiceproduct-product';
 
+  private urlMonth = 'https://localhost:8443/api/receipt/revenuemonth';
+  private urlTotal = 'https://localhost:8443/api/receipt/revenuetotal';
+
   private _refresh = new Subject<void>();
   private headers= new HttpHeaders({
     'Content-Type': 'application/json',
@@ -29,6 +32,15 @@ export class ReceiptService {
     return this.http.get(`${this.baseUrl}`, this.options);
   }
   
+
+  //for charts
+  getListMonth(): Observable<any>{
+    return this.http.get(`${this.urlMonth}`, this.options);
+  }
+  getListTotal(): Observable<any>{
+    return this.http.get(`${this.urlTotal}`, this.options);
+  }
+
   getById(id: number): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`, this.options);
   }

@@ -28,6 +28,9 @@ export class ProductService {
   private urlRelated = 'https://localhost:8443/api/products/related';
 
 
+  private urlChartBestSeller = 'https://localhost:8443/api/products/chartbestseller';
+  private urlCountBestSellerQuantity = 'https://localhost:8443/api/products/bestquantity';
+  private urlChartWorstSeller = 'https://localhost:8443/api/products/chartworstseller';
 
 
 
@@ -84,6 +87,17 @@ export class ProductService {
     return this.http.get(`${this.urlSearchRange}/${min}/${max}`, this.options);
   }
 
+  //for chart
+  getChartBestSeller(): Observable<any>{
+    return this.http.get(`${this.urlChartBestSeller}`, this.options);
+  }
+  getChartBestSellerQuantity(id: number): Observable<any>{
+    return this.http.get(`${this.urlCountBestSellerQuantity}/${id}`, this.options);
+  }
+  getChartWorstSeller(): Observable<any>{
+    return this.http.get(`${this.urlChartWorstSeller}`, this.options);
+  }
+  
   getListBestSeller(): Observable<any>{
     return this.http.get(`${this.urlBestSeller}`, this.options);
   }

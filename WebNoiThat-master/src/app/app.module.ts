@@ -60,6 +60,7 @@ import { AdProfileAddComponent } from './admin/admin-profile/ad-profile-add/ad-p
 import { AdReceiptEditComponent } from './admin/admin-receipt/ad-receipt-edit/ad-receipt-edit.component';
 import { OAuth2RedirectHandlerComponent } from './corecontrol/auth/oauth2-redirect-handler/oauth2-redirect-handler.component';
 import { CarthistoryComponent } from './carthistory/carthistory.component';
+import { AdminChartComponent } from './admin/admin-chart/admin-chart.component';
 
 
 
@@ -108,6 +109,7 @@ import { CarthistoryComponent } from './carthistory/carthistory.component';
     AdReceiptEditComponent,
     OAuth2RedirectHandlerComponent,
     CarthistoryComponent,
+    AdminChartComponent,
    
     
   ],

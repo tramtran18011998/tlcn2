@@ -305,5 +305,20 @@ public class ProductController {
     }
 
 
+    //for chart
+    @GetMapping("/products/chartbestseller")
+    public List<Product> chartbestseller() {
+        return productRepository.chartbestseller();
+    }
+
+    @GetMapping("/products/chartworstseller")
+    public List<Product> chartworstseller() {
+        return productRepository.chartworstseller();
+    }
+
+    @GetMapping("/products/bestquantity/{product_id}")
+    public double bestSellerQuantity(@PathVariable(value = "product_id") long product_id){
+        return productRepository.bestSellerQuantity(product_id);
+    }
 
 }

@@ -3,6 +3,7 @@ package com.example.furniturewebdemo1.controller;
 import com.example.furniturewebdemo1.exception.ResourceNotFoundException;
 import com.example.furniturewebdemo1.model.Receipt;
 
+import com.example.furniturewebdemo1.repository.ReceiptRepository;
 import com.example.furniturewebdemo1.service.ReceiptService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ import java.util.List;
 public class ReceiptController {
     @Autowired
     private ReceiptService receiptService;
+
+    @Autowired
+    private ReceiptRepository receiptRepository;
 
     @GetMapping("/receipt")
     public List<Receipt> getAllReceipt(){
@@ -69,5 +73,14 @@ public class ReceiptController {
         Receipt receipt=receiptService.findReceiptById(id).orElseThrow(()-> new ResourceNotFoundException("Receipt not found"));
         receiptService.delete(receipt);
         return ResponseEntity.ok(receipt);
+    }
+
+    @GetMapping("/receipt/revenuemonth")
+    public List<?> revenueStatisticsMonth(){
+        return receiptRepository.revenueStatisticsMonth();
+    }
+    @GetMapping("/receipt/revenuetotal")
+    public List<?> revenueStatisticsTotal(){
+        return receiptRepository.revenueStatisticsTotal();
     }
 }

@@ -38,6 +38,7 @@ import { AdProfileAddComponent } from './admin/admin-profile/ad-profile-add/ad-p
 import { AdReceiptEditComponent } from './admin/admin-receipt/ad-receipt-edit/ad-receipt-edit.component';
 import { OAuth2RedirectHandlerComponent } from './corecontrol/auth/oauth2-redirect-handler/oauth2-redirect-handler.component';
 import { CarthistoryComponent } from './carthistory/carthistory.component';
+import { AdminChartComponent } from './admin/admin-chart/admin-chart.component';
 
 
 
@@ -62,6 +63,8 @@ const routes: Routes = [
       { path: 'adproduct/detail/:id', component: AdProductSeeComponent },
       { path: 'adproduct/edit/:id', component: AdProductEditComponent },
       { path: 'adproduct/add', component: AdProductAddComponent },
+
+      { path: 'adchart', component: AdminChartComponent },
 
       { path: 'adcategory', component: AdminCategoryComponent },
       { path: 'adcategory/edit/:id', component: AdCategoryEditComponent },
