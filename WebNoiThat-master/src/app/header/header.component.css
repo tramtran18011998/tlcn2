@@ -167,6 +167,13 @@
     background-color: #1F2833;
     height: 40px;
 }
+.toggle{
+    color: #ffffff;
+    position: absolute;
+    left: 50%;
+    font-size: 15px;
+    display: none;
+}
 @media (min-width: 360px){
     
     .wrapper .container .products .filter .searchproduct input[type="text"]{
@@ -211,6 +218,12 @@
     }
     .wrapper .container h3{
         margin-left: 0;
+    }
+    .logo img{
+        display: none;
+    }
+    .account p{
+        display: none;
     }
 }
 
