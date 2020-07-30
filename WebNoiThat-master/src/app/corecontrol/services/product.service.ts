@@ -37,16 +37,14 @@ export class ProductService {
   private _refresh = new Subject<void>();
   private headers= new HttpHeaders({
     'Content-Type': 'application/json',
-    //'x-access-token':localStorage.getItem('token'),
-    //'Authorization': 'Bearer' + localStorage.getItem('token')
-  })
-
-  private headerImg= new HttpHeaders({
-    //'x-access-token':localStorage.getItem('token'),
-    //'Authorization': 'Bearer' + localStorage.getItem('token')
+    // 'Authorization': 'Bearer ' + localStorage.getItem('token')
   })
 
   private options = { headers: this.headers };
+
+  private headerImg= new HttpHeaders({
+  })
+
   private optionsImg = { headers: this.headerImg };
   
   constructor(private http: HttpClient) { }
@@ -62,7 +60,7 @@ export class ProductService {
   getList(): Observable<any>{
     return this.http.get(`${this.baseUrl}`, this.options);
   }
-  
+
   getListByCate(id: number): Observable<any>{
     return this.http.get(`${this.urlCate}/${id}`, this.options);
   }
